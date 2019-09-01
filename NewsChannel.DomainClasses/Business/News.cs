@@ -19,7 +19,8 @@ namespace NewsChannel.DomainClasses.Business {
         public virtual ICollection<BookMark> BookMarks { get; set; }
         public virtual ICollection<NewsTag> NewsTags { get; set; }
         public virtual ICollection<Like> Likes { get; set; }
-        public virtual ICollection<NewsImage> Visits { get; set; }
+        public virtual ICollection<Visit> Visits { get; set; }
+        public virtual ICollection<NewsImage> NewsImages { get; set; }
 
     }
 }
