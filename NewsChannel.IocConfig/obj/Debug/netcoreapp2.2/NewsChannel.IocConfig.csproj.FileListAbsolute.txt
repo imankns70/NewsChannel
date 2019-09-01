@@ -6,4 +6,3 @@ D:\projects\NewsChannel\NewsChannel.IocConfig\obj\Debug\netcoreapp2.2\NewsChanne
 D:\projects\NewsChannel\NewsChannel.IocConfig\obj\Debug\netcoreapp2.2\NewsChannel.IocConfig.AssemblyInfo.cs
 D:\projects\NewsChannel\NewsChannel.IocConfig\obj\Debug\netcoreapp2.2\NewsChannel.IocConfig.dll
 D:\projects\NewsChannel\NewsChannel.IocConfig\obj\Debug\netcoreapp2.2\NewsChannel.IocConfig.pdb
-d:\projects\NewsChannel\NewsChannel.IocConfig\obj\Debug\netcoreapp2.2\NewsChannel.IocConfig.csprojAssemblyReference.cache

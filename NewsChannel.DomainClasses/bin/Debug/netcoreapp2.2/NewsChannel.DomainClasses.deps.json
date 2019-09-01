@@ -7,8 +7,25 @@
   "targets": {
     ".NETCoreApp,Version=v2.2": {
       "NewsChannel.DomainClasses/1.0.0": {
+        "dependencies": {
+          "NewsChannel.Common": "1.0.0",
+          "Microsoft.Extensions.Identity.Stores": "2.2.0.0"
+        },
         "runtime": {
           "NewsChannel.DomainClasses.dll": {}
+        }
+      },
+      "NewsChannel.Common/1.0.0": {
+        "runtime": {
+          "NewsChannel.Common.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Identity.Stores/2.2.0.0": {
+        "runtime": {
+          "Microsoft.Extensions.Identity.Stores.dll": {
+            "assemblyVersion": "2.2.0.0",
+            "fileVersion": "2.2.0.18316"
+          }
         }
       }
     }
@@ -16,6 +33,16 @@
   "libraries": {
     "NewsChannel.DomainClasses/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "NewsChannel.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Extensions.Identity.Stores/2.2.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

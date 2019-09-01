@@ -207,6 +207,16 @@
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
+      },
+      "NewsChannel.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "compile": {
+          "bin/placeholder/NewsChannel.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/NewsChannel.Common.dll": {}
+        }
       }
     }
   },
@@ -678,11 +688,17 @@
         "netstandard.library.2.0.3.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
+    },
+    "NewsChannel.Common/1.0.0": {
+      "type": "project",
+      "path": "../NewsChannel.Common/NewsChannel.Common.csproj",
+      "msbuildProject": "../NewsChannel.Common/NewsChannel.Common.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
-      "Microsoft.NETCore.App >= 2.2.0"
+      "Microsoft.NETCore.App >= 2.2.0",
+      "NewsChannel.Common >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -692,11 +708,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\projects\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj",
+      "projectUniqueName": "D:\\projects\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj",
       "projectName": "NewsChannel.DomainClasses",
-      "projectPath": "d:\\projects\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj",
+      "projectPath": "D:\\projects\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj",
       "packagesPath": "C:\\Users\\i.solouki\\.nuget\\packages\\",
-      "outputPath": "d:\\projects\\NewsChannel\\NewsChannel.DomainClasses\\obj\\",
+      "outputPath": "D:\\projects\\NewsChannel\\NewsChannel.DomainClasses\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -714,7 +730,11 @@
       },
       "frameworks": {
         "netcoreapp2.2": {
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\projects\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj": {
+              "projectPath": "D:\\projects\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
