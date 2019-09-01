@@ -1,0 +1,9 @@
+E:\project\NewsChannel\NewsChannel.DomainClasses\bin\Debug\netcoreapp2.2\NewsChannel.DomainClasses.deps.json
+E:\project\NewsChannel\NewsChannel.DomainClasses\bin\Debug\netcoreapp2.2\NewsChannel.DomainClasses.dll
+E:\project\NewsChannel\NewsChannel.DomainClasses\bin\Debug\netcoreapp2.2\NewsChannel.DomainClasses.pdb
+E:\project\NewsChannel\NewsChannel.DomainClasses\obj\Debug\netcoreapp2.2\NewsChannel.DomainClasses.csprojAssemblyReference.cache
+E:\project\NewsChannel\NewsChannel.DomainClasses\obj\Debug\netcoreapp2.2\NewsChannel.DomainClasses.csproj.CoreCompileInputs.cache
+E:\project\NewsChannel\NewsChannel.DomainClasses\obj\Debug\netcoreapp2.2\NewsChannel.DomainClasses.AssemblyInfoInputs.cache
+E:\project\NewsChannel\NewsChannel.DomainClasses\obj\Debug\netcoreapp2.2\NewsChannel.DomainClasses.AssemblyInfo.cs
+E:\project\NewsChannel\NewsChannel.DomainClasses\obj\Debug\netcoreapp2.2\NewsChannel.DomainClasses.dll
+E:\project\NewsChannel\NewsChannel.DomainClasses\obj\Debug\netcoreapp2.2\NewsChannel.DomainClasses.pdb
