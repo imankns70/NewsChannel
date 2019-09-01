@@ -7,3 +7,11 @@ E:\project\NewsChannel\NewsChannel.DomainClasses\obj\Debug\netcoreapp2.2\NewsCha
 E:\project\NewsChannel\NewsChannel.DomainClasses\obj\Debug\netcoreapp2.2\NewsChannel.DomainClasses.AssemblyInfo.cs
 E:\project\NewsChannel\NewsChannel.DomainClasses\obj\Debug\netcoreapp2.2\NewsChannel.DomainClasses.dll
 E:\project\NewsChannel\NewsChannel.DomainClasses\obj\Debug\netcoreapp2.2\NewsChannel.DomainClasses.pdb
+d:\projects\NewsChannel\NewsChannel.DomainClasses\bin\Debug\netcoreapp2.2\NewsChannel.DomainClasses.deps.json
+d:\projects\NewsChannel\NewsChannel.DomainClasses\bin\Debug\netcoreapp2.2\NewsChannel.DomainClasses.dll
+d:\projects\NewsChannel\NewsChannel.DomainClasses\bin\Debug\netcoreapp2.2\NewsChannel.DomainClasses.pdb
+d:\projects\NewsChannel\NewsChannel.DomainClasses\obj\Debug\netcoreapp2.2\NewsChannel.DomainClasses.csproj.CoreCompileInputs.cache
+d:\projects\NewsChannel\NewsChannel.DomainClasses\obj\Debug\netcoreapp2.2\NewsChannel.DomainClasses.AssemblyInfoInputs.cache
+d:\projects\NewsChannel\NewsChannel.DomainClasses\obj\Debug\netcoreapp2.2\NewsChannel.DomainClasses.AssemblyInfo.cs
+d:\projects\NewsChannel\NewsChannel.DomainClasses\obj\Debug\netcoreapp2.2\NewsChannel.DomainClasses.dll
+d:\projects\NewsChannel\NewsChannel.DomainClasses\obj\Debug\netcoreapp2.2\NewsChannel.DomainClasses.pdb

@@ -1,0 +1,14 @@
+D:\projects\NewsChannel\NewsChannel\bin\Debug\netcoreapp2.2\NewsChannel.deps.json
+D:\projects\NewsChannel\NewsChannel\bin\Debug\netcoreapp2.2\NewsChannel.runtimeconfig.json
+D:\projects\NewsChannel\NewsChannel\bin\Debug\netcoreapp2.2\NewsChannel.runtimeconfig.dev.json
+D:\projects\NewsChannel\NewsChannel\bin\Debug\netcoreapp2.2\NewsChannel.dll
+D:\projects\NewsChannel\NewsChannel\bin\Debug\netcoreapp2.2\NewsChannel.pdb
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\NewsChannel.csprojAssemblyReference.cache
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\NewsChannel.csproj.CoreCompileInputs.cache
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\NewsChannel.RazorAssemblyInfo.cache
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\NewsChannel.RazorAssemblyInfo.cs
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\NewsChannel.AssemblyInfoInputs.cache
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\NewsChannel.AssemblyInfo.cs
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\NewsChannel.RazorTargetAssemblyInfo.cache
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\NewsChannel.dll
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\NewsChannel.pdb

@@ -7,3 +7,12 @@ E:\project\NewsChannel\NewsChannel.DataLayer\obj\Debug\netcoreapp2.2\NewsChannel
 E:\project\NewsChannel\NewsChannel.DataLayer\obj\Debug\netcoreapp2.2\NewsChannel.DataLayer.AssemblyInfo.cs
 E:\project\NewsChannel\NewsChannel.DataLayer\obj\Debug\netcoreapp2.2\NewsChannel.DataLayer.dll
 E:\project\NewsChannel\NewsChannel.DataLayer\obj\Debug\netcoreapp2.2\NewsChannel.DataLayer.pdb
+d:\projects\NewsChannel\NewsChannel.DataLayer\bin\Debug\netcoreapp2.2\NewsChannel.DataLayer.deps.json
+d:\projects\NewsChannel\NewsChannel.DataLayer\bin\Debug\netcoreapp2.2\NewsChannel.DataLayer.dll
+d:\projects\NewsChannel\NewsChannel.DataLayer\bin\Debug\netcoreapp2.2\NewsChannel.DataLayer.pdb
+d:\projects\NewsChannel\NewsChannel.DataLayer\obj\Debug\netcoreapp2.2\NewsChannel.DataLayer.csprojAssemblyReference.cache
+d:\projects\NewsChannel\NewsChannel.DataLayer\obj\Debug\netcoreapp2.2\NewsChannel.DataLayer.csproj.CoreCompileInputs.cache
+d:\projects\NewsChannel\NewsChannel.DataLayer\obj\Debug\netcoreapp2.2\NewsChannel.DataLayer.AssemblyInfoInputs.cache
+d:\projects\NewsChannel\NewsChannel.DataLayer\obj\Debug\netcoreapp2.2\NewsChannel.DataLayer.AssemblyInfo.cs
+d:\projects\NewsChannel\NewsChannel.DataLayer\obj\Debug\netcoreapp2.2\NewsChannel.DataLayer.dll
+d:\projects\NewsChannel\NewsChannel.DataLayer\obj\Debug\netcoreapp2.2\NewsChannel.DataLayer.pdb
