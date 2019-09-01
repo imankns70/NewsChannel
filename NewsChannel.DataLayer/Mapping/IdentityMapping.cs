@@ -7,31 +7,27 @@ namespace NewsChannel.DataLayer.Mapping
     {
         public static void AddCustomIdentityMappings(this ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>().ToTable("AppUser");
-            modelBuilder.Entity<User>().ToTable("AppRole");
+            modelBuilder.Entity<User>().ToTable("AppUsers");
+            modelBuilder.Entity<Role>().ToTable("AppRoles");
             modelBuilder.Entity<UserRole>().ToTable("AppUserRole");
             modelBuilder.Entity<RoleClaim>().ToTable("AppRoleClaim");
             modelBuilder.Entity<UserClaim>().ToTable("AppUserClaim");
 
             modelBuilder.Entity<UserRole>()
-                .HasOne(x => x.Role)
-                .WithMany(d => d.Users)
-                .HasForeignKey(t => t.RoleId);
+                .HasOne(userRole => userRole.Role)
+                .WithMany(role => role.Users).HasForeignKey(r => r.RoleId);
 
             modelBuilder.Entity<UserRole>()
-                .HasOne(x => x.User)
-                .WithMany(d => d.Roles)
-                .HasForeignKey(t => t.UserId);
+                .HasOne(userRole => userRole.User)
+                .WithMany(role => role.Roles).HasForeignKey(r => r.UserId);
 
             modelBuilder.Entity<RoleClaim>()
-                .HasOne(x => x.Role)
-                .WithMany(d => d.Claims)
-                .HasForeignKey(t => t.RoleId);
+                .HasOne(roleClaim => roleClaim.Role)
+                .WithMany(claim => claim.Claims).HasForeignKey(c => c.RoleId);
 
             modelBuilder.Entity<UserClaim>()
-                .HasOne(x => x.User)
-                .WithMany(d => d.Claims)
-                .HasForeignKey(t => t.UserId);
+                .HasOne(userClaim => userClaim.User)
+                .WithMany(claim => claim.Claims).HasForeignKey(c => c.UserId);
         }
     }
 }
