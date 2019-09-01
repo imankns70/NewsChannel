@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\project\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj": {}
+    "e:\\project\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj": {}
   },
   "projects": {
-    "E:\\project\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj": {
+    "e:\\project\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\project\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj",
+        "projectUniqueName": "e:\\project\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj",
         "projectName": "NewsChannel.DataLayer",
-        "projectPath": "E:\\project\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj",
+        "projectPath": "e:\\project\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj",
         "packagesPath": "C:\\Users\\iman\\.nuget\\packages\\",
-        "outputPath": "E:\\project\\NewsChannel\\NewsChannel.DataLayer\\obj\\",
+        "outputPath": "e:\\project\\NewsChannel\\NewsChannel.DataLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

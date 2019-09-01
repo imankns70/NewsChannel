@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\project\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj": {}
+    "e:\\project\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj": {}
   },
   "projects": {
-    "E:\\project\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj": {
+    "e:\\project\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\project\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj",
+        "projectUniqueName": "e:\\project\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj",
         "projectName": "NewsChannel.DomainClasses",
-        "projectPath": "E:\\project\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj",
+        "projectPath": "e:\\project\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj",
         "packagesPath": "C:\\Users\\iman\\.nuget\\packages\\",
-        "outputPath": "E:\\project\\NewsChannel\\NewsChannel.DomainClasses\\obj\\",
+        "outputPath": "e:\\project\\NewsChannel\\NewsChannel.DomainClasses\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
