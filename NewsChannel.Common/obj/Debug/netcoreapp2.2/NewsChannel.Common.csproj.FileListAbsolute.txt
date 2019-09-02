@@ -9,9 +9,9 @@ E:\project\NewsChannel\NewsChannel.Common\obj\Debug\netcoreapp2.2\NewsChannel.Co
 D:\projects\NewsChannel\NewsChannel.Common\bin\Debug\netcoreapp2.2\NewsChannel.Common.deps.json
 D:\projects\NewsChannel\NewsChannel.Common\bin\Debug\netcoreapp2.2\NewsChannel.Common.dll
 D:\projects\NewsChannel\NewsChannel.Common\bin\Debug\netcoreapp2.2\NewsChannel.Common.pdb
-D:\projects\NewsChannel\NewsChannel.Common\obj\Debug\netcoreapp2.2\NewsChannel.Common.csprojAssemblyReference.cache
 D:\projects\NewsChannel\NewsChannel.Common\obj\Debug\netcoreapp2.2\NewsChannel.Common.csproj.CoreCompileInputs.cache
 D:\projects\NewsChannel\NewsChannel.Common\obj\Debug\netcoreapp2.2\NewsChannel.Common.AssemblyInfoInputs.cache
 D:\projects\NewsChannel\NewsChannel.Common\obj\Debug\netcoreapp2.2\NewsChannel.Common.AssemblyInfo.cs
 D:\projects\NewsChannel\NewsChannel.Common\obj\Debug\netcoreapp2.2\NewsChannel.Common.dll
 D:\projects\NewsChannel\NewsChannel.Common\obj\Debug\netcoreapp2.2\NewsChannel.Common.pdb
+D:\projects\NewsChannel\NewsChannel.Common\obj\Debug\netcoreapp2.2\NewsChannel.Common.csprojAssemblyReference.cache

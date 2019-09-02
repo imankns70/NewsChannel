@@ -62,7 +62,7 @@ namespace NewsChannel.DataLayer.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CategoryName = table.Column<string>(nullable: true),
-                    ParentCategoryId = table.Column<int>(nullable: false),
+                    ParentCategoryId = table.Column<int>(nullable: true),
                     Url = table.Column<string>(nullable: true),
                     categoryId = table.Column<int>(nullable: true)
                 },

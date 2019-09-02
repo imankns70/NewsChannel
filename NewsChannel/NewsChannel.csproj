@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NewsChannel.DataLayer\NewsChannel.DataLayer.csproj" />
+    <ProjectReference Include="..\NewsChannel.IocConfig\NewsChannel.IocConfig.csproj" />
   </ItemGroup>
 
   <ItemGroup>

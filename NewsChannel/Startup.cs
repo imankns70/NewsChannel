@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NewsChannel.DataLayer;
+using NewsChannel.IocConfig;
 
 namespace NewsChannel
 {
@@ -19,6 +20,7 @@ namespace NewsChannel
         {
             services.AddDbContext<NewsDbContext>(options => options.
                 UseSqlServer(Configuration.GetConnectionString("SqlServer")));
+            services.AddCustomServices();
             services.AddMvc();
 
         }

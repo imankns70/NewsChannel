@@ -15,4 +15,3 @@ D:\projects\NewsChannel\NewsChannel.ViewModel\obj\Debug\netcoreapp2.2\NewsChanne
 D:\projects\NewsChannel\NewsChannel.ViewModel\obj\Debug\netcoreapp2.2\NewsChannel.ViewModel.AssemblyInfo.cs
 D:\projects\NewsChannel\NewsChannel.ViewModel\obj\Debug\netcoreapp2.2\NewsChannel.ViewModel.dll
 D:\projects\NewsChannel\NewsChannel.ViewModel\obj\Debug\netcoreapp2.2\NewsChannel.ViewModel.pdb
-D:\projects\NewsChannel\NewsChannel.ViewModel\obj\Debug\netcoreapp2.2\NewsChannel.ViewModel.csprojAssemblyReference.cache

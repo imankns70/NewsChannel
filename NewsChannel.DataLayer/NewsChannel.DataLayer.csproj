@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NewsChannel.DomainClasses\NewsChannel.DomainClasses.csproj" />
+    <ProjectReference Include="..\NewsChannel.ViewModel\NewsChannel.ViewModel.csproj" />
   </ItemGroup>
 
   <ItemGroup>
