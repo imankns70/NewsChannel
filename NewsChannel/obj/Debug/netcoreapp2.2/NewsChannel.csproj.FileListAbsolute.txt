@@ -40,3 +40,15 @@ D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\NewsChannel.RazorTar
 D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\NewsChannel.csproj.CopyComplete
 D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\NewsChannel.dll
 D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\NewsChannel.pdb
+D:\projects\NewsChannel\NewsChannel\bin\Debug\netcoreapp2.2\NewsChannel.Views.dll
+D:\projects\NewsChannel\NewsChannel\bin\Debug\netcoreapp2.2\NewsChannel.Views.pdb
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\NewsChannel.TagHelpers.input.cache
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\NewsChannel.TagHelpers.output.cache
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\NewsChannel.RazorCoreGenerate.cache
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\NewsChannel.RazorTargetAssemblyInfo.cs
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\NewsChannel.Views.pdb
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Category\Index.g.cshtml.cs
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Category\_CategoryTable.g.cshtml.cs
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_AdminLayout.g.cshtml.cs
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_AdminLogin.g.cshtml.cs
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_AdminMenu.g.cshtml.cs

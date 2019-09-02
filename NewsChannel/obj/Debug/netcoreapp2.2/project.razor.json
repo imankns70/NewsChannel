@@ -2959,6 +2959,32 @@
     "CSharpLanguageVersion": 800
   },
   "RootNamespace": "NewsChannel",
-  "Documents": [],
+  "Documents": [
+    {
+      "FilePath": "Areas\\Admin\\Views\\Category\\Index.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Category\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Shared\\_AdminMenu.cshtml",
+      "TargetPath": "Views\\Shared\\_AdminMenu.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Shared\\_AdminLayout.cshtml",
+      "TargetPath": "Views\\Shared\\_AdminLayout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Shared\\_AdminLogin.cshtml",
+      "TargetPath": "Views\\Shared\\_AdminLogin.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Areas\\Admin\\Views\\Category\\_CategoryTable.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Category\\_CategoryTable.cshtml",
+      "FileKind": "mvc"
+    }
+  ],
   "SerializationFormat": "0.2"
 }

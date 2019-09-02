@@ -19,6 +19,8 @@ namespace NewsChannel
         {
             services.AddDbContext<NewsDbContext>(options => options.
                 UseSqlServer(Configuration.GetConnectionString("SqlServer")));
+            services.AddMvc();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -29,9 +31,14 @@ namespace NewsChannel
                 app.UseDeveloperExceptionPage();
             }
 
-            app.Run(async (context) =>
+
+            app.UseStaticFiles();
+            app.UseMvc(routes =>
             {
-                await context.Response.WriteAsync("Hello World!");
+                routes.MapRoute(
+                    name: "areas",
+                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
             });
         }
     }
