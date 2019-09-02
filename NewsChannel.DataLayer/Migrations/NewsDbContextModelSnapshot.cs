@@ -119,15 +119,19 @@ namespace NewsChannel.DataLayer.Migrations
 
             modelBuilder.Entity("NewsChannel.DomainClasses.Business.Like", b =>
                 {
-                    b.Property<int>("NewsId");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("IpAddress");
 
-                    b.Property<int>("Id");
-
                     b.Property<bool>("IsLike");
 
-                    b.HasKey("NewsId", "IpAddress");
+                    b.Property<int>("NewsId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NewsId");
 
                     b.ToTable("Likes");
                 });
@@ -238,17 +242,21 @@ namespace NewsChannel.DataLayer.Migrations
 
             modelBuilder.Entity("NewsChannel.DomainClasses.Business.Visit", b =>
                 {
-                    b.Property<int>("NewsId");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("IpAddress");
 
-                    b.Property<int>("Id");
-
                     b.Property<DateTime>("LastVisitedDateTime");
+
+                    b.Property<int>("NewsId");
 
                     b.Property<int>("NumberOfVisit");
 
-                    b.HasKey("NewsId", "IpAddress");
+                    b.HasKey("Id");
+
+                    b.HasIndex("NewsId");
 
                     b.ToTable("Visits");
                 });

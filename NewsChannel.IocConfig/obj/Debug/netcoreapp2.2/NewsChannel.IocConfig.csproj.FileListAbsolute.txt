@@ -10,7 +10,6 @@ E:\project\NewsChannel\NewsChannel.IocConfig\obj\Debug\netcoreapp2.2\NewsChannel
 D:\projects\NewsChannel\NewsChannel.IocConfig\bin\Debug\netcoreapp2.2\NewsChannel.IocConfig.deps.json
 D:\projects\NewsChannel\NewsChannel.IocConfig\bin\Debug\netcoreapp2.2\NewsChannel.IocConfig.dll
 D:\projects\NewsChannel\NewsChannel.IocConfig\bin\Debug\netcoreapp2.2\NewsChannel.IocConfig.pdb
-D:\projects\NewsChannel\NewsChannel.IocConfig\obj\Debug\netcoreapp2.2\NewsChannel.IocConfig.csprojAssemblyReference.cache
 D:\projects\NewsChannel\NewsChannel.IocConfig\obj\Debug\netcoreapp2.2\NewsChannel.IocConfig.csproj.CoreCompileInputs.cache
 D:\projects\NewsChannel\NewsChannel.IocConfig\obj\Debug\netcoreapp2.2\NewsChannel.IocConfig.AssemblyInfoInputs.cache
 D:\projects\NewsChannel\NewsChannel.IocConfig\obj\Debug\netcoreapp2.2\NewsChannel.IocConfig.AssemblyInfo.cs

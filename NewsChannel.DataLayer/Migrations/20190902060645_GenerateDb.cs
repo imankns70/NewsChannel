@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace NewsChannel.DataLayer.Migrations
 {
-    public partial class Generating : Migration
+    public partial class GenerateDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -297,14 +297,15 @@ namespace NewsChannel.DataLayer.Migrations
                 name: "Likes",
                 columns: table => new
                 {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     NewsId = table.Column<int>(nullable: false),
-                    IpAddress = table.Column<string>(nullable: false),
-                    Id = table.Column<int>(nullable: false),
+                    IpAddress = table.Column<string>(nullable: true),
                     IsLike = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Likes", x => new { x.NewsId, x.IpAddress });
+                    table.PrimaryKey("PK_Likes", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Likes_News_NewsId",
                         column: x => x.NewsId,
@@ -385,15 +386,16 @@ namespace NewsChannel.DataLayer.Migrations
                 name: "Visits",
                 columns: table => new
                 {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     NewsId = table.Column<int>(nullable: false),
-                    IpAddress = table.Column<string>(nullable: false),
-                    Id = table.Column<int>(nullable: false),
+                    IpAddress = table.Column<string>(nullable: true),
                     LastVisitedDateTime = table.Column<DateTime>(nullable: false),
                     NumberOfVisit = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Visits", x => new { x.NewsId, x.IpAddress });
+                    table.PrimaryKey("PK_Visits", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Visits_News_NewsId",
                         column: x => x.NewsId,
@@ -462,6 +464,11 @@ namespace NewsChannel.DataLayer.Migrations
                 column: "commentId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Likes_NewsId",
+                table: "Likes",
+                column: "NewsId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_News_UserId",
                 table: "News",
                 column: "UserId");
@@ -480,6 +487,11 @@ namespace NewsChannel.DataLayer.Migrations
                 name: "IX_NewsTags_TagId",
                 table: "NewsTags",
                 column: "TagId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Visits_NewsId",
+                table: "Visits",
+                column: "NewsId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

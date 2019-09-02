@@ -7,7 +7,7 @@ namespace NewsChannel.DataLayer.Mapping
     {
         public void Configure(EntityTypeBuilder<Like> builder)
         {
-             builder.HasKey (x => new { x.NewsId, x.IpAddress });
+             builder.HasKey (x => x.Id);
 
             builder
                 .HasOne (x => x.News)
