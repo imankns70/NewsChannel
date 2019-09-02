@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -18,33 +19,44 @@ namespace NewsChannel.DataLayer.Repositories
         public async Task<List<CategoryViewModel>> GetPaginateCategoriesAsync(int offset, int limit, bool? categoryNameSortAsc,bool? parentCategoryNameSortAsc, string searchText)
         {
             List<CategoryViewModel> categories;
-            if (categoryNameSortAsc != null)
-            {
-                categories = await _context.Categories.Include(c => c.category)
-                                    .Where(c => c.CategoryName.Contains(searchText) || c.category.CategoryName.Contains(searchText))
-                                    .Select(c => new CategoryViewModel { CategoryId = c.Id, CategoryName = c.CategoryName, Url = c.Url, ParentCategoryName = c.category.CategoryName != null ? c.category.CategoryName : "-" })
-                                    .OrderBy(c => (categoryNameSortAsc == true && categoryNameSortAsc != null) ? c.CategoryName : "")
-                                    .OrderByDescending(c => (categoryNameSortAsc == false && categoryNameSortAsc != null) ? c.CategoryName : "").Skip(offset).Take(limit).AsNoTracking().ToListAsync();
-            }
 
-            else if (parentCategoryNameSortAsc!=null)
+            try
             {
-                categories = await _context.Categories.Include(c => c.category)
-                                   .Where(c => c.CategoryName.Contains(searchText) || c.category.CategoryName.Contains(searchText))
-                                   .Select(c => new CategoryViewModel { CategoryId = c.Id, CategoryName = c.CategoryName, Url = c.Url, ParentCategoryName = c.category.CategoryName != null ? c.category.CategoryName : "-" })
-                                   .OrderBy(c => (parentCategoryNameSortAsc == true && parentCategoryNameSortAsc != null) ? c.ParentCategoryName : "")
-                                   .OrderByDescending(c => (parentCategoryNameSortAsc == false && parentCategoryNameSortAsc != null) ? c.ParentCategoryName : "").Skip(offset).Take(limit).AsNoTracking().ToListAsync();
-            }
-            else
-            {
-                categories = await _context.Categories.Include(c => c.category)
-                                    .Where(c => c.CategoryName.Contains(searchText) || c.category.CategoryName.Contains(searchText))
-                                    .Select(c => new CategoryViewModel {CategoryId= c.Id,CategoryName= c.CategoryName,Url=c.Url,ParentCategoryName=c.category.CategoryName!= null?c.category.CategoryName:"-"})
-                                    .Skip(offset).Take(limit).AsNoTracking().ToListAsync();
 
+                if (categoryNameSortAsc != null)
+                {
+                    categories = await _context.Categories.Include(c => c.category)
+                                        .Where(c => c.CategoryName.Contains(searchText) || c.category.CategoryName.Contains(searchText))
+                                        .Select(c => new CategoryViewModel { CategoryId = c.Id, CategoryName = c.CategoryName, Url = c.Url, ParentCategoryName = c.category.CategoryName != null ? c.category.CategoryName : "-" })
+                                        .OrderBy(c => (categoryNameSortAsc == true && categoryNameSortAsc != null) ? c.CategoryName : "")
+                                        .OrderByDescending(c => (categoryNameSortAsc == false && categoryNameSortAsc != null) ? c.CategoryName : "").Skip(offset).Take(limit).AsNoTracking().ToListAsync();
+                }
+
+                else if (parentCategoryNameSortAsc != null)
+                {
+                    categories = await _context.Categories.Include(c => c.category)
+                                       .Where(c => c.CategoryName.Contains(searchText) || c.category.CategoryName.Contains(searchText))
+                                       .Select(c => new CategoryViewModel { CategoryId = c.Id, CategoryName = c.CategoryName, Url = c.Url, ParentCategoryName = c.category.CategoryName != null ? c.category.CategoryName : "-" })
+                                       .OrderBy(c => (parentCategoryNameSortAsc == true && parentCategoryNameSortAsc != null) ? c.ParentCategoryName : "")
+                                       .OrderByDescending(c => (parentCategoryNameSortAsc == false && parentCategoryNameSortAsc != null) ? c.ParentCategoryName : "").Skip(offset).Take(limit).AsNoTracking().ToListAsync();
+                }
+                else
+                {
+                    categories = await _context.Categories.Include(c => c.category)
+                                        .Where(c => c.CategoryName.Contains(searchText) || c.category.CategoryName.Contains(searchText))
+                                        .Select(c => new CategoryViewModel { CategoryId = c.Id, CategoryName = c.CategoryName, Url = c.Url, ParentCategoryName = c.category.CategoryName ?? "-" })
+                                        .Skip(offset).Take(limit).AsNoTracking().ToListAsync();
+
+                }
+                foreach (var item in categories)
+                    item.Row = ++offset;
             }
-            foreach (var item in categories)
-                item.Row = ++offset;
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+           
 
             return categories;
         }

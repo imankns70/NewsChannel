@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace NewsChannel.DataLayer.Migrations
 {
-    public partial class GenerateDb : Migration
+    public partial class Initilizze : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -64,14 +64,14 @@ namespace NewsChannel.DataLayer.Migrations
                     CategoryName = table.Column<string>(nullable: true),
                     ParentCategoryId = table.Column<int>(nullable: true),
                     Url = table.Column<string>(nullable: true),
-                    categoryId = table.Column<int>(nullable: true)
+                
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Categories", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Categories_Categories_categoryId",
-                        column: x => x.categoryId,
+                        column: x => x.ParentCategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -449,9 +449,9 @@ namespace NewsChannel.DataLayer.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Categories_categoryId",
+                name: "IX_Categories_ ParentCategoryId",
                 table: "Categories",
-                column: "categoryId");
+                column: "ParentCategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_NewsId",

@@ -10,8 +10,8 @@ using NewsChannel.DataLayer;
 namespace NewsChannel.DataLayer.Migrations
 {
     [DbContext(typeof(NewsDbContext))]
-    [Migration("20190902060645_GenerateDb")]
-    partial class GenerateDb
+    [Migration("20190902112304_Initilizze")]
+    partial class Initilizze
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -75,7 +75,7 @@ namespace NewsChannel.DataLayer.Migrations
 
                     b.Property<string>("CategoryName");
 
-                    b.Property<int>("ParentCategoryId");
+                    b.Property<int?>("ParentCategoryId");
 
                     b.Property<string>("Url");
 

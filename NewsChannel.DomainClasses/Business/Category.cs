@@ -1,8 +1,11 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace NewsChannel.DomainClasses.Business {
     public class Category {
 
+
+        [Key]
         public int Id { get; set; }
         public string CategoryName { get; set; }
         public int? ParentCategoryId { get; set; }

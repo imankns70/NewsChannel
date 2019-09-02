@@ -73,7 +73,7 @@ namespace NewsChannel.DataLayer.Migrations
 
                     b.Property<string>("CategoryName");
 
-                    b.Property<int>("ParentCategoryId");
+                    b.Property<int?>("ParentCategoryId");
 
                     b.Property<string>("Url");
 

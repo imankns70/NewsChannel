@@ -10,11 +10,6 @@ E:\project\NewsChannel\NewsChannel.IocConfig\obj\Debug\netcoreapp2.2\NewsChannel
 D:\projects\NewsChannel\NewsChannel.IocConfig\bin\Debug\netcoreapp2.2\NewsChannel.IocConfig.deps.json
 D:\projects\NewsChannel\NewsChannel.IocConfig\bin\Debug\netcoreapp2.2\NewsChannel.IocConfig.dll
 D:\projects\NewsChannel\NewsChannel.IocConfig\bin\Debug\netcoreapp2.2\NewsChannel.IocConfig.pdb
-D:\projects\NewsChannel\NewsChannel.IocConfig\obj\Debug\netcoreapp2.2\NewsChannel.IocConfig.csproj.CoreCompileInputs.cache
-D:\projects\NewsChannel\NewsChannel.IocConfig\obj\Debug\netcoreapp2.2\NewsChannel.IocConfig.AssemblyInfoInputs.cache
-D:\projects\NewsChannel\NewsChannel.IocConfig\obj\Debug\netcoreapp2.2\NewsChannel.IocConfig.AssemblyInfo.cs
-D:\projects\NewsChannel\NewsChannel.IocConfig\obj\Debug\netcoreapp2.2\NewsChannel.IocConfig.dll
-D:\projects\NewsChannel\NewsChannel.IocConfig\obj\Debug\netcoreapp2.2\NewsChannel.IocConfig.pdb
 D:\projects\NewsChannel\NewsChannel.IocConfig\bin\Debug\netcoreapp2.2\NewsChannel.Common.dll
 D:\projects\NewsChannel\NewsChannel.IocConfig\bin\Debug\netcoreapp2.2\NewsChannel.DataLayer.dll
 D:\projects\NewsChannel\NewsChannel.IocConfig\bin\Debug\netcoreapp2.2\NewsChannel.DomainClasses.dll
@@ -28,4 +23,9 @@ D:\projects\NewsChannel\NewsChannel.IocConfig\bin\Debug\netcoreapp2.2\NewsChanne
 D:\projects\NewsChannel\NewsChannel.IocConfig\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Identity.EntityFrameworkCore.xml
 D:\projects\NewsChannel\NewsChannel.IocConfig\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Identity.Stores.xml
 D:\projects\NewsChannel\NewsChannel.IocConfig\obj\Debug\netcoreapp2.2\NewsChannel.IocConfig.csprojAssemblyReference.cache
+D:\projects\NewsChannel\NewsChannel.IocConfig\obj\Debug\netcoreapp2.2\NewsChannel.IocConfig.csproj.CoreCompileInputs.cache
+D:\projects\NewsChannel\NewsChannel.IocConfig\obj\Debug\netcoreapp2.2\NewsChannel.IocConfig.AssemblyInfoInputs.cache
+D:\projects\NewsChannel\NewsChannel.IocConfig\obj\Debug\netcoreapp2.2\NewsChannel.IocConfig.AssemblyInfo.cs
 D:\projects\NewsChannel\NewsChannel.IocConfig\obj\Debug\netcoreapp2.2\NewsChannel.IocConfig.csproj.CopyComplete
+D:\projects\NewsChannel\NewsChannel.IocConfig\obj\Debug\netcoreapp2.2\NewsChannel.IocConfig.dll
+D:\projects\NewsChannel\NewsChannel.IocConfig\obj\Debug\netcoreapp2.2\NewsChannel.IocConfig.pdb
