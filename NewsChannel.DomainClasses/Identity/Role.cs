@@ -12,7 +12,6 @@ namespace NewsChannel.DomainClasses.Identity
         }
         public string Description { get; set; }
 
-        public int MyProperty { get; set; }
      public virtual ICollection<UserRole> Users { get; set; }
      public virtual ICollection<RoleClaim> Claims { get; set; }
     }

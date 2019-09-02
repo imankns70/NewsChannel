@@ -27,3 +27,14 @@ D:\projects\NewsChannel\NewsChannel.DataLayer\bin\Debug\netcoreapp2.2\Microsoft.
 D:\projects\NewsChannel\NewsChannel.DataLayer\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Identity.Stores.xml
 D:\projects\NewsChannel\NewsChannel.DataLayer\bin\Debug\netcoreapp2.2\NewsChannel.DataLayer.runtimeconfig.json
 D:\projects\NewsChannel\NewsChannel.DataLayer\bin\Debug\netcoreapp2.2\NewsChannel.DataLayer.runtimeconfig.dev.json
+E:\project\NewsChannel\NewsChannel.DataLayer\bin\Debug\netcoreapp2.2\NewsChannel.DataLayer.runtimeconfig.json
+E:\project\NewsChannel\NewsChannel.DataLayer\bin\Debug\netcoreapp2.2\NewsChannel.DataLayer.runtimeconfig.dev.json
+E:\project\NewsChannel\NewsChannel.DataLayer\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+E:\project\NewsChannel\NewsChannel.DataLayer\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Identity.Stores.dll
+E:\project\NewsChannel\NewsChannel.DataLayer\bin\Debug\netcoreapp2.2\NewsChannel.Common.dll
+E:\project\NewsChannel\NewsChannel.DataLayer\bin\Debug\netcoreapp2.2\NewsChannel.DomainClasses.dll
+E:\project\NewsChannel\NewsChannel.DataLayer\bin\Debug\netcoreapp2.2\NewsChannel.DomainClasses.pdb
+E:\project\NewsChannel\NewsChannel.DataLayer\bin\Debug\netcoreapp2.2\NewsChannel.Common.pdb
+E:\project\NewsChannel\NewsChannel.DataLayer\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Identity.EntityFrameworkCore.xml
+E:\project\NewsChannel\NewsChannel.DataLayer\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Identity.Stores.xml
+E:\project\NewsChannel\NewsChannel.DataLayer\obj\Debug\netcoreapp2.2\NewsChannel.DataLayer.csproj.CopyComplete

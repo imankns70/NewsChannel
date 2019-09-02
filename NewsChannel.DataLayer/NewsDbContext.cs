@@ -7,7 +7,8 @@ using NewsChannel.DomainClasses.Identity;
 
 
 namespace NewsChannel.DataLayer {
-    public class NewsDbContext : IdentityDbContext<User, Role, string, UserClaim, UserRole, IdentityUserLogin<string>, RoleClaim, IdentityUserToken<string>> {
+    public class NewsDbContext : IdentityDbContext<User, Role, string, UserClaim, UserRole, IdentityUserLogin<string>, RoleClaim, IdentityUserToken<string>>
+    {
 
         public NewsDbContext (DbContextOptions options) : base (options) {
 
@@ -15,8 +16,8 @@ namespace NewsChannel.DataLayer {
         protected override void OnModelCreating (ModelBuilder builder) {
            
             base.OnModelCreating (builder);
-            builder.AddCustomNewsChannelMappings();
             builder.AddCustomIdentityMappings();
+            builder.AddCustomNewsChannelMappings();
             builder.Entity<News>().Property(x=>x.PublishDateTime)
             .HasDefaultValueSql("CONVERT(datetime,GetDate())");
         }
