@@ -708,11 +708,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\projects\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj",
+      "projectUniqueName": "D:\\projects\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj",
       "projectName": "NewsChannel.DomainClasses",
-      "projectPath": "d:\\projects\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj",
+      "projectPath": "D:\\projects\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj",
       "packagesPath": "C:\\Users\\i.solouki\\.nuget\\packages\\",
-      "outputPath": "d:\\projects\\NewsChannel\\NewsChannel.DomainClasses\\obj\\",
+      "outputPath": "D:\\projects\\NewsChannel\\NewsChannel.DomainClasses\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -731,8 +731,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "d:\\projects\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj": {
-              "projectPath": "d:\\projects\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj"
+            "D:\\projects\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj": {
+              "projectPath": "D:\\projects\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj"
             }
           }
         }

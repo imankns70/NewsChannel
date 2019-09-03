@@ -16,3 +16,10 @@ D:\projects\NewsChannel\NewsChannel.ViewModel\obj\Debug\netcoreapp2.2\NewsChanne
 D:\projects\NewsChannel\NewsChannel.ViewModel\obj\Debug\netcoreapp2.2\NewsChannel.ViewModel.AssemblyInfo.cs
 D:\projects\NewsChannel\NewsChannel.ViewModel\obj\Debug\netcoreapp2.2\NewsChannel.ViewModel.dll
 D:\projects\NewsChannel\NewsChannel.ViewModel\obj\Debug\netcoreapp2.2\NewsChannel.ViewModel.pdb
+D:\projects\NewsChannel\NewsChannel.ViewModel\bin\Debug\netcoreapp2.2\NewsChannel.Common.dll
+D:\projects\NewsChannel\NewsChannel.ViewModel\bin\Debug\netcoreapp2.2\NewsChannel.DomainClasses.dll
+D:\projects\NewsChannel\NewsChannel.ViewModel\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Identity.Stores.dll
+D:\projects\NewsChannel\NewsChannel.ViewModel\bin\Debug\netcoreapp2.2\NewsChannel.DomainClasses.pdb
+D:\projects\NewsChannel\NewsChannel.ViewModel\bin\Debug\netcoreapp2.2\NewsChannel.Common.pdb
+D:\projects\NewsChannel\NewsChannel.ViewModel\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Identity.Stores.xml
+D:\projects\NewsChannel\NewsChannel.ViewModel\obj\Debug\netcoreapp2.2\NewsChannel.ViewModel.csproj.CopyComplete
