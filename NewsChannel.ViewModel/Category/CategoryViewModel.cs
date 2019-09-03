@@ -8,6 +8,10 @@ namespace NewsChannel.ViewModel.Category
 {
     public class CategoryViewModel
     {
+        public CategoryViewModel()
+        {
+            Categories= new List<TreeViewCategory>();
+        }
         //[JsonProperty("Id")]
         public int? CategoryId { get; set; }
 
@@ -25,5 +29,7 @@ namespace NewsChannel.ViewModel.Category
         [Display(Name = "آدرس"),JsonProperty("آدرس")]
         [Required(ErrorMessage = "وارد نمودن {0} الزامی است.")]
         public string Url { get; set; }
+
+       public List<TreeViewCategory> Categories { get; set; }
     }
 }

@@ -10,8 +10,8 @@ using NewsChannel.DataLayer;
 namespace NewsChannel.DataLayer.Migrations
 {
     [DbContext(typeof(NewsDbContext))]
-    [Migration("20190902112304_Initilizze")]
-    partial class Initilizze
+    [Migration("20190903111703_Initilize")]
+    partial class Initilize
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -79,11 +79,9 @@ namespace NewsChannel.DataLayer.Migrations
 
                     b.Property<string>("Url");
 
-                    b.Property<int?>("categoryId");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("categoryId");
+                    b.HasIndex("ParentCategoryId");
 
                     b.ToTable("Categories");
                 });
@@ -439,8 +437,8 @@ namespace NewsChannel.DataLayer.Migrations
             modelBuilder.Entity("NewsChannel.DomainClasses.Business.Category", b =>
                 {
                     b.HasOne("NewsChannel.DomainClasses.Business.Category", "category")
-                        .WithMany("categories")
-                        .HasForeignKey("categoryId");
+                        .WithMany("Categories")
+                        .HasForeignKey("ParentCategoryId");
                 });
 
             modelBuilder.Entity("NewsChannel.DomainClasses.Business.Comment", b =>

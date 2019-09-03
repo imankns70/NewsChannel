@@ -83,7 +83,7 @@
 <script>
     jQuery(document).ready(function($) {
 		comboTree2 = $('#ParentCategoryName').comboTree({
-			source : @Html.Raw(Json.Serialize(ViewBag.Categories)),
+			source : @Html.Raw(Json.Serialize(Model.Categories)),
 			isMultiple: false
 		});
     });

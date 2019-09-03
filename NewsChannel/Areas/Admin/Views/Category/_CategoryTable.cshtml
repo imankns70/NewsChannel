@@ -45,6 +45,7 @@
     }
 
     function detailFormatter(index, row) {
+     
         var html = [];
         $.each(row, function (key, value) {
             html.push('<p><b>' + key + ':</b> ' + value + '</p>');
@@ -90,7 +91,7 @@
                     rowspan: 2,
                     align: 'center',
                     valign: 'middle',
-                    sortable: true,
+                    sortable: false,
                     footerFormatter: totalTextFormatter
                 }, {
                     title: 'جزئیات اطلاعات دسته بندی ها',

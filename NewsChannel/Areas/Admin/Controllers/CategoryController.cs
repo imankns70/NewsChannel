@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -29,6 +30,7 @@ namespace NewsChannel.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> GetCategories(string search, string order, int offset, int limit, string sort)
         {
+
             List<CategoryViewModel> categories;
             int total = _uw.BaseRepository<Category>().CountEntities();
             if (!search.HasValue())
@@ -66,7 +68,7 @@ namespace NewsChannel.Areas.Admin.Controllers
         public async Task<IActionResult> RenderCategory(string categoryId)
         {
             var categoryViewModel = new CategoryViewModel();
-            ViewBag.Categories = _uw.CategoryRepository.GetAllCategories();
+            List<TreeViewCategory> categories = _uw.CategoryRepository.GetAllCategories();
             if (categoryId.HasValue())
             {
                 var category = await _uw.BaseRepository<Category>().FindByIdAsync(categoryId);
@@ -147,4 +149,3 @@ namespace NewsChannel.Areas.Admin.Controllers
         }
     }
 }
- 

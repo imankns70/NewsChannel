@@ -216,6 +216,29 @@
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
+      },
+      "NewsChannel.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "compile": {
+          "bin/placeholder/NewsChannel.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/NewsChannel.Common.dll": {}
+        }
+      },
+      "NewsChannel.DomainClasses/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "NewsChannel.Common": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/NewsChannel.DomainClasses.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/NewsChannel.DomainClasses.dll": {}
+        }
       }
     }
   },
@@ -717,11 +740,22 @@
         "newtonsoft.json.12.0.2.nupkg.sha512",
         "newtonsoft.json.nuspec"
       ]
+    },
+    "NewsChannel.Common/1.0.0": {
+      "type": "project",
+      "path": "../NewsChannel.Common/NewsChannel.Common.csproj",
+      "msbuildProject": "../NewsChannel.Common/NewsChannel.Common.csproj"
+    },
+    "NewsChannel.DomainClasses/1.0.0": {
+      "type": "project",
+      "path": "../NewsChannel.DomainClasses/NewsChannel.DomainClasses.csproj",
+      "msbuildProject": "../NewsChannel.DomainClasses/NewsChannel.DomainClasses.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
       "Microsoft.NETCore.App >= 2.2.0",
+      "NewsChannel.DomainClasses >= 1.0.0",
       "Newtonsoft.Json >= 12.0.2"
     ]
   },
@@ -754,7 +788,11 @@
       },
       "frameworks": {
         "netcoreapp2.2": {
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\projects\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj": {
+              "projectPath": "D:\\projects\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
