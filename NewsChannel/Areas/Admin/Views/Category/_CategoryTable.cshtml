@@ -1,7 +1,11 @@
 ﻿
 <div id="toolbar">
-    <button class="btn btn-success" data-toggle="ajax-modal" data-url="@Url.Action("RenderCategory","Category")">
-        <i class="fa fa-plus"></i> | افزودن دسته بندی جزئیات
+    <button type="button" class="btn btn-success" data-toggle="ajax-modal" data-url="@Url.Action("RenderCategory","Category")">
+        <i class="fa fa-plus"></i> | افزودن دسته بندی جدید
+    </button>
+    
+    <button type="button" class="btn btn-danger" data-toggle="ajax-modal" data-url="@Url.Action("DeleteGroup","Category")">
+        <i class="fa fa-trash"></i> | حذف گروهی
     </button>
 </div>
 <table id="table"
@@ -25,9 +29,11 @@
        data-url="/Admin/Category/GetCategories"
        data-response-handler="responseHandler"></table>
 
+
 <script>
     var $table = $('#table');
     var selections = [];
+
 
     function get_query_params(p) {
         return {
@@ -39,31 +45,47 @@
             offset: p.offset
         }
     }
+
+
     function responseHandler(res) {
-        $.each(res.rows, function (i, row) {
-            row.state = $.inArray(row.id, selections) !== -1;
-        })
+        $.each(res.rows,
+            function(i, row) {
+                row.state = $.inArray(row.id, selections) !== -1;
+            });
         return res;
     }
 
     function detailFormatter(index, row) {
-     
-        var html = [];
+        var html = []
         $.each(row, function (key, value) {
-            html.push('<p><b>' + key + ':</b> ' + value + '</p>');
+            if (key != "state" && key != "categoryId" && key != 'آدرس' && key != "ردیف")
+                html.push('<p><b>' + key + ':</b> ' + value + '</p>')
+            if (key == 'آدرس') {
+                var url = '@string.Format("{0}://{1}", Context.Request.Scheme, Context.Request.Host)' + '/' + row.categoryId + '/' + value;
+                html.push('<p><b>' + key + ':</b> ' + '<a href="' + url + '">' + url + '</a>' + '</p>')
+            }
         })
-        return html.join('');
+        return html.join('')
     }
+
 
     function operateFormatter(value, row, index) {
         return [
-            '<a class="like" href="javascript:void(0)" title="Like">',
-            '<i class="fa fa-heart"></i>',
-            '</a>  ',
-            '<a class="remove" href="javascript:void(0)" title="Remove">',
+            '<button type="button" class="btn-link text-success" data-toggle="ajax-modal" data-url=@Url.Action("RenderCategory", "Category")?categoryId=' +
+            row.categoryId +
+            ' title="ویرایش">',
+            '<i class="fa fa-edit"></i>',
+            '</button >',
+            '<button type="button" class="btn-link text-danger" data-toggle="ajax-modal" data-url=@Url.Action("Delete", "Category")/?categoryId=' +
+            row.categoryId +
+            ' title="حذف">',
             '<i class="fa fa-trash"></i>',
-            '</a>'
+            '</button >'
         ].join('');
+    }
+
+    function checkBoxFormat(value, row) {
+        return '<input type="checkbox" name="btSelectItem" value="' + row.categoryId + '" />';
     }
 
 
@@ -86,14 +108,14 @@
                     checkbox: true,
                     rowspan: 2,
                     align: 'center',
-                    valign: 'middle'
+                    valign: 'middle',
+                    formatter: checkBoxFormat
                 }, {
                     title: 'ردیف',
                     field: 'ردیف',
                     rowspan: 2,
                     align: 'center',
                     valign: 'middle',
-                    sortable: false,
                     footerFormatter: totalTextFormatter
                 }, {
                     title: 'جزئیات اطلاعات دسته بندی ها',
@@ -125,5 +147,4 @@
     $(function () {
         initTable();
         $('#locale').change(initTable);
-    });
-</script>
+    })</script>

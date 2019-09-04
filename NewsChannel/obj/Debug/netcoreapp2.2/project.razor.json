@@ -2971,6 +2971,16 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views\\Shared\\_DeleteGroup.cshtml",
+      "TargetPath": "Views\\Shared\\_DeleteGroup.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views\\Shared\\_AdminMenu.cshtml",
       "TargetPath": "Views\\Shared\\_AdminMenu.cshtml",
       "FileKind": "mvc"
@@ -2993,6 +3003,11 @@
     {
       "FilePath": "Areas\\Admin\\Views\\Category\\_CategoryTable.cshtml",
       "TargetPath": "Areas\\Admin\\Views\\Category\\_CategoryTable.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Areas\\Admin\\Views\\Category\\_DeleteConfirmation.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\Category\\_DeleteConfirmation.cshtml",
       "FileKind": "mvc"
     }
   ],

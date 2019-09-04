@@ -58,3 +58,6 @@ D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\NewsChannel.Views.pd
 D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\NewsChannel.csproj.CopyComplete
 D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\NewsChannel.dll
 D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\NewsChannel.pdb
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Category\_DeleteConfirmation.g.cshtml.cs
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_DeleteGroup.g.cshtml.cs
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\_ViewImports.g.cshtml.cs

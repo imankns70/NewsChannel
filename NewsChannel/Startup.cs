@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +22,7 @@ namespace NewsChannel
             services.AddDbContext<NewsDbContext>(options => options.
                 UseSqlServer(Configuration.GetConnectionString("SqlServer")));
             services.AddCustomServices();
+            services.AddAutoMapper();
             services.AddMvc();
 
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using NewsChannel.Common;
 using NewsChannel.DataLayer.Contracts;
 using NewsChannel.DomainClasses.Business;
 using NewsChannel.ViewModel.Category;
@@ -16,7 +17,7 @@ namespace NewsChannel.DataLayer.Repositories
         {
             _context = context;
         }
-        public async Task<List<CategoryViewModel>> GetPaginateCategoriesAsync(int offset, int limit, bool? categoryNameSortAsc,bool? parentCategoryNameSortAsc, string searchText)
+        public async Task<List<CategoryViewModel>> GetPaginateCategoriesAsync(int offset, int limit, bool? categoryNameSortAsc, bool? parentCategoryNameSortAsc, string searchText)
         {
             List<CategoryViewModel> categories;
 
@@ -27,7 +28,7 @@ namespace NewsChannel.DataLayer.Repositories
                 {
                     categories = await _context.Categories.Include(c => c.category)
                                         .Where(c => c.CategoryName.Contains(searchText) || c.category.CategoryName.Contains(searchText))
-                                        .Select(c => new CategoryViewModel { CategoryId = c.Id, CategoryName = c.CategoryName, Url = c.Url, ParentCategoryName = c.category.CategoryName != null ? c.category.CategoryName : "-" })
+                                        .Select(c => new CategoryViewModel { CategoryId = c.Id, CategoryName = c.CategoryName, Url = c.Url, ParentCategoryName = c.category.CategoryName ?? "-" })
                                         .OrderBy(c => (categoryNameSortAsc == true && categoryNameSortAsc != null) ? c.CategoryName : "")
                                         .OrderByDescending(c => (categoryNameSortAsc == false && categoryNameSortAsc != null) ? c.CategoryName : "").Skip(offset).Take(limit).AsNoTracking().ToListAsync();
                 }
@@ -36,7 +37,7 @@ namespace NewsChannel.DataLayer.Repositories
                 {
                     categories = await _context.Categories.Include(c => c.category)
                                        .Where(c => c.CategoryName.Contains(searchText) || c.category.CategoryName.Contains(searchText))
-                                       .Select(c => new CategoryViewModel { CategoryId = c.Id, CategoryName = c.CategoryName, Url = c.Url, ParentCategoryName = c.category.CategoryName != null ? c.category.CategoryName : "-" })
+                                       .Select(c => new CategoryViewModel { CategoryId = c.Id, CategoryName = c.CategoryName, Url = c.Url, ParentCategoryName = c.category.CategoryName ?? "-" })
                                        .OrderBy(c => (parentCategoryNameSortAsc == true && parentCategoryNameSortAsc != null) ? c.ParentCategoryName : "")
                                        .OrderByDescending(c => (parentCategoryNameSortAsc == false && parentCategoryNameSortAsc != null) ? c.ParentCategoryName : "").Skip(offset).Take(limit).AsNoTracking().ToListAsync();
                 }
@@ -56,7 +57,7 @@ namespace NewsChannel.DataLayer.Repositories
                 Console.WriteLine(e);
                 throw;
             }
-           
+
 
             return categories;
         }
@@ -89,8 +90,26 @@ namespace NewsChannel.DataLayer.Repositories
 
         public Category FindByCategoryName(string categoryName)
         {
-           return  _context.Categories.FirstOrDefault(c => c.CategoryName == categoryName.TrimStart().TrimEnd());
+            return _context.Categories.FirstOrDefault(c => c.CategoryName == categoryName.TrimStart().TrimEnd());
         }
 
+        public bool IsExistCategory(string categoryName, int? recentCategoryId)
+        {
+            if (recentCategoryId == null)
+                return _context.Categories.Any(c => c.CategoryName.Trim().Replace(" ", "") == categoryName.Trim().Replace(" ", ""));
+            else
+            {
+                var category = _context.Categories.FirstOrDefault(c => c.CategoryName.Trim().Replace(" ", "") == categoryName.Trim().Replace(" ", ""));
+                if (category == null)
+                    return false;
+                else
+                {
+                    if (category.Id != recentCategoryId)
+                        return true;
+                    else
+                        return false;
+                }
+            }
+        }
     }
 }
