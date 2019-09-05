@@ -40,3 +40,5 @@ D:\projects\NewsChannel\NewsChannel.DataLayer\obj\Debug\netcoreapp2.2\NewsChanne
 D:\projects\NewsChannel\NewsChannel.DataLayer\obj\Debug\netcoreapp2.2\NewsChannel.DataLayer.csproj.CopyComplete
 D:\projects\NewsChannel\NewsChannel.DataLayer\obj\Debug\netcoreapp2.2\NewsChannel.DataLayer.dll
 D:\projects\NewsChannel\NewsChannel.DataLayer\obj\Debug\netcoreapp2.2\NewsChannel.DataLayer.pdb
+E:\project\NewsChannel\NewsChannel.DataLayer\bin\Debug\netcoreapp2.2\NewsChannel.ViewModel.dll
+E:\project\NewsChannel\NewsChannel.DataLayer\bin\Debug\netcoreapp2.2\NewsChannel.ViewModel.pdb
