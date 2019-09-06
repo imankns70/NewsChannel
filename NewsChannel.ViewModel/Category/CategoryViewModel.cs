@@ -23,7 +23,7 @@ namespace NewsChannel.ViewModel.Category
         [JsonProperty("ردیف")]
         public int Row { get; set; }
 
-        [Display(Name ="دسته پدر"),JsonProperty("دسته پدر")]
+        [Display(Name = "دسته پدر"), JsonProperty("دسته پدر", NullValueHandling = NullValueHandling.Ignore)]
         public string ParentCategoryName { get; set; }
 
 

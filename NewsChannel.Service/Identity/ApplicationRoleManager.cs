@@ -9,7 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System;
-using NewsWebsite.Common;
+using NewsChannel.Common;
 
 namespace NewsChannel.Service.Identity
 {

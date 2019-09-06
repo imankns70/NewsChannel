@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "f8eaa0cbe3ce0bf1c7cecd632b4c45fc1d5e6baf"
+    "signature": "1c249570c75dcbed8571c265c932e3288c056610"
   },
   "compilationOptions": {},
   "targets": {
@@ -37,6 +37,14 @@
           "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "6.0.0.0"
+          }
+        }
+      },
+      "MD.PersianDateTime.Core/2.3.5": {
+        "runtime": {
+          "lib/netcoreapp2.0/MD.PersianDateTime.Core.dll": {
+            "assemblyVersion": "2.3.5.0",
+            "fileVersion": "2.3.5.0"
           }
         }
       },
@@ -1864,6 +1872,7 @@
       },
       "NewsChannel.Common/1.0.0": {
         "dependencies": {
+          "MD.PersianDateTime.Core": "2.3.5",
           "Microsoft.AspNetCore.Identity": "2.2.0",
           "Microsoft.AspNetCore.Mvc.Razor": "2.2.0"
         },
@@ -1929,6 +1938,13 @@
       "sha512": "sha512-njWYKGM3FokOlo9nj8kVLYyvJrGbLItmNA2A00lDXJnxybfP7TuZEYjQRt8ne+Cp0OF4W0ZzgdgxMioHfDEpdA==",
       "path": "automapper.extensions.microsoft.dependencyinjection/6.0.0",
       "hashPath": "automapper.extensions.microsoft.dependencyinjection.6.0.0.nupkg.sha512"
+    },
+    "MD.PersianDateTime.Core/2.3.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YPhSKavxetpRQggt7Z9wnobz6NUtz6lwbw7P8EnzjC1w2/0d/2EQUdkdVBp7KMWOzXjlJMLp3Hj0v1me6cRDLg==",
+      "path": "md.persiandatetime.core/2.3.5",
+      "hashPath": "md.persiandatetime.core.2.3.5.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Antiforgery/2.2.0": {
       "type": "package",

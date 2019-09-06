@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using NewsChannel.Common;
+using NewsChannel.Common.Attributes;
 using NewsChannel.DataLayer.Contracts;
 using NewsChannel.DomainClasses.Business;
 using NewsChannel.ViewModel.Category;
-using NewsWebsite.Common;
 
 namespace NewsChannel.Areas.Admin.Controllers
 {
@@ -71,6 +71,7 @@ namespace NewsChannel.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        [AjaxOnly]
         public async Task<IActionResult> RenderCategory(int? categoryId)
         {
             var categoryViewModel = new CategoryViewModel();
@@ -93,12 +94,12 @@ namespace NewsChannel.Areas.Admin.Controllers
             return PartialView("_RenderCategory", categoryViewModel);
         }
 
-        [HttpPost]
+        [HttpPost, AjaxOnly]
         public async Task<IActionResult> CreateOrUpdate(CategoryViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                if (_uw.CategoryRepository.IsExistCategory(viewModel.CategoryName,viewModel.CategoryId))
+                if (_uw.CategoryRepository.IsExistCategory(viewModel.CategoryName, viewModel.CategoryId))
                     ModelState.AddModelError(string.Empty, CategoryDuplicate);
                 else
                 {
@@ -135,14 +136,14 @@ namespace NewsChannel.Areas.Admin.Controllers
 
                 }
 
-                 
+
 
             }
 
             return PartialView("_RenderCategory", viewModel);
         }
 
-        [HttpGet]
+        [HttpGet, AjaxOnly]
         public async Task<IActionResult> Delete(int? categoryId)
         {
             if (categoryId == null)
@@ -160,19 +161,19 @@ namespace NewsChannel.Areas.Admin.Controllers
         }
 
 
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Delete"), AjaxOnly]
         public async Task<IActionResult> DeleteConfirmed(Category model)
         {
 
             var category = await _uw.BaseRepository<Category>().FindByIdAsync(model.Id);
-        
+
             if (category == null)
                 ModelState.AddModelError(string.Empty, CategoryNotFound);
             else
             {
                 List<Category> childCategoryCount = _uw.BaseRepository<Category>()
                     .FindByConditionAsync(a => a.ParentCategoryId == category.Id).Result.ToList();
-                if (childCategoryCount.Count !=0)
+                if (childCategoryCount.Count != 0)
                 {
                     _uw.BaseRepository<Category>().DeleteRange(childCategoryCount);
                 }
@@ -186,17 +187,17 @@ namespace NewsChannel.Areas.Admin.Controllers
         }
 
 
-        [HttpGet]
+        [HttpGet, AjaxOnly]
         public IActionResult DeleteGroup()
         {
             return PartialView("_DeleteGroup");
         }
 
 
-        [HttpPost, ActionName("DeleteGroup")]
+        [HttpPost, ActionName("DeleteGroup"), AjaxOnly]
         public async Task<IActionResult> DeleteGroupConfirmed(int[] btSelectItem)
         {
-          
+
 
             if (!btSelectItem.Any())
                 ModelState.AddModelError(string.Empty, "هیچ دسته بندی برای حذف انتخاب نشده است.");
@@ -216,7 +217,7 @@ namespace NewsChannel.Areas.Admin.Controllers
                         _uw.BaseRepository<Category>().Delete(category);
                         await _uw.Commit();
                     }
-             
+
                 }
                 TempData["notification"] = "حذف گروهی اطلاعات با موفقیت انجام شد.";
             }

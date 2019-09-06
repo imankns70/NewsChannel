@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace NewsWebsite.Common
+namespace NewsChannel.Common
 {
     public static class ObjectExtensions
     {

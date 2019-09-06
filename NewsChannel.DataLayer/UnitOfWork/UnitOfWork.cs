@@ -8,6 +8,8 @@ namespace NewsChannel.DataLayer.UnitOfWork
     {
         public NewsDbContext _Context { get; }
         private ICategoryRepository _categoryRepository;
+        private ITagRepository _tagRepository;
+        private IVideoRepository _videoRepository;
         public UnitOfWork(NewsDbContext context)
         {
             _Context = context;
@@ -27,6 +29,28 @@ namespace NewsChannel.DataLayer.UnitOfWork
                     _categoryRepository = new CategoryRepository(_Context);
 
                 return _categoryRepository;
+            }
+        }
+        public ITagRepository TagRepository
+        {
+            get
+            {
+                if (_tagRepository == null)
+                    _tagRepository = new TagRepository(_Context);
+
+                return _tagRepository;
+            }
+        }
+
+
+        public IVideoRepository VideoRepository
+        {
+            get
+            {
+                if (_videoRepository == null)
+                    _videoRepository = new VideoRepository(_Context);
+
+                return _videoRepository;
             }
         }
         public async Task Commit()

@@ -7,7 +7,7 @@ namespace NewsChannel.DomainClasses.Business
     {
         [Key]
         public int Id { get; set; }
-        public int TagName { get; set; }
+        public string TagName { get; set; }
         public virtual ICollection<NewsTag> NewsTags { get; set; }
     }
 }

@@ -19,36 +19,26 @@ namespace NewsChannel.DataLayer.Repositories
         }
         public async Task<List<CategoryViewModel>> GetPaginateCategoriesAsync(int offset, int limit, bool? categoryNameSortAsc, bool? parentCategoryNameSortAsc, string searchText)
         {
-            List<CategoryViewModel> categories;
+            List<CategoryViewModel> categories = await _context.Categories.Include(c => c.category)
+                .Where(c => c.CategoryName.Contains(searchText) || c.category.CategoryName.Contains(searchText))
+                .Select(c => new CategoryViewModel { CategoryId = c.Id, CategoryName = c.CategoryName, Url = c.Url, ParentCategoryName = c.category.CategoryName ?? "-" })
+                 .Skip(offset).Take(limit).AsNoTracking().ToListAsync();
 
             try
             {
 
                 if (categoryNameSortAsc != null)
-                {
-                    categories = await _context.Categories.Include(c => c.category)
-                                        .Where(c => c.CategoryName.Contains(searchText) || c.category.CategoryName.Contains(searchText))
-                                        .Select(c => new CategoryViewModel { CategoryId = c.Id, CategoryName = c.CategoryName, Url = c.Url, ParentCategoryName = c.category.CategoryName ?? "-" })
-                                        .OrderBy(c => (categoryNameSortAsc == true && categoryNameSortAsc != null) ? c.CategoryName : "")
-                                        .OrderByDescending(c => (categoryNameSortAsc == false && categoryNameSortAsc != null) ? c.CategoryName : "").Skip(offset).Take(limit).AsNoTracking().ToListAsync();
-                }
+
+                    categories = categories.OrderBy(c => (categoryNameSortAsc == true) ? c.CategoryName : "")
+                        .ThenByDescending(c => (categoryNameSortAsc == false) ? c.CategoryName : "").ToList();
+
 
                 else if (parentCategoryNameSortAsc != null)
-                {
-                    categories = await _context.Categories.Include(c => c.category)
-                                       .Where(c => c.CategoryName.Contains(searchText) || c.category.CategoryName.Contains(searchText))
-                                       .Select(c => new CategoryViewModel { CategoryId = c.Id, CategoryName = c.CategoryName, Url = c.Url, ParentCategoryName = c.category.CategoryName ?? "-" })
-                                       .OrderBy(c => (parentCategoryNameSortAsc == true && parentCategoryNameSortAsc != null) ? c.ParentCategoryName : "")
-                                       .OrderByDescending(c => (parentCategoryNameSortAsc == false && parentCategoryNameSortAsc != null) ? c.ParentCategoryName : "").Skip(offset).Take(limit).AsNoTracking().ToListAsync();
-                }
-                else
-                {
-                    categories = await _context.Categories.Include(c => c.category)
-                                        .Where(c => c.CategoryName.Contains(searchText) || c.category.CategoryName.Contains(searchText))
-                                        .Select(c => new CategoryViewModel { CategoryId = c.Id, CategoryName = c.CategoryName, Url = c.Url, ParentCategoryName = c.category.CategoryName ?? "-" })
-                                        .Skip(offset).Take(limit).AsNoTracking().ToListAsync();
 
-                }
+                    categories = categories.OrderBy(c => (parentCategoryNameSortAsc == true) ? c.ParentCategoryName : "")
+                        .ThenByDescending(c => (parentCategoryNameSortAsc == false) ? c.ParentCategoryName : "").ToList();
+
+
                 foreach (var item in categories)
                     item.Row = ++offset;
             }
@@ -77,7 +67,7 @@ namespace NewsChannel.DataLayer.Repositories
         }
 
         public void BindSubCategories(TreeViewCategory category)
-        {  
+        {
             var subCategories = (from c in _context.Categories
                                  where (c.ParentCategoryId == category.Id)
                                  select new TreeViewCategory { Id = c.Id, Title = c.CategoryName }).ToList();
