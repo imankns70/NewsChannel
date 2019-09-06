@@ -187,11 +187,7 @@ namespace NewsChannel.Areas.Admin.Controllers
         }
 
 
-        [HttpGet, AjaxOnly]
-        public IActionResult DeleteGroup()
-        {
-            return PartialView("_DeleteGroup");
-        }
+      
 
 
         [HttpPost, ActionName("DeleteGroup"), AjaxOnly]
