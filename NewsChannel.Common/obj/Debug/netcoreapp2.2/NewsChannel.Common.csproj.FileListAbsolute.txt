@@ -7,12 +7,3 @@ D:\projects\NewsChannel\NewsChannel.Common\obj\Debug\netcoreapp2.2\NewsChannel.C
 D:\projects\NewsChannel\NewsChannel.Common\obj\Debug\netcoreapp2.2\NewsChannel.Common.dll
 D:\projects\NewsChannel\NewsChannel.Common\obj\Debug\netcoreapp2.2\NewsChannel.Common.pdb
 D:\projects\NewsChannel\NewsChannel.Common\obj\Debug\netcoreapp2.2\NewsChannel.Common.csprojAssemblyReference.cache
-E:\project\NewsChannel\NewsChannel.Common\bin\Debug\netcoreapp2.2\NewsChannel.Common.deps.json
-E:\project\NewsChannel\NewsChannel.Common\bin\Debug\netcoreapp2.2\NewsChannel.Common.dll
-E:\project\NewsChannel\NewsChannel.Common\bin\Debug\netcoreapp2.2\NewsChannel.Common.pdb
-E:\project\NewsChannel\NewsChannel.Common\obj\Debug\netcoreapp2.2\NewsChannel.Common.csproj.CoreCompileInputs.cache
-E:\project\NewsChannel\NewsChannel.Common\obj\Debug\netcoreapp2.2\NewsChannel.Common.AssemblyInfoInputs.cache
-E:\project\NewsChannel\NewsChannel.Common\obj\Debug\netcoreapp2.2\NewsChannel.Common.AssemblyInfo.cs
-E:\project\NewsChannel\NewsChannel.Common\obj\Debug\netcoreapp2.2\NewsChannel.Common.dll
-E:\project\NewsChannel\NewsChannel.Common\obj\Debug\netcoreapp2.2\NewsChannel.Common.pdb
-E:\project\NewsChannel\NewsChannel.Common\obj\Debug\netcoreapp2.2\NewsChannel.Common.csprojAssemblyReference.cache

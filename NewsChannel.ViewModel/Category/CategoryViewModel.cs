@@ -25,7 +25,6 @@ namespace NewsChannel.ViewModel.Category
 
         [Display(Name ="دسته پدر"),JsonProperty("دسته پدر")]
         public string ParentCategoryName { get; set; }
- 
 
 
         [Display(Name = "آدرس"), JsonProperty("آدرس")]

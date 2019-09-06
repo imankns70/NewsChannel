@@ -8181,11 +8181,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\project\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj",
+      "projectUniqueName": "e:\\project\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj",
       "projectName": "NewsChannel.DataLayer",
-      "projectPath": "E:\\project\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj",
+      "projectPath": "e:\\project\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj",
       "packagesPath": "C:\\Users\\iman\\.nuget\\packages\\",
-      "outputPath": "E:\\project\\NewsChannel\\NewsChannel.DataLayer\\obj\\",
+      "outputPath": "e:\\project\\NewsChannel\\NewsChannel.DataLayer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -8204,11 +8204,11 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "E:\\project\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj": {
-              "projectPath": "E:\\project\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj"
+            "e:\\project\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj": {
+              "projectPath": "e:\\project\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj"
             },
-            "E:\\project\\NewsChannel\\NewsChannel.ViewModel\\NewsChannel.ViewModel.csproj": {
-              "projectPath": "E:\\project\\NewsChannel\\NewsChannel.ViewModel\\NewsChannel.ViewModel.csproj"
+            "e:\\project\\NewsChannel\\NewsChannel.ViewModel\\NewsChannel.ViewModel.csproj": {
+              "projectPath": "e:\\project\\NewsChannel\\NewsChannel.ViewModel\\NewsChannel.ViewModel.csproj"
             }
           }
         }
@@ -8235,7 +8235,7 @@
             "version": "[2.2.6, )"
           },
           "Microsoft.EntityFrameworkCore.Tools": {
-            "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
             "target": "Package",
             "version": "[2.2.6, )"

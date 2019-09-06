@@ -14,15 +14,3 @@ D:\projects\NewsChannel\NewsChannel.ViewModel\bin\Debug\netcoreapp2.2\NewsChanne
 D:\projects\NewsChannel\NewsChannel.ViewModel\bin\Debug\netcoreapp2.2\NewsChannel.Common.pdb
 D:\projects\NewsChannel\NewsChannel.ViewModel\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Identity.Stores.xml
 D:\projects\NewsChannel\NewsChannel.ViewModel\obj\Debug\netcoreapp2.2\NewsChannel.ViewModel.csproj.CopyComplete
-E:\project\NewsChannel\NewsChannel.ViewModel\bin\Debug\netcoreapp2.2\NewsChannel.ViewModel.deps.json
-E:\project\NewsChannel\NewsChannel.ViewModel\bin\Debug\netcoreapp2.2\NewsChannel.ViewModel.dll
-E:\project\NewsChannel\NewsChannel.ViewModel\bin\Debug\netcoreapp2.2\NewsChannel.ViewModel.pdb
-E:\project\NewsChannel\NewsChannel.ViewModel\bin\Debug\netcoreapp2.2\NewsChannel.Common.dll
-E:\project\NewsChannel\NewsChannel.ViewModel\bin\Debug\netcoreapp2.2\NewsChannel.Common.pdb
-E:\project\NewsChannel\NewsChannel.ViewModel\obj\Debug\netcoreapp2.2\NewsChannel.ViewModel.csprojAssemblyReference.cache
-E:\project\NewsChannel\NewsChannel.ViewModel\obj\Debug\netcoreapp2.2\NewsChannel.ViewModel.csproj.CoreCompileInputs.cache
-E:\project\NewsChannel\NewsChannel.ViewModel\obj\Debug\netcoreapp2.2\NewsChannel.ViewModel.AssemblyInfoInputs.cache
-E:\project\NewsChannel\NewsChannel.ViewModel\obj\Debug\netcoreapp2.2\NewsChannel.ViewModel.AssemblyInfo.cs
-E:\project\NewsChannel\NewsChannel.ViewModel\obj\Debug\netcoreapp2.2\NewsChannel.ViewModel.csproj.CopyComplete
-E:\project\NewsChannel\NewsChannel.ViewModel\obj\Debug\netcoreapp2.2\NewsChannel.ViewModel.dll
-E:\project\NewsChannel\NewsChannel.ViewModel\obj\Debug\netcoreapp2.2\NewsChannel.ViewModel.pdb
