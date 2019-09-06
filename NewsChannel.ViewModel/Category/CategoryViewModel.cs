@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using NewsChannel.Common.Attributes;
 using Newtonsoft.Json;
 
 namespace NewsChannel.ViewModel.Category
@@ -26,8 +27,9 @@ namespace NewsChannel.ViewModel.Category
         public string ParentCategoryName { get; set; }
 
 
-        [Display(Name = "آدرس"),JsonProperty("آدرس")]
+        [Display(Name = "آدرس"), JsonProperty("آدرس")]
         [Required(ErrorMessage = "وارد نمودن {0} الزامی است.")]
+        [UrlValidate("/", @"\", " ")]
         public string Url { get; set; }
 
        public List<TreeViewCategory> Categories { get; set; }

@@ -7,7 +7,7 @@ using NewsChannel.DomainClasses.Identity;
 
 
 namespace NewsChannel.DataLayer {
-    public class NewsDbContext : IdentityDbContext<User, Role, string, UserClaim, UserRole, IdentityUserLogin<string>, RoleClaim, IdentityUserToken<string>>
+    public class NewsDbContext : IdentityDbContext<User, Role, int, UserClaim, UserRole, IdentityUserLogin<int>, RoleClaim, IdentityUserToken<int>>
     {
 
         public NewsDbContext (DbContextOptions options) : base (options) {
@@ -32,5 +32,6 @@ namespace NewsChannel.DataLayer {
         public virtual DbSet<NewsTag> NewsTags { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<Visit> Visits { get; set; }
+        public virtual DbSet<Video> Videos { get; set; }
     }
 }

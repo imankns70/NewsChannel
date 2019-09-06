@@ -8,7 +8,7 @@ namespace NewsChannel.DomainClasses.Business {
         public string Title { get; set; }
         public string Description { get; set; }
         public DateTime? PublishDateTime { get; set; }
-        public string UserId { get; set; }
+        public int UserId { get; set; }
         public string Url { get; set; }
         public string ImageName { get; set; }
         public bool IsPublish { get; set; }

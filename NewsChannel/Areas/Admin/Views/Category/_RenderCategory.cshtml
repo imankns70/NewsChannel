@@ -18,14 +18,16 @@
                 <button type="button" class="close btn-link" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body clearfix">
+                <p class="alert alert-warning"><i class="fa fa-exclamation-triangle ml-2"></i>  آدرس  نباید شامل کاراکترهای غیر مجاز فضای خالی و "/","\" باشد. </p>
+
                 <form asp-action="CreateOrUpdate">
                     @if (ViewData.ModelState.IsValid.ToString() == "False")
                     {
                         <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
                     }
 
-                    <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
-                    <input type="hidden" asp-for="CategoryId" />
+                    <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()"/>
+                    <input type="hidden" asp-for="CategoryId"/>
 
                     <div class="row p-2 mt-2 mb-2">
                         <div class="form-group row">
@@ -33,7 +35,7 @@
                                 <label asp-for="CategoryName" class="control-label"></label>
                             </div>
                             <div class="col-md-8">
-                                <input asp-for="CategoryName" class="form-control" />
+                                <input asp-for="CategoryName" class="form-control"/>
                                 <span asp-validation-for="CategoryName" class="text-danger"></span>
                             </div>
                         </div>
@@ -42,7 +44,7 @@
                                 <label asp-for="ParentCategoryName" class="control-label"></label>
                             </div>
                             <div class="col-md-8">
-                                <input asp-for="ParentCategoryName" class="form-control" />
+                                <input asp-for="ParentCategoryName" class="form-control"/>
                                 <span asp-validation-for="ParentCategoryName" class="text-danger"></span>
                             </div>
                         </div>
@@ -51,10 +53,11 @@
                                 <label asp-for="Url" class="control-label"></label>
                             </div>
                             <div class="col-md-6 pl-0">
-                                <input asp-for="Url" class="form-control" />
-                                <span asp-validation-for="Url" class="text-danger"></span>
-                            </div>
+                                <input asp-for="Url" class="form-control"/>
+                             </div>
                             <div class="col-md-6 text-left pr-0">@string.Format("/{0}:://{1}", Context.Request.Scheme, Context.Request.Host)</div>
+                            <span asp-validation-for="Url" class="text-danger mt-2"></span>
+
                         </div>
 
                     </div>
@@ -80,7 +83,7 @@
     </div>
 </div>
 
-<script>
+<script> 
     jQuery(document).ready(function($) {
 		comboTree2 = $('#ParentCategoryName').comboTree({
 			source : @Html.Raw(Json.Serialize(Model.Categories)),

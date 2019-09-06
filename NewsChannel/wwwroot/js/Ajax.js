@@ -5,7 +5,7 @@
         $.ajax({
             url: url,
             beforeSend: function () { ShowLoading(); },
-            complete: function () { window.loading_screen.finish(); },
+            complete: function () { $("body").preloader('remove');  },
             error: function () {
                 ShowSweetErrorAlert();
             }
@@ -16,15 +16,26 @@
     });
 
     placeholder.on('click', 'button[data-save="modal"]', function () {
+    
         ShowLoading();
         var form = $(this).parents(".modal").find('form');
         var actionUrl = form.attr('action');
+        debugger;
+        if (form.length == 0) {
+      
+            form = $(".card-body").find('form');
+        
+            actionUrl = form.attr('action') + '/' + $(".modal").attr('id');
+        }
         var dataToSend = new FormData(form.get(0));
+        console.log(dataToSend);
 
         $.ajax({
             url: actionUrl, type: "post", data: dataToSend, processData: false, contentType: false, error: function () {
                 ShowSweetErrorAlert();
-            }}).done(function (data) {
+            }
+        }).done(function (data) {
+          
                 var newBody = $(".modal-body", data);
                 var newFooter = $(".modal-footer", data);
                 placeholder.find(".modal-body").replaceWith(newBody);
@@ -33,15 +44,15 @@
             var IsValid = newBody.find("input[name='IsValid']").val() === "True";
             if (IsValid) {
                 $.ajax({ url: '/Admin/Base/Notification', error: function () { ShowSweetErrorAlert(); } }).done(function (notification) {
-                    ShowSweetSuccessAlert(notification)
+                    ShowSweetSuccessAlert(notification);
                 });
 
-                $table.bootstrapTable('refresh')
+                $table.bootstrapTable('refresh');
                 placeholder.find(".modal").modal('hide');
             }
         });
 
-        window.loading_screen.finish(); 
+        $("body").preloader('remove'); 
     });
 });
 
@@ -55,11 +66,8 @@ function ShowSweetErrorAlert() {
 }
 
 function ShowLoading() {
-    window.loading_screen = window.pleaseWait({
-        logo: "/assets/img/Logo.png",
-        backgroundColor: 'rgba(255, 255, 255, 0.75)',
-        loadingHtml: "<p class='loading-message'>لطفا صبر کنید...</p><div class='sk-spinner sk-spinner-wave'><div class='sk-rect1'></div><div class='sk-rect2'></div><div class='sk-rect3'></div><div class='sk-rect4'></div><div class='sk-rect5'></div></div>"
-    });
+    $("body").preloader({ text: 'لطفا صبر کنید ...' });
+
 }
 
 function ShowSweetSuccessAlert(message) {

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -6,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NewsChannel.DataLayer;
 using NewsChannel.IocConfig;
+using NewsChannel.ViewModel.Settings;
 
 namespace NewsChannel
 {
@@ -18,9 +20,12 @@ namespace NewsChannel
         }
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<SiteSettings>(Configuration.GetSection(nameof(SiteSettings)));
             services.AddDbContext<NewsDbContext>(options => options.
                 UseSqlServer(Configuration.GetConnectionString("SqlServer")));
             services.AddCustomServices();
+            services.AddCustomIdentityServices();
+            services.AddAutoMapper();
             services.AddMvc();
 
         }
@@ -35,6 +40,7 @@ namespace NewsChannel
 
 
             app.UseStaticFiles();
+            app.UseCustomIdentityServices();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

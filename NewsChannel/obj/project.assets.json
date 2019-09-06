@@ -2,6 +2,32 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.2": {
+      "AutoMapper/8.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.5.0",
+          "System.Reflection.Emit": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/AutoMapper.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/AutoMapper.dll": {}
+        }
+      },
+      "AutoMapper.Extensions.Microsoft.DependencyInjection/6.0.0": {
+        "type": "package",
+        "dependencies": {
+          "AutoMapper": "8.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
+        }
+      },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
         "type": "package",
         "dependencies": {
@@ -4724,6 +4750,10 @@
       "NewsChannel.Common/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity": "2.2.0",
+          "Microsoft.AspNetCore.Mvc.Razor": "2.2.0"
+        },
         "compile": {
           "bin/placeholder/NewsChannel.Common.dll": {}
         },
@@ -4735,6 +4765,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
         "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "2.2.0",
+          "Microsoft.EntityFrameworkCore": "2.2.6",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.6",
           "NewsChannel.DomainClasses": "1.0.0",
           "NewsChannel.ViewModel": "1.0.0"
@@ -4750,7 +4782,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
         "dependencies": {
-          "NewsChannel.Common": "1.0.0"
+          "Microsoft.Extensions.Identity.Stores": "2.2.0"
         },
         "compile": {
           "bin/placeholder/NewsChannel.DomainClasses.dll": {}
@@ -4763,7 +4795,9 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
         "dependencies": {
-          "NewsChannel.DataLayer": "1.0.0"
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "6.0.0",
+          "NewsChannel.DataLayer": "1.0.0",
+          "NewsChannel.Service": "1.0.0"
         },
         "compile": {
           "bin/placeholder/NewsChannel.IocConfig.dll": {}
@@ -4772,11 +4806,24 @@
           "bin/placeholder/NewsChannel.IocConfig.dll": {}
         }
       },
+      "NewsChannel.Service/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "NewsChannel.DataLayer": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/NewsChannel.Service.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/NewsChannel.Service.dll": {}
+        }
+      },
       "NewsChannel.ViewModel/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
         "dependencies": {
-          "NewsChannel.DomainClasses": "1.0.0",
+          "NewsChannel.Common": "1.0.0",
           "Newtonsoft.Json": "12.0.2"
         },
         "compile": {
@@ -4789,6 +4836,36 @@
     }
   },
   "libraries": {
+    "AutoMapper/8.0.0": {
+      "sha512": "px8ZMtIq84dxciB29V+ZYOtsRLZP4JlflDDMW13LyeRdwsnIInzlcSHSxpWmVD6U3bbOl2FeLlgomnVtm0jvXw==",
+      "type": "package",
+      "path": "automapper/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "automapper.8.0.0.nupkg.sha512",
+        "automapper.nuspec",
+        "lib/net461/AutoMapper.dll",
+        "lib/net461/AutoMapper.pdb",
+        "lib/net461/AutoMapper.xml",
+        "lib/netstandard2.0/AutoMapper.dll",
+        "lib/netstandard2.0/AutoMapper.pdb",
+        "lib/netstandard2.0/AutoMapper.xml"
+      ]
+    },
+    "AutoMapper.Extensions.Microsoft.DependencyInjection/6.0.0": {
+      "sha512": "njWYKGM3FokOlo9nj8kVLYyvJrGbLItmNA2A00lDXJnxybfP7TuZEYjQRt8ne+Cp0OF4W0ZzgdgxMioHfDEpdA==",
+      "type": "package",
+      "path": "automapper.extensions.microsoft.dependencyinjection/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "automapper.extensions.microsoft.dependencyinjection.6.0.0.nupkg.sha512",
+        "automapper.extensions.microsoft.dependencyinjection.nuspec",
+        "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll",
+        "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.pdb"
+      ]
+    },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
       "sha512": "owAlEIUZXWSnkK8Z1c+zR47A0X6ykF4XjbPok4lQKNuciUfHLGPd6QnI+rt/8KlQ17PmF+I4S3f+m+Qe4IvViw==",
       "type": "package",
@@ -13025,6 +13102,11 @@
       "path": "../NewsChannel.IocConfig/NewsChannel.IocConfig.csproj",
       "msbuildProject": "../NewsChannel.IocConfig/NewsChannel.IocConfig.csproj"
     },
+    "NewsChannel.Service/1.0.0": {
+      "type": "project",
+      "path": "../NewsChannel.Service/NewsChannel.Service.csproj",
+      "msbuildProject": "../NewsChannel.Service/NewsChannel.Service.csproj"
+    },
     "NewsChannel.ViewModel/1.0.0": {
       "type": "project",
       "path": "../NewsChannel.ViewModel/NewsChannel.ViewModel.csproj",
@@ -13048,11 +13130,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "e:\\project\\NewsChannel\\NewsChannel\\NewsChannel.csproj",
+      "projectUniqueName": "E:\\project\\NewsChannel\\NewsChannel\\NewsChannel.csproj",
       "projectName": "NewsChannel",
-      "projectPath": "e:\\project\\NewsChannel\\NewsChannel\\NewsChannel.csproj",
+      "projectPath": "E:\\project\\NewsChannel\\NewsChannel\\NewsChannel.csproj",
       "packagesPath": "C:\\Users\\iman\\.nuget\\packages\\",
-      "outputPath": "e:\\project\\NewsChannel\\NewsChannel\\obj\\",
+      "outputPath": "E:\\project\\NewsChannel\\NewsChannel\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -13071,11 +13153,11 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "e:\\project\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj": {
-              "projectPath": "e:\\project\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj"
+            "E:\\project\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj": {
+              "projectPath": "E:\\project\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj"
             },
-            "e:\\project\\NewsChannel\\NewsChannel.IocConfig\\NewsChannel.IocConfig.csproj": {
-              "projectPath": "e:\\project\\NewsChannel\\NewsChannel.IocConfig\\NewsChannel.IocConfig.csproj"
+            "E:\\project\\NewsChannel\\NewsChannel.IocConfig\\NewsChannel.IocConfig.csproj": {
+              "projectPath": "E:\\project\\NewsChannel\\NewsChannel.IocConfig\\NewsChannel.IocConfig.csproj"
             }
           }
         }

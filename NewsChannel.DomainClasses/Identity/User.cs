@@ -1,12 +1,12 @@
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
-using NewsChannel.Common.Enums;
+using System.ComponentModel.DataAnnotations;
 using NewsChannel.DomainClasses.Business;
  
 namespace NewsChannel.DomainClasses.Identity
 {
-    public class User:IdentityUser
+    public class User:IdentityUser<int>
     {
      public string FirstName { get; set; }   
      public string LastName { get; set; }   
@@ -19,5 +19,14 @@ namespace NewsChannel.DomainClasses.Identity
      public virtual ICollection<BookMark> BookMarks { get; set; }
      public virtual ICollection<UserRole> Roles { get; set; }
      public virtual ICollection<UserClaim> Claims { get; set; }
+    }
+
+    public enum GenderType
+    {
+        [Display(Name = "مرد")]
+        Male = 1,
+
+        [Display(Name = "زن")]
+        Female = 2
     }
 }

@@ -15,7 +15,7 @@ namespace NewsChannel.DataLayer.Mapping {
             builder
                 .HasOne (x => x.User)
                 .WithMany (d => d.BookMarks)
-                .HasForeignKey (c => c.UserId);
+                .HasForeignKey (c => c.UserId).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

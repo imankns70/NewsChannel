@@ -5,7 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\NewsChannel.DataLayer\NewsChannel.DataLayer.csproj" />
+    <ProjectReference Include="..\NewsChannel.Service\NewsChannel.Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>
