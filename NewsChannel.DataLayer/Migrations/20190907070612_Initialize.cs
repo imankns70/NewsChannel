@@ -46,9 +46,9 @@ namespace NewsChannel.DataLayer.Migrations
                     AccessFailedCount = table.Column<int>(nullable: false),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
-                    BirthDate = table.Column<DateTime>(nullable: false),
+                    BirthDate = table.Column<DateTime>(nullable: true),
                     Image = table.Column<string>(nullable: true),
-                    RegisterDateTime = table.Column<DateTime>(nullable: false),
+                    RegisterDateTime = table.Column<DateTime>(nullable: true),
                     IsActive = table.Column<bool>(nullable: false),
                     Gender = table.Column<int>(nullable: false)
                 },

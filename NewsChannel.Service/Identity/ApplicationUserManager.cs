@@ -10,10 +10,14 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using System.IO;
+using NewsChannel.Common;
+ 
+ 
 
 namespace NewsChannel.Service.Identity
 {
-    public class ApplicationUserManager : UserManager<User>,IApplicationUserManager
+    public class ApplicationUserManager : UserManager<User>, IApplicationUserManager
     {
         private readonly ApplicationIdentityErrorDescriber _errors;
         private readonly ILookupNormalizer _keyNormalizer;
@@ -24,6 +28,7 @@ namespace NewsChannel.Service.Identity
         private readonly IServiceProvider _services;
         private readonly IUserStore<User> _userStore;
         private readonly IEnumerable<IUserValidator<User>> _userValidators;
+        //private readonly IMapper _mapper;
 
         public ApplicationUserManager(
             ApplicationIdentityErrorDescriber errors,
@@ -35,7 +40,7 @@ namespace NewsChannel.Service.Identity
             IServiceProvider services,
             IUserStore<User> userStore,
             IEnumerable<IUserValidator<User>> userValidators)
-            : base(userStore,options,passwordHasher,userValidators,passwordValidators,keyNormalizer,errors,services,logger)
+            : base(userStore, options, passwordHasher, userValidators, passwordValidators, keyNormalizer, errors, services, logger)
         {
             _userStore = userStore;
             _errors = errors;
@@ -46,6 +51,7 @@ namespace NewsChannel.Service.Identity
             _options = options;
             _keyNormalizer = keyNormalizer;
             _passwordValidators = passwordValidators;
+           
         }
 
         public async Task<List<User>> GetAllUsersAsync()
@@ -67,14 +73,14 @@ namespace NewsChannel.Service.Identity
                 IsActive = user.IsActive,
                 Image = user.Image,
                 RegisterDateTime = user.RegisterDateTime,
-                Roles=user.Roles.Select(u=>u.Role.Name),
+                Roles = user.Roles,
 
             }).ToListAsync();
         }
 
-        public async Task<UsersViewModel> FindUserWithRolesByIdAsync(int UserId)
+        public async Task<UsersViewModel> FindUserWithRolesByIdAsync(int userId)
         {
-            return await Users.Where(u => u.Id == UserId).Select(user => new UsersViewModel
+            return await Users.Where(u => u.Id == userId).Select(user => new UsersViewModel
             {
                 Id = user.Id,
                 Email = user.Email,
@@ -86,14 +92,14 @@ namespace NewsChannel.Service.Identity
                 IsActive = user.IsActive,
                 Image = user.Image,
                 RegisterDateTime = user.RegisterDateTime,
-                Roles = user.Roles.Select(u => u.Role.Name),
+                Roles = user.Roles,
                 AccessFailedCount = user.AccessFailedCount,
                 EmailConfirmed = user.EmailConfirmed,
                 LockoutEnabled = user.LockoutEnabled,
                 LockoutEnd = user.LockoutEnd,
                 PhoneNumberConfirmed = user.PhoneNumberConfirmed,
                 TwoFactorEnabled = user.TwoFactorEnabled,
-
+                Gender = user.Gender,
             }).FirstOrDefaultAsync();
         }
 
@@ -104,9 +110,13 @@ namespace NewsChannel.Service.Identity
         }
 
 
-        public async Task<List<UsersViewModel>> GetPaginateUsersAsync(int offset, int limit, bool? firstnameSortAsc, bool? lastnameSortAsc, bool? emailSortAsc, bool? usernameSortAsc, string searchText)
+        public async Task<List<UsersViewModel>> GetPaginateUsersAsync(int offset, int limit, bool? firstnameSortAsc, bool? lastnameSortAsc, bool? emailSortAsc, bool? usernameSortAsc,bool? registerDateTimeSortAsc, string searchText)
         {
-            var users = await Users.Include(u => u.Roles).Where(t=>t.FirstName.Contains(searchText) || t.LastName.Contains(searchText) || t.Email.Contains(searchText) || t.PhoneNumber.Contains(searchText))
+            var users = await Users.Include(u => u.Roles).Where(t => t.FirstName.Contains(searchText) ||
+                                                                     t.LastName.Contains(searchText) ||
+                                                                     t.Email.Contains(searchText) ||
+                                                                     t.UserName.Contains(searchText) || 
+                                                                     t.RegisterDateTime.ConvertMiladiToShamsi("yyyy/MM/dd ساعت hh:mm:ss").Contains(searchText))
                     .Select(user => new UsersViewModel
                     {
                         Id = user.Id,
@@ -117,33 +127,57 @@ namespace NewsChannel.Service.Identity
                         LastName = user.LastName,
                         IsActive = user.IsActive,
                         Image = user.Image,
+                        PersianBirthDate = user.BirthDate.ConvertMiladiToShamsi("yyyy/MM/dd"),
+                        PersianRegisterDateTime = user.RegisterDateTime.ConvertMiladiToShamsi("yyyy/MM/dd ساعت hh:mm:ss"),
+                        GenderName = user.Gender == GenderType.Male ? "مرد" : "زن",
+                        RoleId = user.Roles.Select(r => r.Role.Id).FirstOrDefault(),
+                        RoleName = user.Roles.Select(r => r.Role.Name).FirstOrDefault()
                     }).Skip(offset).Take(limit).ToListAsync();
 
             if (firstnameSortAsc != null)
             {
-                users = users.OrderBy(t => (firstnameSortAsc == true && firstnameSortAsc != null) ? t.FirstName : "").OrderByDescending(t => (firstnameSortAsc == false && firstnameSortAsc != null) ? t.FirstName : "").ToList();
+                users = users.OrderBy(t => (firstnameSortAsc == true) ? t.FirstName : "").ThenByDescending(t => (firstnameSortAsc == false) ? t.FirstName : "").ToList();
             }
 
             else if (lastnameSortAsc != null)
             {
-                users = users.OrderBy(t => (lastnameSortAsc == true && lastnameSortAsc != null) ? t.LastName : "").OrderByDescending(t => (lastnameSortAsc == false && lastnameSortAsc != null) ? t.LastName : "").ToList();
+                users = users.OrderBy(t => (lastnameSortAsc == true) ? t.LastName : "").ThenByDescending(t => (lastnameSortAsc == false) ? t.LastName : "").ToList();
             }
 
             else if (emailSortAsc != null)
             {
-                users = users.OrderBy(t => (emailSortAsc == true && emailSortAsc != null) ? t.Email : "").OrderByDescending(t => (emailSortAsc == false && emailSortAsc != null) ? t.Email : "").ToList();
+                users = users.OrderBy(t => (emailSortAsc == true) ? t.Email : "").ThenByDescending(t => (emailSortAsc == false) ? t.Email : "").ToList();
             }
 
             else if (usernameSortAsc != null)
             {
-                users = users.OrderBy(t => (usernameSortAsc == true && usernameSortAsc != null) ? t.PhoneNumber : "").OrderByDescending(t => (usernameSortAsc == false && usernameSortAsc != null) ? t.UserName : "").ToList();
+                users = users.OrderBy(t => (usernameSortAsc == true) ? t.PhoneNumber : "").ThenByDescending(t => (usernameSortAsc == false) ? t.UserName : "").ToList();
+            }
+
+            else if (registerDateTimeSortAsc != null)
+            {
+                users = users.OrderBy(t => (registerDateTimeSortAsc == true) ? t.PersianRegisterDateTime : "").ThenByDescending(t => (registerDateTimeSortAsc == false) ? t.PersianRegisterDateTime : "").ToList();
             }
 
             foreach (var item in users)
                 item.Row = ++offset;
-
+             
             return users;
         }
 
+        public string CheckAvatarFileName(string fileName)
+        {
+            string fileExtension = Path.GetExtension(fileName);
+            int fileNameCount = Users.Count(f => f.Image == fileName);
+            int j = 1;
+            while (fileNameCount != 0)
+            {
+                fileName = fileName.Replace(fileExtension, "") + j + fileExtension;
+                fileNameCount = Users.Count(f => f.Image == fileName);
+                j++;
+            }
+
+            return fileName;
+        }
     }
 }

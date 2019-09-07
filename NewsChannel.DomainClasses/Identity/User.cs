@@ -10,9 +10,9 @@ namespace NewsChannel.DomainClasses.Identity
     {
      public string FirstName { get; set; }   
      public string LastName { get; set; }   
-     public DateTime BirthDate { get; set; }   
+     public DateTime? BirthDate { get; set; }   
      public string Image { get; set; }   
-     public DateTime RegisterDateTime { get; set; }   
+     public DateTime? RegisterDateTime { get; set; }   
      public bool IsActive { get; set; }   
      public GenderType Gender { get; set; } 
      public virtual ICollection<News> News{get;set;}

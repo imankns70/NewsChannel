@@ -2664,6 +2664,7 @@
         "framework": ".NETCoreApp,Version=v2.2",
         "dependencies": {
           "NewsChannel.Common": "1.0.0",
+          "NewsChannel.DomainClasses": "1.0.0",
           "Newtonsoft.Json": "12.0.2"
         },
         "compile": {

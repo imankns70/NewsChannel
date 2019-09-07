@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NewsChannel.Common\NewsChannel.Common.csproj" />
+    <ProjectReference Include="..\NewsChannel.DomainClasses\NewsChannel.DomainClasses.csproj" />
   </ItemGroup>
 
 </Project>

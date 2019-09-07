@@ -1,15 +1,14 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using NewsChannel.Common;
 using NewsChannel.DomainClasses.Identity;
 using NewsChannel.Service.Contracts;
 using NewsChannel.ViewModel.RoleManager;
 using NewsChannel.ViewModel.UserManager;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using System;
-using NewsChannel.Common;
 
 namespace NewsChannel.Service.Identity
 {
@@ -75,10 +74,10 @@ namespace NewsChannel.Service.Identity
         }
 
 
-        public async Task<IdentityResult> AddOrUpdateClaimsAsync(int roleId,string roleClaimType,IList<string> SelectedRoleClaimValues)
+        public async Task<IdentityResult> AddOrUpdateClaimsAsync(int roleId,string roleClaimType,IList<string> selectedRoleClaimValues)
         {
-            var Role = await FindClaimsInRole(roleId);
-            if(Role==null)
+            var role = await FindClaimsInRole(roleId);
+            if(role==null)
             {
                 return IdentityResult.Failed(new IdentityError
                 {
@@ -87,14 +86,14 @@ namespace NewsChannel.Service.Identity
                 });
             }
 
-            var CurrentRoleClaimValues = Role.Claims.Where(r => r.ClaimType == roleClaimType).Select(r => r.ClaimValue).ToList();
-            if (SelectedRoleClaimValues == null)
-                SelectedRoleClaimValues = new List<string>();
+            var currentRoleClaimValues = role.Claims.Where(r => r.ClaimType == roleClaimType).Select(r => r.ClaimValue).ToList();
+            if (selectedRoleClaimValues == null)
+                selectedRoleClaimValues = new List<string>();
 
-            var NewClaimValuesToAdd = SelectedRoleClaimValues.Except(CurrentRoleClaimValues).ToList();
-            foreach(var claim in NewClaimValuesToAdd)
+            var newClaimValuesToAdd = selectedRoleClaimValues.Except(currentRoleClaimValues).ToList();
+            foreach(var claim in newClaimValuesToAdd)
             {
-                Role.Claims.Add(new RoleClaim
+                role.Claims.Add(new RoleClaim
                 {
                     RoleId=roleId,
                     ClaimType=roleClaimType,
@@ -102,21 +101,21 @@ namespace NewsChannel.Service.Identity
                 });
             }
 
-            var removedClaimValues = CurrentRoleClaimValues.Except(SelectedRoleClaimValues).ToList();
+            var removedClaimValues = currentRoleClaimValues.Except(selectedRoleClaimValues).ToList();
             foreach(var claim in removedClaimValues)
             {
-                var roleClaim = Role.Claims.SingleOrDefault(r => r.ClaimValue == claim && r.ClaimType == roleClaimType);
+                var roleClaim = role.Claims.SingleOrDefault(r => r.ClaimValue == claim && r.ClaimType == roleClaimType);
                 if (roleClaim != null)
-                    Role.Claims.Remove(roleClaim);
+                    role.Claims.Remove(roleClaim);
             }
 
-            return await UpdateAsync(Role);
+            return await UpdateAsync(role);
         }
 
-        public async Task<List<UsersViewModel>> GetUsersInRoleAsync(int RoleId)
+        public async Task<List<UsersViewModel>> GetUsersInRoleAsync(int roleId)
         {
             var userIds = (from r in Roles
-                           where (r.Id == RoleId)
+                           where (r.Id == roleId)
                            from u in r.Users
                            select u.UserId).ToList();
 
@@ -133,7 +132,7 @@ namespace NewsChannel.Service.Identity
                     IsActive = user.IsActive,
                     Image = user.Image,
                     RegisterDateTime = user.RegisterDateTime,
-                    Roles = user.Roles.Select(u => u.Role.Name),
+                    Roles = user.Roles,
                 }).AsNoTracking().ToListAsync();
         }
 
@@ -150,7 +149,7 @@ namespace NewsChannel.Service.Identity
             }).Skip(offset).Take(limit).ToListAsync();
 
             if (roleNameSortAsc != null)
-               roles = roles.OrderBy(t => (roleNameSortAsc == true && roleNameSortAsc != null) ? t.Name : "").OrderByDescending(t => (roleNameSortAsc == false && roleNameSortAsc != null) ? t.Name : "").ToList();
+               roles = roles.OrderBy(t => (roleNameSortAsc == true) ? t.Name : "").ThenByDescending(t => (roleNameSortAsc == false) ? t.Name : "").ToList();
 
             foreach (var item in roles)
                 item.Row = ++offset;

@@ -333,7 +333,7 @@ namespace NewsChannel.DataLayer.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
-                    b.Property<DateTime>("BirthDate");
+                    b.Property<DateTime?>("BirthDate");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
@@ -349,7 +349,9 @@ namespace NewsChannel.DataLayer.Migrations
 
                     b.Property<string>("Image");
 
-                    b.Property<bool>("IsActive");
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("1");
 
                     b.Property<string>("LastName");
 
@@ -369,7 +371,9 @@ namespace NewsChannel.DataLayer.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed");
 
-                    b.Property<DateTime>("RegisterDateTime");
+                    b.Property<DateTime?>("RegisterDateTime")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("CONVERT(datetime,GetDate())");
 
                     b.Property<string>("SecurityStamp");
 

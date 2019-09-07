@@ -22,6 +22,10 @@ namespace NewsChannel.DataLayer {
             .HasDefaultValueSql("CONVERT(datetime,GetDate())");
             builder.Entity<Video>().Property(x=>x.PublishDateTime)
             .HasDefaultValueSql("CONVERT(datetime,GetDate())");
+            builder.Entity<User>().Property(x => x.RegisterDateTime)
+                .HasDefaultValueSql("CONVERT(datetime,GetDate())");
+            builder.Entity<User>().Property(x => x.IsActive)
+                .HasDefaultValueSql("1");
         }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<News> News { get; set; }
