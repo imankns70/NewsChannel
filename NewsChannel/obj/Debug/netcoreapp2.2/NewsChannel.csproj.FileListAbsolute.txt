@@ -119,3 +119,12 @@ D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Vi
 D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\UserManager\_DeleteConfirmation.g.cshtml.cs
 D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\UserManager\_RenderUser.g.cshtml.cs
 D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\UserManager\_UserTable.g.cshtml.cs
+E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Dashboard\Index.g.cshtml.cs
+E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Manage\ChangePassword.g.cshtml.cs
+E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Manage\Profile.g.cshtml.cs
+E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Manage\SignIn.g.cshtml.cs
+E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\UserManager\Index.g.cshtml.cs
+E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\UserManager\_DeleteConfirmation.g.cshtml.cs
+E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\UserManager\_RenderUser.g.cshtml.cs
+E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\UserManager\_UserTable.g.cshtml.cs
+E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -116,7 +117,7 @@ namespace NewsChannel.Areas.Admin.Controllers
 
             if (userId != null)
             {
-                user = _mapper.Map<UsersViewModel>(await _userManager.FindUserWithRolesByIdAsync((int)userId));
+                user = await _userManager.FindUserWithRolesByIdAsync((int)userId);
                 user.PersianBirthDate = user.BirthDate.ConvertMiladiToShamsi("yyyy/MM/dd");
             }
 
@@ -142,7 +143,8 @@ namespace NewsChannel.Areas.Admin.Controllers
                     viewModel.Image = _userManager.CheckAvatarFileName(viewModel.ImageFile.FileName);
 
                 viewModel.BirthDate = viewModel.PersianBirthDate.ConvertShamsiToMiladi();
-                viewModel.Roles = new List<UserRole> { new UserRole { RoleId = (int)viewModel.RoleId } };
+                if (viewModel.RoleId != null)
+                    viewModel.Roles = new List<UserRole> { new UserRole { RoleId = (int)viewModel.RoleId } };
                 if (viewModel.Id != null)
                 {
                     var user = await _userManager.FindByIdAsync(viewModel.Id.ToString());
@@ -150,8 +152,11 @@ namespace NewsChannel.Areas.Admin.Controllers
                     var userRoles = await _userManager.GetRolesAsync(user);
                     if (viewModel.ImageFile != null)
                     {
-                        await viewModel.ImageFile.UploadFileAsync($"{_env.WebRootPath}/avatars/{viewModel.Image}");
-                        FileExtensions.DeleteFile($"{_env.WebRootPath}/avatars/{user.Image}");
+                        FileExtensions.UploadFileResult fileResult = await viewModel.ImageFile.UploadFileAsync($"{_env.WebRootPath}/avatars/{viewModel.Image}");
+                        if (fileResult.IsSuccess == false)
+                            ModelState.AddModelError(string.Empty, InvalidImage);
+                        else
+                            FileExtensions.DeleteFile($"{_env.WebRootPath}/avatars/{user.Image}");
                     }
                     else
                         viewModel.Image = user.Image;
@@ -162,9 +167,11 @@ namespace NewsChannel.Areas.Admin.Controllers
                         user.UserName = viewModel.UserName;
                         user.FirstName = viewModel.FirstName;
                         user.LastName = viewModel.LastName;
-                        user.PasswordHash = viewModel.Password;
+                        user.RegisterDateTime = viewModel.RegisterDateTime;
                         user.BirthDate = viewModel.BirthDate;
-                        user.BirthDate = viewModel.BirthDate;
+                        user.Email = viewModel.Email;
+                        user.PhoneNumber = viewModel.PhoneNumber;
+                        if (viewModel.Gender != null) user.Gender = viewModel.Gender.Value;
                         result = await _userManager.UpdateAsync(user);
 
                     }
@@ -172,9 +179,12 @@ namespace NewsChannel.Areas.Admin.Controllers
 
                 else
                 {
+
                     FileExtensions.UploadFileResult fileResult = await viewModel.ImageFile.UploadFileAsync($"{_env.WebRootPath}/avatars/{viewModel.Image}");
                     if (fileResult.IsSuccess == false)
                         ModelState.AddModelError(string.Empty, InvalidImage);
+
+
                     User user = new User
                     {
                         EmailConfirmed = true,
@@ -182,13 +192,14 @@ namespace NewsChannel.Areas.Admin.Controllers
                         FirstName = viewModel.FirstName,
                         LastName = viewModel.LastName,
                         PasswordHash = viewModel.Password,
+                        Email = viewModel.Email,
                         BirthDate = viewModel.PersianBirthDate.ConvertShamsiToMiladi(),
                         PhoneNumber = viewModel.PhoneNumber,
                         Image = viewModel.Image,
 
                     };
 
-                    result = await _userManager.CreateAsync(user);
+                    result = await _userManager.CreateAsync(user, viewModel.Password);
                 }
 
                 if (result.Succeeded)

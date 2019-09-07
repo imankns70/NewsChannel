@@ -118,9 +118,9 @@ namespace NewsChannel.Service.Contracts
         #region CustomMethod
         Task<List<User>> GetAllUsersAsync();
         Task<List<UsersViewModel>> GetAllUsersWithRolesAsync();
-        Task<UsersViewModel> FindUserWithRolesByIdAsync(int UserId);
-        Task<string> GetFullName(ClaimsPrincipal User);
-        Task<User> GetUserAsync(ClaimsPrincipal User);
+        Task<UsersViewModel> FindUserWithRolesByIdAsync(int userId);
+        Task<string> GetFullName(ClaimsPrincipal user);
+        Task<User> GetUserAsync(ClaimsPrincipal user);
         Task<List<UsersViewModel>> GetPaginateUsersAsync(int offset, int limit, bool? firstnameSortAsc, bool? lastnameSortAsc, bool? emailSortAsc, bool? usernameSortAsc, bool? registerDateTimeSortAsc, string searchText);
         string CheckAvatarFileName(string fileName);
         #endregion
