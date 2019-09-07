@@ -76,6 +76,6 @@ function ShowSweetSuccessAlert(message) {
         type: 'success',
         title: message,
         confirmButtonText: 'بستن',
-    })
+    });
 }
 
