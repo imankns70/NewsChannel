@@ -30,8 +30,8 @@
 
 
 <script>
-        var $table = $('#table')
-        var selections = []
+    var $table = $('#table');
+    var selections = [];
 
 
   function get_query_params(p) {
@@ -47,28 +47,33 @@
 
 
         function responseHandler(res) {
-            $.each(res.rows, function (i, row) {
-                row.state = $.inArray(row.id, selections) !== -1
-            })
-            return res
-    }
+            $.each(res.rows,
+                function(i, row) {
+                    row.state = $.inArray(row.id, selections) !== -1;
+                });
+            return res;
+        }
 
 
     function detailFormatter(index, row) {
-        var html = []
+        var html = [];
         var posterUrl;
         var videoUrl;
-        $.each(row, function (key, value) {
-            if (key == "poster")
-               posterUrl ='@string.Format("{0}://{1}", Context.Request.Scheme, Context.Request.Host)' + '/posters/' + value;
-            if (key != "state" && key != "Id" && key != "ردیف" && key != "poster" && key!="url")
-                html.push('<p><b>' + key + ':</b> ' + value + '</p>')
-            if (key == "url")
-                videoUrl = value;
-        })
+        $.each(row,
+            function(key, value) {
+                debugger;
+                if (key == "poster")
+                    posterUrl = '@($"{Context.Request.Scheme}://{Context.Request.Host}")' +
+                        '/posters/' +
+                        value;
+                if (key != "state" && key != "Id" && key != "ردیف" && key != "poster" && key != "url")
+                    html.push('<p><b>' + key + ':</b> ' + value + '</p>');
+                if (key == "url")
+                    videoUrl = value;
+            });
             html.push('<video height="240" poster="' + posterUrl + '" controls><source src="' + videoUrl + '">Your browser does not support the video tag.</video>')
-            return html.join('')
-        }
+        return html.join('');
+    }
 
 
      function operateFormatter(value, row, index) {
@@ -89,11 +94,11 @@
 
 
         function totalTextFormatter(data) {
-            return 'تعداد'
+            return 'تعداد';
         }
 
         function totalNameFormatter(data) {
-            return data.length
+            return data.length;
         }
 
 
@@ -102,47 +107,52 @@
                 height: 600,
                 locale: 'fa-IR',
                 columns: [
-                    [{
-                        field: 'state',
-                        checkbox: true,
-                        rowspan: 2,
-                        align: 'center',
-                        valign: 'middle',
-                        formatter: checkBoxFormat
-                    }, {
-                        title: 'ردیف',
-                        field: 'ردیف',
-                        rowspan: 2,
-                        align: 'center',
-                        valign: 'middle',
-                        footerFormatter: totalTextFormatter
-                    }, {
-                        title: 'جزئیات اطلاعات ویدیو ها',
-                        colspan: 3,
-                        align: 'center'
-                    }],
-                    [{
-                        field: 'عنوان ویدیو',
-                        title: 'عنوان ویدیو',
-                        sortable: true,
-                        footerFormatter: totalNameFormatter,
-                    },{
-                        field: 'تاریخ انتشار',
-                        title: 'تاریخ انتشار',
-                        sortable: true,
-                        align: 'center'
-                    }, {
-                        field: 'operate',
-                        title: 'عملیات',
-                        align: 'center',
-                        events: window.operateEvents,
-                        formatter: operateFormatter
-                    }]
+                    [
+                        {
+                            field: 'state',
+                            checkbox: true,
+                            rowspan: 2,
+                            align: 'center',
+                            valign: 'middle',
+                            formatter: checkBoxFormat
+                        }, {
+                            title: 'ردیف',
+                            field: 'ردیف',
+                            rowspan: 2,
+                            align: 'center',
+                            valign: 'middle',
+                            footerFormatter: totalTextFormatter
+                        }, {
+                            title: 'جزئیات اطلاعات ویدیو ها',
+                            colspan: 3,
+                            align: 'center'
+                        }
+                    ],
+                    [
+                        {
+                            field: 'عنوان ویدیو',
+                            title: 'عنوان ویدیو',
+                            sortable: true,
+                            footerFormatter: totalNameFormatter,
+                        }, {
+                            field: 'تاریخ انتشار',
+                            title: 'تاریخ انتشار',
+                            sortable: true,
+                            align: 'center'
+                        }, {
+                            field: 'operate',
+                            title: 'عملیات',
+                            align: 'center',
+                            events: window.operateEvents,
+                            formatter: operateFormatter
+                        }
+                    ]
                 ]
-            })
+            });
         }
 
-        $(function () {
-            initTable()
-            $('#locale').change(initTable)
-        })</script>
+        $(function() {
+            initTable();
+            $('#locale').change(initTable);
+    });
+</script>

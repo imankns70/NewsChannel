@@ -13,17 +13,15 @@ namespace NewsChannel.Areas.Admin.Controllers
     public class TagController : BaseController
     {
         private readonly IUnitOfWork _uw;
-        private readonly IMapper _mapper;
         private const string TagNotFound = "برچسب یافت نشد.";
         private const string TagDuplicate = "نام برچسب تکراری است.";
 
-        public TagController(IUnitOfWork uw, IMapper mapper)
+        public TagController(IUnitOfWork uw)
         {
             _uw = uw;
             _uw.CheckArgumentIsNull(nameof(_uw));
 
-            _mapper = mapper;
-            _mapper.CheckArgumentIsNull(nameof(_mapper));
+
         }
 
         public IActionResult Index()
@@ -52,7 +50,7 @@ namespace NewsChannel.Areas.Admin.Controllers
             }
 
             else
-                tags = await _uw.TagRepository.GetPaginateTagsAsync(offset, limit,null,search);
+                tags = await _uw.TagRepository.GetPaginateTagsAsync(offset, limit, null, search);
 
             if (search != "")
                 total = tags.Count();
@@ -63,17 +61,17 @@ namespace NewsChannel.Areas.Admin.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> RenderTag(string tagId)
+        public async Task<IActionResult> RenderTag(int? tagId)
         {
             var tagViewModel = new TagViewModel();
-            if (tagId.HasValue())
+            if (tagId != null)
             {
                 var tag = await _uw.BaseRepository<Tag>().FindByIdAsync(tagId);
-                if (tag != null)
-                    tagViewModel = _mapper.Map<TagViewModel>(tag);
-                else
-                    ModelState.AddModelError(string.Empty, TagNotFound);
+
+                tagViewModel.TagId = tag.Id;
+                tagViewModel.TagName = tag.TagName;
             }
+           
             return PartialView("_RenderTag", tagViewModel);
         }
 
@@ -91,7 +89,8 @@ namespace NewsChannel.Areas.Admin.Controllers
                         var tag = await _uw.BaseRepository<Tag>().FindByIdAsync(viewModel.TagId);
                         if (tag != null)
                         {
-                            _uw.BaseRepository<Tag>().Update(_mapper.Map(viewModel, tag));
+                            tag.TagName = viewModel.TagName;
+                            _uw.BaseRepository<Tag>().Update(tag);
                             await _uw.Commit();
                             TempData["notification"] = EditSuccess;
                         }
@@ -101,8 +100,11 @@ namespace NewsChannel.Areas.Admin.Controllers
 
                     else
                     {
-                         
-                        await _uw.BaseRepository<Tag>().CreateAsync(_mapper.Map<Tag>(viewModel));
+                        Tag tag = new Tag
+                        {
+                            TagName = viewModel.TagName
+                        };
+                        await _uw.BaseRepository<Tag>().CreateAsync(tag);
                         await _uw.Commit();
                         TempData["notification"] = InsertSuccess;
                     }
@@ -114,9 +116,9 @@ namespace NewsChannel.Areas.Admin.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> Delete(string tagId)
+        public async Task<IActionResult> Delete(int? tagId)
         {
-            if (!tagId.HasValue())
+            if (tagId == null)
                 ModelState.AddModelError(string.Empty, TagNotFound);
             else
             {
@@ -133,28 +135,26 @@ namespace NewsChannel.Areas.Admin.Controllers
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(Tag model)
         {
-          
-                //ModelState.AddModelError(string.Empty, TagNotFound);
-            
-                var tag = await _uw.BaseRepository<Tag>().FindByIdAsync(model.Id);
-                if (tag == null)
-                    ModelState.AddModelError(string.Empty, TagNotFound);
-                else
-                {
-                    _uw.BaseRepository<Tag>().Delete(tag);
-                    await _uw.Commit();
-                    TempData["notification"] = DeleteSuccess;
-                    return PartialView("_DeleteConfirmation", tag);
-                }
-            
+
+            var tag = await _uw.BaseRepository<Tag>().FindByIdAsync(model.Id);
+            if (tag == null)
+                ModelState.AddModelError(string.Empty, TagNotFound);
+            else
+            {
+                _uw.BaseRepository<Tag>().Delete(tag);
+                await _uw.Commit();
+                TempData["notification"] = DeleteSuccess;
+                return PartialView("_DeleteConfirmation", tag);
+            }
+
             return PartialView("_DeleteConfirmation");
         }
 
 
         [HttpPost, ActionName("DeleteGroup")]
-        public async Task<IActionResult> DeleteGroupConfirmed(string[] btSelectItem)
+        public async Task<IActionResult> DeleteGroupConfirmed(int[] btSelectItem)
         {
-            if (btSelectItem.Count() == 0)
+            if (!btSelectItem.Any())
                 ModelState.AddModelError(string.Empty, "هیچ برچسبی برای حذف انتخاب نشده است.");
             else
             {

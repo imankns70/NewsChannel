@@ -8,7 +8,7 @@ namespace NewsChannel.ViewModel.Video
     public class VideoViewModel
     {
         [JsonProperty("Id")]
-        public string VideoId { get; set; }
+        public int? VideoId { get; set; }
 
         [JsonProperty("ردیف")]
         public int Row { get; set; }

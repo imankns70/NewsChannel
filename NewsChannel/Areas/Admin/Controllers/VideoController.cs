@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -18,8 +19,10 @@ namespace NewsChannel.Areas.Admin.Controllers
         private readonly IMapper _mapper;
         private readonly IHostingEnvironment _env;
         private const string VideoNotFound = "ویدیو درخواستی یافت نشد.";
+        public const string InvalidImage = "عکس نامعتبر است.";
 
-        public VideoController(IUnitOfWork uw, IMapper mapper,IHostingEnvironment env)
+
+        public VideoController(IUnitOfWork uw, IMapper mapper, IHostingEnvironment env)
         {
             _uw = uw;
             _uw.CheckArgumentIsNull(nameof(_uw));
@@ -74,61 +77,78 @@ namespace NewsChannel.Areas.Admin.Controllers
         }
 
 
-        [HttpGet,AjaxOnly()]
-        public async Task<IActionResult> RenderVideo(string videoId)
+        [HttpGet, AjaxOnly()]
+        public async Task<IActionResult> RenderVideo(int? videoId)
         {
             var videoViewModel = new VideoViewModel();
-            if (videoId.HasValue())
+            if (videoId != null)
             {
                 var video = await _uw.BaseRepository<Video>().FindByIdAsync(videoId);
-                if (video != null)
-                    videoViewModel = _mapper.Map<VideoViewModel>(video);
-                else
-                    ModelState.AddModelError(string.Empty,VideoNotFound);
+
+                videoViewModel.VideoId = video.VideoId;
+                videoViewModel.Url = video.Url;
+                videoViewModel.Poster = video.Poster;
+                videoViewModel.Title = video.Title;
+
             }
+
             return PartialView("_RenderVideo", videoViewModel);
         }
 
         [HttpPost, AjaxOnly()]
         public async Task<IActionResult> CreateOrUpdate(VideoViewModel viewModel)
         {
-            if (viewModel.VideoId.HasValue())
+            if (viewModel.VideoId != null)
                 ModelState.Remove("PosterFile");
 
             if (ModelState.IsValid)
             {
-                if(viewModel.PosterFile!=null)
+                if (viewModel.PosterFile != null)
                     viewModel.Poster = _uw.VideoRepository.CheckVideoFileName(viewModel.PosterFile.FileName);
-                if (viewModel.VideoId.HasValue())
+                if (viewModel.VideoId != null)
                 {
                     var video = await _uw.BaseRepository<Video>().FindByIdAsync(viewModel.VideoId);
 
                     if (viewModel.PosterFile != null)
                     {
-                        await viewModel.PosterFile.UploadFileAsync($"{_env.WebRootPath}/posters/{viewModel.Poster}");
+                        FileExtensions.UploadFileResult fileResult =
+                            await viewModel.PosterFile.UploadFileAsync(
+                                $"{_env.WebRootPath}/posters/{viewModel.Poster}");
+                        if (fileResult.IsSuccess == false)
+                            ModelState.AddModelError(string.Empty, InvalidImage);
                         FileExtensions.DeleteFile($"{_env.WebRootPath}/posters/{video.Poster}");
+                        video.Poster = viewModel.Poster;
                     }
- 
-                    else
-                        viewModel.Poster = video.Poster;
-                    
-                    if (video != null)
-                    {
-                        _uw.BaseRepository<Video>().Update(_mapper.Map(viewModel, video));
-                        await _uw.Commit();
-                        TempData["notification"] = EditSuccess;
-                    }
-                    else
-                        ModelState.AddModelError(string.Empty,VideoNotFound);
+
+
+                    video.Url = viewModel.Url;
+                    video.Title = viewModel.Title;
+
+                    _uw.BaseRepository<Video>().Update(video);
+                    await _uw.Commit();
+                    TempData["notification"] = EditSuccess;
+
                 }
 
                 else
                 {
-                    await viewModel.PosterFile.UploadFileAsync($"{_env.WebRootPath}/posters/{viewModel.Poster}");
-                    viewModel.VideoId = StringExtensions.GenerateId(10);
-                    await _uw.BaseRepository<Video>().CreateAsync(_mapper.Map<Video>(viewModel));
-                    await _uw.Commit();
-                    TempData["notification"] = InsertSuccess;
+                    FileExtensions.UploadFileResult fileResult = await viewModel.PosterFile.UploadFileAsync($"{_env.WebRootPath}/posters/{viewModel.Poster}");
+                    if (fileResult.IsSuccess == false)
+                        ModelState.AddModelError(string.Empty, InvalidImage);
+                    else
+                    {
+                        Video video = new Video
+                        {
+                            Url = viewModel.Url,
+                            Title = viewModel.Title,
+                            Poster = viewModel.Poster
+
+                        };
+                        await _uw.BaseRepository<Video>().CreateAsync(video);
+                        await _uw.Commit();
+                        TempData["notification"] = InsertSuccess;
+                    }
+
                 }
             }
 
@@ -136,10 +156,10 @@ namespace NewsChannel.Areas.Admin.Controllers
         }
 
 
-        [HttpGet, AjaxOnly()]
-        public async Task<IActionResult> Delete(string videoId)
+        [HttpGet, AjaxOnly]
+        public async Task<IActionResult> Delete(int? videoId)
         {
-            if (!videoId.HasValue())
+            if (videoId == null)
                 ModelState.AddModelError(string.Empty, VideoNotFound);
             else
             {
@@ -147,20 +167,28 @@ namespace NewsChannel.Areas.Admin.Controllers
                 if (video == null)
                     ModelState.AddModelError(string.Empty, VideoNotFound);
                 else
-                    return PartialView("_DeleteConfirmation", video);
+                {
+                    VideoViewModel viewModel = new VideoViewModel
+                    {
+                        VideoId = video.VideoId,
+                        Title = video.Title,
+                    };
+                    return PartialView("_DeleteConfirmation", viewModel);
+                }
+
             }
             return PartialView("_DeleteConfirmation");
         }
 
 
-        [HttpPost, ActionName("Delete"), AjaxOnly()]
-        public async Task<IActionResult> DeleteConfirmed(Video model)
+        [HttpPost, ActionName("Delete"), AjaxOnly]
+        public async Task<IActionResult> DeleteConfirmed(VideoViewModel viewModel)
         {
-            if (model.VideoId == null)
+            if (viewModel.VideoId == null)
                 ModelState.AddModelError(string.Empty, VideoNotFound);
             else
             {
-                var video = await _uw.BaseRepository<Video>().FindByIdAsync(model.VideoId);
+                var video = await _uw.BaseRepository<Video>().FindByIdAsync(viewModel.VideoId);
                 if (video == null)
                     ModelState.AddModelError(string.Empty, VideoNotFound);
                 else
@@ -169,7 +197,8 @@ namespace NewsChannel.Areas.Admin.Controllers
                     _uw.BaseRepository<Video>().Delete(video);
                     await _uw.Commit();
                     TempData["notification"] = DeleteSuccess;
-                    return PartialView("_DeleteConfirmation", video);
+
+                    return PartialView("_DeleteConfirmation", viewModel);
                 }
             }
             return PartialView("_DeleteConfirmation");
@@ -177,9 +206,9 @@ namespace NewsChannel.Areas.Admin.Controllers
 
 
         [HttpPost, ActionName("DeleteGroup"), AjaxOnly()]
-        public async Task<IActionResult> DeleteGroupConfirmed(string[] btSelectItem)
+        public async Task<IActionResult> DeleteGroupConfirmed(int[] btSelectItem)
         {
-            if (btSelectItem.Count() == 0)
+            if (!btSelectItem.Any())
                 ModelState.AddModelError(string.Empty, "هیچ ویدیویی برای حذف انتخاب نشده است.");
             else
             {

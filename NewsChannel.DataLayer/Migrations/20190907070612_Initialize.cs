@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace NewsChannel.DataLayer.Migrations
 {
-    public partial class GenerateDb : Migration
+    public partial class Initialize : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -99,7 +99,7 @@ namespace NewsChannel.DataLayer.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    TagName = table.Column<int>(nullable: false)
+                    TagName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -110,11 +110,12 @@ namespace NewsChannel.DataLayer.Migrations
                 name: "Videos",
                 columns: table => new
                 {
-                    VideoId = table.Column<string>(nullable: false),
+                    VideoId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Title = table.Column<string>(nullable: true),
                     Url = table.Column<string>(nullable: true),
                     Poster = table.Column<string>(nullable: true),
-                    PublishDateTime = table.Column<DateTime>(nullable: true)
+                    PublishDateTime = table.Column<DateTime>(nullable: true, defaultValueSql: "CONVERT(datetime,GetDate())")
                 },
                 constraints: table =>
                 {

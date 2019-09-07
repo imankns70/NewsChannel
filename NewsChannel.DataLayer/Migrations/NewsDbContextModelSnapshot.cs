@@ -230,7 +230,7 @@ namespace NewsChannel.DataLayer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("TagName");
+                    b.Property<string>("TagName");
 
                     b.HasKey("Id");
 
@@ -239,12 +239,15 @@ namespace NewsChannel.DataLayer.Migrations
 
             modelBuilder.Entity("NewsChannel.DomainClasses.Business.Video", b =>
                 {
-                    b.Property<string>("VideoId")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("VideoId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Poster");
 
-                    b.Property<DateTime?>("PublishDateTime");
+                    b.Property<DateTime?>("PublishDateTime")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("CONVERT(datetime,GetDate())");
 
                     b.Property<string>("Title");
 

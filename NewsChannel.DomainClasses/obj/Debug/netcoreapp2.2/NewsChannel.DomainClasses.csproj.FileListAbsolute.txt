@@ -1,15 +1,10 @@
 D:\projects\NewsChannel\NewsChannel.DomainClasses\bin\Debug\netcoreapp2.2\NewsChannel.DomainClasses.deps.json
 D:\projects\NewsChannel\NewsChannel.DomainClasses\bin\Debug\netcoreapp2.2\NewsChannel.DomainClasses.dll
 D:\projects\NewsChannel\NewsChannel.DomainClasses\bin\Debug\netcoreapp2.2\NewsChannel.DomainClasses.pdb
-D:\projects\NewsChannel\NewsChannel.DomainClasses\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Identity.Stores.dll
-D:\projects\NewsChannel\NewsChannel.DomainClasses\bin\Debug\netcoreapp2.2\NewsChannel.Common.dll
-D:\projects\NewsChannel\NewsChannel.DomainClasses\bin\Debug\netcoreapp2.2\NewsChannel.Common.pdb
-D:\projects\NewsChannel\NewsChannel.DomainClasses\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Identity.Stores.xml
 D:\projects\NewsChannel\NewsChannel.DomainClasses\obj\Debug\netcoreapp2.2\NewsChannel.DomainClasses.csprojAssemblyReference.cache
 D:\projects\NewsChannel\NewsChannel.DomainClasses\obj\Debug\netcoreapp2.2\NewsChannel.DomainClasses.csproj.CoreCompileInputs.cache
 D:\projects\NewsChannel\NewsChannel.DomainClasses\obj\Debug\netcoreapp2.2\NewsChannel.DomainClasses.AssemblyInfoInputs.cache
 D:\projects\NewsChannel\NewsChannel.DomainClasses\obj\Debug\netcoreapp2.2\NewsChannel.DomainClasses.AssemblyInfo.cs
-D:\projects\NewsChannel\NewsChannel.DomainClasses\obj\Debug\netcoreapp2.2\NewsChannel.DomainClasses.csproj.CopyComplete
 D:\projects\NewsChannel\NewsChannel.DomainClasses\obj\Debug\netcoreapp2.2\NewsChannel.DomainClasses.dll
 D:\projects\NewsChannel\NewsChannel.DomainClasses\obj\Debug\netcoreapp2.2\NewsChannel.DomainClasses.pdb
 E:\project\NewsChannel\NewsChannel.DomainClasses\bin\Debug\netcoreapp2.2\NewsChannel.DomainClasses.deps.json

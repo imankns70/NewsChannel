@@ -157,7 +157,7 @@ namespace NewsChannel.Areas.Admin.Controllers
                     TempData["notification"] = DeleteSuccess;
                     return PartialView("_DeleteConfirmation", viewModel);
                 }
-                else
+               
                     ModelState.AddErrorsFromResult(result);
             }
             return PartialView("_DeleteConfirmation");
@@ -175,6 +175,9 @@ namespace NewsChannel.Areas.Admin.Controllers
                 {
                     var role = await _roleManager.FindByIdAsync(item);
                     var result = await _roleManager.DeleteAsync(role);
+                    if (!result.Succeeded)
+                    ModelState.AddErrorsFromResult(result);
+                    
                 }
                 TempData["notification"] = "حذف گروهی نقش ها با موفقیت انجام شد..";
             }
