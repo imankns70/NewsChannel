@@ -139,6 +139,7 @@ namespace NewsChannel.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 IdentityResult result;
+                User user = new User();
                 if (viewModel.ImageFile != null)
                     viewModel.Image = _userManager.CheckAvatarFileName(viewModel.ImageFile.FileName);
 
@@ -147,7 +148,7 @@ namespace NewsChannel.Areas.Admin.Controllers
                     viewModel.Roles = new List<UserRole> { new UserRole { RoleId = (int)viewModel.RoleId } };
                 if (viewModel.Id != null)
                 {
-                    var user = await _userManager.FindByIdAsync(viewModel.Id.ToString());
+                    user = await _userManager.FindByIdAsync(viewModel.Id.ToString());
                     viewModel.RegisterDateTime = user.RegisterDateTime;
                     var userRoles = await _userManager.GetRolesAsync(user);
                     if (viewModel.ImageFile != null)
@@ -174,6 +175,11 @@ namespace NewsChannel.Areas.Admin.Controllers
                         if (viewModel.Gender != null) user.Gender = viewModel.Gender.Value;
                         result = await _userManager.UpdateAsync(user);
 
+                        var role = await _roleManager.FindByIdAsync(viewModel.RoleId.ToString());
+                        if (role != null)
+                        {
+                            await _userManager.AddToRoleAsync(user, role.Name);
+                        }
                     }
                 }
 
@@ -185,25 +191,35 @@ namespace NewsChannel.Areas.Admin.Controllers
                         ModelState.AddModelError(string.Empty, InvalidImage);
 
 
-                    User user = new User
-                    {
-                        EmailConfirmed = true,
-                        UserName = viewModel.UserName,
-                        FirstName = viewModel.FirstName,
-                        LastName = viewModel.LastName,
-                        PasswordHash = viewModel.Password,
-                        Email = viewModel.Email,
-                        BirthDate = viewModel.PersianBirthDate.ConvertShamsiToMiladi(),
-                        PhoneNumber = viewModel.PhoneNumber,
-                        Image = viewModel.Image,
 
-                    };
+                    user.EmailConfirmed = true;
+                    user.UserName = viewModel.UserName;
+                    user.FirstName = viewModel.FirstName;
+                    user.LastName = viewModel.LastName;
+                    user.PasswordHash = viewModel.Password;
+                    user.Email = viewModel.Email;
+                    user.BirthDate = viewModel.PersianBirthDate.ConvertShamsiToMiladi();
+                    user.PhoneNumber = viewModel.PhoneNumber;
+                    user.Image = viewModel.Image;
+                    if (viewModel.Gender != null) user.Gender = viewModel.Gender.Value;
+
 
                     result = await _userManager.CreateAsync(user, viewModel.Password);
+                    if (result.Succeeded)
+                    {
+                        var role = await _roleManager.FindByIdAsync(viewModel.RoleId.ToString());
+                        if (role != null)
+                        {
+                            await _userManager.AddToRoleAsync(user, role.Name);
+                        }
+                    }
+                 
                 }
 
                 if (result.Succeeded)
-                    TempData["notification"] = OperationSuccess;
+                TempData["notification"] = OperationSuccess;
+              
+
                 else
                     ModelState.AddErrorsFromResult(result);
             }
