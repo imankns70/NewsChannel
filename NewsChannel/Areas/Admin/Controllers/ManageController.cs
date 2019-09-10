@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Security.Claims;
+using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -116,10 +117,11 @@ namespace NewsChannel.Areas.Admin.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> Profile(int? userId)
+        public async Task<IActionResult> Profile()
         {
             var profileViewModel = new ProfileViewModel();
-            if (userId == null)
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId))
                 return NotFound();
             else
             {
@@ -128,8 +130,15 @@ namespace NewsChannel.Areas.Admin.Controllers
                     return NotFound();
                 else
                 {
-                    profileViewModel = _mapper.Map<ProfileViewModel>(user);
-                    profileViewModel.PersianBirthDate = profileViewModel.BirthDate.ConvertMiladiToShamsi("yyyy/MM/dd");
+                    profileViewModel.Id = user.Id;
+                    profileViewModel.Email = user.Email;
+                    profileViewModel.FirstName = user.FirstName;
+                    profileViewModel.LastName = user.LastName;
+                    profileViewModel.Image = user.Image;
+                    profileViewModel.UserName = user.UserName;
+                    profileViewModel.Gender = user.Gender;
+                    profileViewModel.PhoneNumber = user.PhoneNumber;
+                    profileViewModel.PersianBirthDate = user.BirthDate.ConvertMiladiToShamsi("yyyy/MM/dd");
                 }
             }
 
@@ -140,33 +149,46 @@ namespace NewsChannel.Areas.Admin.Controllers
         public async Task<IActionResult> Profile(ProfileViewModel viewModel)
         {
             if (viewModel.Id == null)
+                return RedirectToAction("Index", "Dashboard");
+
+            var user = await _userManager.FindByIdAsync(viewModel.Id.ToString());
+            if (user == null)
                 return NotFound();
-            else
+
+            if (viewModel.ImageFile != null)
             {
-                var user = await _userManager.FindByIdAsync(viewModel.Id.ToString());
-                if (user == null)
-                    return NotFound();
-                else
+                viewModel.Image = _userManager.CheckAvatarFileName(viewModel.ImageFile.FileName);
+
+                FileExtensions.UploadFileResult fileResult = await viewModel.ImageFile.UploadFileAsync($"{_env.WebRootPath}/avatars/{viewModel.Image}");
+                if (fileResult.IsSuccess == false)
                 {
-                    if (viewModel.ImageFile != null)
-                    {
-                        viewModel.Image = viewModel.ImageFile.FileName;
-                        await viewModel.ImageFile.UploadFileAsync($"{_env.WebRootPath}/avatars/{viewModel.Image}");
-                    }
-                   
-                    else
-                        viewModel.Image = user.Image;
-
-                    viewModel.BirthDate = viewModel.PersianBirthDate.ConvertShamsiToMiladi();
-                    var result = await _userManager.UpdateAsync(_mapper.Map(viewModel, user));
-                    if (result.Succeeded)
-                        ViewBag.Alert = EditSuccess;
-                    else
-                        ModelState.AddErrorsFromResult(result);
+                    ModelState.AddModelError(string.Empty, InvalidImage);
+                    return View(viewModel);
                 }
-
-                return View(viewModel);
+                else
+                    FileExtensions.DeleteFile($"{_env.WebRootPath}/avatars/{user.Image}");
             }
+
+            else
+                viewModel.Image = user.Image;
+
+            user.UserName = viewModel.UserName;
+            user.FirstName = viewModel.FirstName;
+            user.LastName = viewModel.LastName;
+            user.BirthDate = viewModel.PersianBirthDate.ConvertShamsiToMiladi();
+            user.Email = viewModel.Email;
+            user.PhoneNumber = viewModel.PhoneNumber;
+            user.Image = viewModel.Image;
+            if (viewModel.Gender != null) user.Gender = viewModel.Gender.Value;
+            IdentityResult result = await _userManager.UpdateAsync(user);
+            if (result.Succeeded)
+                ViewBag.Alert = EditSuccess;
+            else
+                ModelState.AddErrorsFromResult(result);
+
+
+            return View(viewModel);
+
         }
     }
 }

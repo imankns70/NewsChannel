@@ -22,7 +22,6 @@ namespace NewsChannel.Areas.Admin.Controllers
         private readonly IHostingEnvironment _env;
         private readonly IUnitOfWork _uw;
         private const string UserNotFound = "کاربر یافت نشد.";
-        public const string InvalidImage = "عکس نامعتبر است.";
 
         public UserManagerController(IApplicationUserManager userManager, IMapper mapper, IApplicationRoleManager roleManager, IHostingEnvironment env)
         {
@@ -144,23 +143,26 @@ namespace NewsChannel.Areas.Admin.Controllers
                     viewModel.Image = _userManager.CheckAvatarFileName(viewModel.ImageFile.FileName);
 
                 viewModel.BirthDate = viewModel.PersianBirthDate.ConvertShamsiToMiladi();
-                if (viewModel.RoleId != null)
-                    viewModel.Roles = new List<UserRole> { new UserRole { RoleId = (int)viewModel.RoleId } };
+
                 if (viewModel.Id != null)
                 {
                     user = await _userManager.FindByIdAsync(viewModel.Id.ToString());
-                    viewModel.RegisterDateTime = user.RegisterDateTime;
+
                     var userRoles = await _userManager.GetRolesAsync(user);
                     if (viewModel.ImageFile != null)
                     {
                         FileExtensions.UploadFileResult fileResult = await viewModel.ImageFile.UploadFileAsync($"{_env.WebRootPath}/avatars/{viewModel.Image}");
                         if (fileResult.IsSuccess == false)
+                        {
                             ModelState.AddModelError(string.Empty, InvalidImage);
-                        else
-                            FileExtensions.DeleteFile($"{_env.WebRootPath}/avatars/{user.Image}");
+                            return PartialView("_RenderUser", viewModel);
+                        }
+
+
+                        FileExtensions.DeleteFile($"{_env.WebRootPath}/avatars/{user.Image}");
+                        user.Image = viewModel.Image;
                     }
-                    else
-                        viewModel.Image = user.Image;
+
 
                     result = await _userManager.RemoveFromRolesAsync(user, userRoles);
                     if (result.Succeeded)
@@ -168,10 +170,10 @@ namespace NewsChannel.Areas.Admin.Controllers
                         user.UserName = viewModel.UserName;
                         user.FirstName = viewModel.FirstName;
                         user.LastName = viewModel.LastName;
-                        user.RegisterDateTime = viewModel.RegisterDateTime;
                         user.BirthDate = viewModel.BirthDate;
                         user.Email = viewModel.Email;
                         user.PhoneNumber = viewModel.PhoneNumber;
+
                         if (viewModel.Gender != null) user.Gender = viewModel.Gender.Value;
                         result = await _userManager.UpdateAsync(user);
 
@@ -198,7 +200,7 @@ namespace NewsChannel.Areas.Admin.Controllers
                     user.LastName = viewModel.LastName;
                     user.PasswordHash = viewModel.Password;
                     user.Email = viewModel.Email;
-                    user.BirthDate = viewModel.PersianBirthDate.ConvertShamsiToMiladi();
+                    user.BirthDate = viewModel.BirthDate;
                     user.PhoneNumber = viewModel.PhoneNumber;
                     user.Image = viewModel.Image;
                     if (viewModel.Gender != null) user.Gender = viewModel.Gender.Value;
@@ -213,12 +215,12 @@ namespace NewsChannel.Areas.Admin.Controllers
                             await _userManager.AddToRoleAsync(user, role.Name);
                         }
                     }
-                 
+
                 }
 
                 if (result.Succeeded)
-                TempData["notification"] = OperationSuccess;
-              
+                    TempData["notification"] = OperationSuccess;
+
 
                 else
                     ModelState.AddErrorsFromResult(result);

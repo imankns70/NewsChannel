@@ -18,8 +18,8 @@ namespace NewsChannel.ViewModel.Manage
         [Display(Name = "مرا به خاطر بسپار؟")]
         public bool RememberMe { get; set; }
 
-        [GoogleRecaptchaValidation]
-        [BindProperty(Name = "g-recaptcha-response")]
+        //[GoogleRecaptchaValidation]
+        //[BindProperty(Name = "g-recaptcha-response")]
         public string GoogleRecaptchaResponse { get; set; }
 
     }

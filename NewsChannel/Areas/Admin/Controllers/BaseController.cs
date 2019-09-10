@@ -11,6 +11,8 @@ namespace NewsChannel.Areas.Admin.Controllers
         public const string EditSuccess = "ویرایش اطلاعات با موفقیت انجام شد.";
         public const string DeleteSuccess = "حذف اطلاعات با موفقیت انجام شد.";
         public const string OperationSuccess = "عملیات با موفقیت انجام شد.";
+        public const string InvalidImage = "عکس نامعتبر است.";
+
         public IActionResult Notification()
         {
             return Content(TempData["notification"].ToString());
