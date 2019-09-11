@@ -8,6 +8,8 @@ namespace NewsChannel.DataLayer.Contracts
         ICategoryRepository CategoryRepository { get; }
         ITagRepository TagRepository { get; }
         IVideoRepository VideoRepository { get; }
+        INewsRepository NewsRepository { get; }
+
         NewsDbContext _Context { get; }
         Task Commit();
     }

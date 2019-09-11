@@ -128,3 +128,8 @@ E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Vie
 E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\UserManager\_RenderUser.g.cshtml.cs
 E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\UserManager\_UserTable.g.cshtml.cs
 E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\News\CreateOrUpdate.g.cshtml.cs
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\News\Index.g.cshtml.cs
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\News\_DeleteConfirmation.g.cshtml.cs
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\News\_NewsTable.g.cshtml.cs
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\News\_SubCategories.g.cshtml.cs

@@ -7,12 +7,16 @@ namespace NewsChannel.DataLayer.UnitOfWork
     public class UnitOfWork : IUnitOfWork
     {
         public NewsDbContext _Context { get; }
+       
         private ICategoryRepository _categoryRepository;
         private ITagRepository _tagRepository;
         private IVideoRepository _videoRepository;
-        public UnitOfWork(NewsDbContext context)
+        private INewsRepository _newsRepository;
+
+        public UnitOfWork(NewsDbContext context )
         {
             _Context = context;
+            
         }
 
         public IBaseRepository<TEntity> BaseRepository<TEntity>() where TEntity : class
@@ -31,6 +35,7 @@ namespace NewsChannel.DataLayer.UnitOfWork
                 return _categoryRepository;
             }
         }
+
         public ITagRepository TagRepository
         {
             get
@@ -53,6 +58,19 @@ namespace NewsChannel.DataLayer.UnitOfWork
                 return _videoRepository;
             }
         }
+
+        public INewsRepository NewsRepository
+        {
+            get
+            {
+                if (_newsRepository == null)
+                    _newsRepository = new NewsRepository(_Context);
+
+                return _newsRepository;
+            }
+        }
+
+
         public async Task Commit()
         {
             await _Context.SaveChangesAsync();

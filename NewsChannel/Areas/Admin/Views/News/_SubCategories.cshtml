@@ -1,0 +1,29 @@
+﻿@model NewsChannel.ViewModel.News.NewsCategoriesViewModel
+
+<ul>
+    @foreach (var item in Model.Categories)
+    {
+    <li>
+        @if (Model.CategoryId != null)
+        {
+            if (Model.CategoryId.Contains(item.Id))
+            {
+                <input type="checkbox" name="CategoryIds" value="@item.Id" checked /> @item.Title
+            }
+            else
+            {
+                <input type="checkbox" name="CategoryIds" value="@item.Id" /> @item.Title
+            }
+        }
+
+        else
+        {
+            <input type="checkbox" name="CategoryIds" value="@item.Id" /> @item.Title
+        }
+
+        @{ Model.Categories = item.Subs;}
+        @await Html.PartialAsync("_SubCategories", Model)
+    </li>
+    }
+
+</ul>

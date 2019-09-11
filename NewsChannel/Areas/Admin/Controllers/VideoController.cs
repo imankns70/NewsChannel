@@ -109,24 +109,28 @@ namespace NewsChannel.Areas.Admin.Controllers
                 {
                     var video = await _uw.BaseRepository<Video>().FindByIdAsync(viewModel.VideoId);
 
-                    if (viewModel.PosterFile != null)
+                    if (video != null)
                     {
-                        FileExtensions.UploadFileResult fileResult =
-                            await viewModel.PosterFile.UploadFileAsync(
-                                $"{_env.WebRootPath}/posters/{viewModel.Poster}");
-                        if (fileResult.IsSuccess == false)
-                            ModelState.AddModelError(string.Empty, InvalidImage);
-                        FileExtensions.DeleteFile($"{_env.WebRootPath}/posters/{video.Poster}");
-                        video.Poster = viewModel.Poster;
+                        if (viewModel.PosterFile != null)
+                        {
+                            FileExtensions.UploadFileResult fileResult =
+                                await viewModel.PosterFile.UploadFileAsync(
+                                    $"{_env.WebRootPath}/posters/{viewModel.Poster}");
+                            if (fileResult.IsSuccess == false)
+                                ModelState.AddModelError(string.Empty, InvalidImage);
+                            FileExtensions.DeleteFile($"{_env.WebRootPath}/posters/{video.Poster}");
+                            video.Poster = viewModel.Poster;
+                        }
+
+
+                        video.Url = viewModel.Url;
+                        video.Title = viewModel.Title;
+
+                        _uw.BaseRepository<Video>().Update(video);
+                        await _uw.Commit();
+                        TempData["notification"] = EditSuccess;
                     }
-
-
-                    video.Url = viewModel.Url;
-                    video.Title = viewModel.Title;
-
-                    _uw.BaseRepository<Video>().Update(video);
-                    await _uw.Commit();
-                    TempData["notification"] = EditSuccess;
+                   
 
                 }
 
