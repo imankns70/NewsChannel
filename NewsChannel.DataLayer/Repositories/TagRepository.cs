@@ -54,31 +54,27 @@ namespace NewsChannel.DataLayer.Repositories
 
         public async Task<List<NewsTag>> InsertNewsTags(string[] tags, int? newsId)
         {
-           
+            
             List<NewsTag> newsTags = new List<NewsTag>();
             var allTags = _context.Tags.ToList();
-            if (newsId != null)
+            var newTags = tags.Where(n => !allTags.Select(t => t.TagName).Contains(n)).ToList();
+            foreach (var item in newTags)
             {
-                newsTags.AddRange(allTags.Where(n => tags.Contains(n.TagName))
-                    .Select(c => new NewsTag
-                        {
-                            TagId = c.Id,
-                            NewsId = newsId.Value
-                        }).ToList());
-
-
-                var newTags = tags.Where(n => !allTags.Select(t => t.TagName).Contains(n)).ToList();
-                foreach (var item in newTags)
-                {
-
-                    _context.Tags.Add(new Tag { TagName = item });
-                    var lastTag=_context.Tags.OrderByDescending(x => x.Id).First();
-                    newsTags.Add(new NewsTag { TagId = lastTag.Id, NewsId = newsId.Value });
-                    await _context.SaveChangesAsync();
-
-                }
+                 _context.Tags.Add(new Tag { TagName = item});
+               
             }
+            await _context.SaveChangesAsync();
+
+            newsTags.AddRange(newsId == null
+                ? _context.Tags.Where(n => tags.Contains(n.TagName)).Select(c => new NewsTag {TagId = c.Id}).ToList()
+                : _context.Tags.Where(n => tags.Contains(n.TagName))
+                    .Select(c => new NewsTag {TagId = c.Id, NewsId = newsId.Value}).ToList());
+
             return newsTags;
+
+            
         }
+
+
     }
 }
