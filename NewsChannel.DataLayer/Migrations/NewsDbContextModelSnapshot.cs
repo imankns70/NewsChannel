@@ -139,6 +139,8 @@ namespace NewsChannel.DataLayer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Abstract");
+
                     b.Property<string>("Description");
 
                     b.Property<string>("ImageName");
@@ -147,9 +149,7 @@ namespace NewsChannel.DataLayer.Migrations
 
                     b.Property<bool>("IsPublish");
 
-                    b.Property<DateTime?>("PublishDateTime")
-                        .ValueGeneratedOnAdd()
-                        .HasDefaultValueSql("CONVERT(datetime,GetDate())");
+                    b.Property<DateTime?>("PublishDateTime");
 
                     b.Property<string>("Title");
 

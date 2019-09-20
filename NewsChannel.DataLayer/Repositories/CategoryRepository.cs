@@ -52,11 +52,11 @@ namespace NewsChannel.DataLayer.Repositories
         }
 
 
-        public List<TreeViewCategory> GetAllCategories()
+        public async Task<List<TreeViewCategory>> GetAllCategoriesAsync()
         {
-            var categories = (from c in _context.Categories
+            var categories =await (from c in _context.Categories
                               where (c.ParentCategoryId == null)
-                              select new TreeViewCategory { Id = c.Id, Title = c.CategoryName }).ToList();
+                              select new TreeViewCategory { Id = c.Id, Title = c.CategoryName, Url = c.Url}).ToListAsync();
             foreach (var item in categories)
             {
                 BindSubCategories(item);

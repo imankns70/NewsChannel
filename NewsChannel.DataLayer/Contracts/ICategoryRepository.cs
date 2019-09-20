@@ -8,7 +8,7 @@ namespace NewsChannel.DataLayer.Contracts
     public interface ICategoryRepository
     {
         Category FindByCategoryName(string categoryName);
-        List<TreeViewCategory> GetAllCategories();
+        Task<List<TreeViewCategory>> GetAllCategoriesAsync();
         bool IsExistCategory(string categoryName, int? recentCategoryId);
         Task<List<CategoryViewModel>> GetPaginateCategoriesAsync(int offset, int limit, bool? categoryNameSortAsc, bool? parentCategoryNameSortAsc, string searchText);
     }

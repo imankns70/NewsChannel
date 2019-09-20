@@ -14,5 +14,4 @@ D:\projects\NewsChannel\NewsChannel.Common\obj\Debug\netcoreapp2.2\NewsChannel.C
 D:\projects\NewsChannel\NewsChannel.Common\obj\Debug\netcoreapp2.2\NewsChannel.Common.AssemblyInfo.cs
 D:\projects\NewsChannel\NewsChannel.Common\obj\Debug\netcoreapp2.2\NewsChannel.Common.dll
 D:\projects\NewsChannel\NewsChannel.Common\obj\Debug\netcoreapp2.2\NewsChannel.Common.pdb
-E:\project\NewsChannel\NewsChannel.Common\obj\Debug\netcoreapp2.2\NewsChannel.Common.csprojAssemblyReference.cache
 D:\projects\NewsChannel\NewsChannel.Common\obj\Debug\netcoreapp2.2\NewsChannel.Common.csprojAssemblyReference.cache

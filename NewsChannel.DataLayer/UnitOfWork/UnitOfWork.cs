@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using NewsChannel.DataLayer.Contracts;
 using NewsChannel.DataLayer.Repositories;
+using NewsWebsite.Data.Repositories;
 
 namespace NewsChannel.DataLayer.UnitOfWork
 {

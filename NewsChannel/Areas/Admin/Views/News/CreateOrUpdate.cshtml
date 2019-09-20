@@ -62,7 +62,7 @@
                 <i class="fa fa-angle-left text-white align-middle"></i>
             </li>
 
-            @if (Model.NewsId != null)
+            @if (Model.NewsId !=null)
             {
                 <li>
                     <a class="h4 mb-0 text-white d-lg-inline-block"  asp-action="CreateOrUpdate" asp-route-newsId="@Model.NewsId">ویرایش خبر </a>
@@ -90,7 +90,7 @@
     <div class="row mt-5">
         <div class="card shadow w-100">
             <div class="card-header font_Vazir_Medium">
-                @if (Model.NewsId != null)
+                @if (Model.NewsId !=null)
                 {
                     <span>ویرایش خبر</span>
                 }
@@ -118,6 +118,10 @@
                             <div class="form-group">
                                 <input asp-for="Title" class="form-control" placeholder="عنوان خبر" />
                                 <span asp-validation-for="Title" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <input asp-for="Abstract" class="form-control" placeholder="چکیده خبر" maxlength="100"/>
+                                <span asp-validation-for="Abstract" class="text-danger"></span>
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-9 p-0">
@@ -167,7 +171,7 @@
                                             <span asp-validation-for="PersianPublishTime" class="text-danger"></span>
                                         </div>
                                     </div>
-                                    <input type="submit" value="@(Model.NewsId != null?"به روزرسانی":"انتشار")" class="btn btn-primary text-white btn-sm" name="submitButton" />
+                                    <input type="submit" value="@(Model.NewsId !=null?"به روزرسانی":"انتشار")" class="btn btn-primary text-white btn-sm" name="submitButton" />
                                     <input type="submit" value="ذخیره پیش نویس" class="btn btn-success btn-sm" name="submitButton" />
                                 </div>
                             </div>
@@ -196,9 +200,9 @@
                                         @foreach (var item in Model.NewsCategoriesViewModel.Categories)
                                         {
                                             <li>
-                                                @if (Model.NewsCategories != null)
+                                                @if (Model.NewsCategoriesViewModel.CategoryId != null)
                                                 {
-                                                    if (Model.NewsCategories.Select(c => c.CategoryId).Contains(item.Id))
+                                                    if (Model.NewsCategoriesViewModel.CategoryId.Contains(item.Id))
                                                     {
                                                         <input type="checkbox" name="CategoryIds" value="@item.Id" checked /> @item.Title
                                                     }
@@ -339,7 +343,7 @@
 
     $uploadCrop = $('#upload-demo').croppie({
         viewport: {
-            width: 700,
+            width: 740,
             height: 500,
         },
         enforceBoundary: false,
@@ -362,7 +366,7 @@
         $uploadCrop.croppie('result', {
             type: 'base64',
             format: 'jpeg',
-            size: { width: 700, height: 500 }
+            size: { width: 740, height: 500 }
         }).then(function (resp) {
             $('#item-img-output').attr('src', resp);
             $("#base64").val(resp.split(',')[1]);
@@ -395,7 +399,7 @@
             };
             };
 
-            var states = @Html.Raw(Json.Serialize(Model.TagNames));
+            var states = @Html.Raw(Json.Serialize(ViewBag.Tags));
             $('#tagstype').tagsinput({
                     typeaheadjs:({
                     hint: true,

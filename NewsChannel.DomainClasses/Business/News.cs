@@ -13,6 +13,7 @@ namespace NewsChannel.DomainClasses.Business {
         public string ImageName { get; set; }
         public bool IsPublish { get; set; }
         public bool IsInternal { get; set; }
+        public string Abstract { get; set; }
         public virtual User User { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<NewsCategory> NewsCategories { get; set; }

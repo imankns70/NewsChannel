@@ -128,7 +128,7 @@ namespace NewsChannel.Service.Identity
                         IsActive = user.IsActive,
                         Image = user.Image,
                         PersianBirthDate = user.BirthDate.ConvertMiladiToShamsi("yyyy/MM/dd"),
-                        PersianRegisterDateTime = user.RegisterDateTime.ConvertMiladiToShamsi("yyyy/MM/dd ساعت hh:mm:ss"),
+                        PersianRegisterDateTime = user.RegisterDateTime.ConvertMiladiToShamsi("yyyy/MM/dd ساعت HH:mm:ss"),
                         GenderName = user.Gender == GenderType.Male ? "مرد" : "زن",
                         RoleId = user.Roles.Select(r => r.Role.Id).FirstOrDefault(),
                         RoleName = user.Roles.Select(r => r.Role.Name).FirstOrDefault()

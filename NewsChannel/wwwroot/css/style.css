@@ -49,9 +49,17 @@ a:focus {
   font-weight: 500;
   font-size: 14px;
   font-family: "Vazir_Medium", sans-serif; }
-.header-area .vizew-main-menu .classy-navbar .classynav ul li a:hover, .post-title:hover{
-    color: #fff !important;
+.classynav ul li a:hover{
+    color: #fff;
 }
+.dropdown a:hover {
+    color: #000 !important;
+}
+
+.post-meta a, .post-meta span {
+    font-family: Vazir_FD;
+}
+
 ul {
     margin: 0;
 }
@@ -557,7 +565,6 @@ input:focus {
             background-color: #222627;
             border-bottom: none; } }
         .header-area .vizew-main-menu .classy-navbar .classynav ul li a:hover, .header-area .vizew-main-menu .classy-navbar .classynav ul li a:focus {
-          color: #0f1112;
           border-bottom-color: #ffffff; }
           @media only screen and (min-width: 768px) and (max-width: 991px) {
             .header-area .vizew-main-menu .classy-navbar .classynav ul li a:hover, .header-area .vizew-main-menu .classy-navbar .classynav ul li a:focus {
@@ -898,8 +905,7 @@ input:focus {
       @media only screen and (max-width: 767px) {
         .single-feature-post.video-post .post-content .post-title {
           font-size: 16px; } }
-      .single-feature-post.video-post .post-content .post-title:hover, .single-feature-post.video-post .post-content .post-title:focus {
-        color: #0f1112; }
+
     .single-feature-post.video-post .post-content .post-meta {
       position: relative;
       z-index: 1; }

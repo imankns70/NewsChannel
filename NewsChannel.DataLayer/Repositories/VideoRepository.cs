@@ -23,7 +23,7 @@ namespace NewsChannel.DataLayer.Repositories
             List<VideoViewModel> videos= await _context.Videos.Where(c => c.Title.Contains(searchText))
                                     .Select(c => new VideoViewModel
                 {
-                    VideoId = c.VideoId, Title = c.Title, Url = c.Url, Poster=c.Poster,PersianPublishDateTime=c.PublishDateTime.ConvertMiladiToShamsi("yyyy/MM/dd ساعت hh:mm:ss")
+                    VideoId = c.VideoId, Title = c.Title, Url = c.Url, Poster=c.Poster,PersianPublishDateTime=c.PublishDateTime.ConvertMiladiToShamsi("yyyy/MM/dd ساعت HH:mm:ss")
                 }).Skip(offset).Take(limit).AsNoTracking().ToListAsync();
 
             if (titleSortAsc != null)
@@ -34,8 +34,8 @@ namespace NewsChannel.DataLayer.Repositories
 
             else if (publishDateTimeSortAsc != null)
             {
-                videos = videos.OrderBy(c => (publishDateTimeSortAsc == true) ? c.Title : "")
-                                   .ThenByDescending(c => (publishDateTimeSortAsc == false) ? c.Title : "").ToList();
+                videos = videos.OrderBy(c => (publishDateTimeSortAsc == true) ? c.PersianPublishDateTime : "")
+                                   .ThenByDescending(c => (publishDateTimeSortAsc == false) ? c.PersianPublishDateTime : "").ToList();
             }
 
             foreach (var item in videos)

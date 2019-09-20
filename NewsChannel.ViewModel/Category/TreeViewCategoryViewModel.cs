@@ -10,6 +10,7 @@ namespace NewsChannel.ViewModel.Category
         }
         public int Id { get; set; }
         public string Title { get; set; }
+        public string Url { get; set; }
         public List<TreeViewCategory> Subs { get; set; }
     }
 }

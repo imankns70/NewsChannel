@@ -67,7 +67,7 @@
     z-index: 1; }
   .preloader-text {
     top: 55%;
-    left: 43%; }
+    left: 49%; }
   .preloader-percent {
     width: 3em;
     top: calc(50% - .75em);

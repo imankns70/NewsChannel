@@ -75,7 +75,7 @@ namespace NewsChannel.Areas.Admin.Controllers
         public async Task<IActionResult> RenderCategory(int? categoryId)
         {
             var categoryViewModel = new CategoryViewModel();
-            List<TreeViewCategory> categories = _uw.CategoryRepository.GetAllCategories();
+            List<TreeViewCategory> categories =await _uw.CategoryRepository.GetAllCategoriesAsync();
             if (categoryId != null)
             {
                 var category = await _uw.BaseRepository<Category>().FindByIdAsync(categoryId);

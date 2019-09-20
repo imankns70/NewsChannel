@@ -18,8 +18,8 @@ namespace NewsChannel.DataLayer {
             base.OnModelCreating (builder);
             builder.AddCustomIdentityMappings();
             builder.AddCustomNewsChannelMappings();
-            builder.Entity<News>().Property(x=>x.PublishDateTime)
-            .HasDefaultValueSql("CONVERT(datetime,GetDate())");
+            //builder.Entity<News>().Property(x=>x.PublishDateTime)
+            //.HasDefaultValueSql("CONVERT(datetime,GetDate())");
             builder.Entity<Video>().Property(x=>x.PublishDateTime)
             .HasDefaultValueSql("CONVERT(datetime,GetDate())");
             builder.Entity<User>().Property(x => x.RegisterDateTime)
