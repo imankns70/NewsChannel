@@ -62,7 +62,7 @@
          function detailFormatter(index, row) {
             var html = []
             $.each(row, function (key, value) {
-                if (key != "state" && key != "Id" && key!='آدرس' && key!="ردیف" && key!="متن خبر" && key!="NumberOfLike" && key!="NumberOfDisLike" && key!="ShortTitle" && key!="Status")
+                if (key != "state" && key != "Id" && key!='آدرس' && key!="ردیف" && key!="متن خبر" && key!="NumberOfLike" && key!="NumberOfDisLike" && key!="ShortTitle" && key!="Status" && key != "NumberOfComment")
                     html.push('<p><b>' + key + ':</b> ' + value + '</p>')
                 if (key == 'آدرس') {
                     var url = '@string.Format("{0}://{1}", Context.Request.Scheme, Context.Request.Host)' + '/' + row.Id + '/' + value;
@@ -122,7 +122,14 @@
         function totalNameFormatter(data) {
             return data.length;
         }
-
+    function commentFormatter(value, row, index) {
+        return [
+            '<a class="btn btn-primary btn-sm text-white">',
+            row.NumberOfComment, '<i class="fa fa-comments mr-1"></i>',
+            '</a >'
+        ].join('');
+    }
+   
 
         function initTable() {
             $table.bootstrapTable('destroy').bootstrapTable({
@@ -145,7 +152,7 @@
                         footerFormatter: totalTextFormatter
                     }, {
                         title: 'جزئیات اطلاعات اخبار',
-                        colspan: 8,
+                        colspan: 9,
                         align: 'center'
                     }],
                     [{
@@ -170,6 +177,12 @@
                         sortable: true,
                         align: 'center',
                         formatter:dislikeFormatter
+                    },{
+                        field: 'نظرات',
+                        title: 'نظرات',
+                        sortable: true,
+                        align: 'center',
+                        formatter:commentFormatter
                     },{
                         field: 'تاریخ انتشار',
                         title: 'تاریخ انتشار',

@@ -1928,18 +1928,18 @@ input:focus {
   height: 48px;
   width: 100%;
   background-color: #e7e7e7;
-  font-size: 12px;
+  font-size: 13px;
   margin-bottom: 15px;
   padding: 10px 30px;
-  color: #ffffff;
   -webkit-transition-duration: 500ms;
   -o-transition-duration: 500ms;
   transition-duration: 500ms;
   border: none;
   border-radius: 0; }
-  .form-control:focus {
-    box-shadow: none;
-    background-color: #393c3d; }
+    .form-control:focus {
+        box-shadow: none;
+        background-color: #e7e7e7;
+    }
 
 select.form-control {
   -webkit-appearance: none;
@@ -1980,4 +1980,8 @@ textarea.form-control {
 }
 .is-sticky .classy-navbar .nav-brand {
   font-size: 18px;
+}
+
+a:not([href]):not([tabindex]) {
+    cursor: pointer !important;
 }

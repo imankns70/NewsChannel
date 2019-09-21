@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
 using NewsChannel.Common;
 using NewsChannel.Common.Attributes;
@@ -42,7 +43,7 @@ namespace NewsChannel.Areas.Admin.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> GetNews(string search, string order, int offset, int limit, string sort)
+        public IActionResult GetNews(string search, string order, int offset, int limit, string sort)
         {
             List<NewsViewModel> news;
             int total = _uw.BaseRepository<News>().CountEntities();
@@ -55,46 +56,45 @@ namespace NewsChannel.Areas.Admin.Controllers
             if (sort == "ShortTitle")
             {
                 if (order == "asc")
-                    news = await _uw.NewsRepository.GetPaginateNewsAsync(offset, limit, true, null, null, null, null, search, null);
+                    news =  _uw.NewsRepository.GetPaginateNews(offset, limit, item=>item.First().Title, item=>"", search, null);
                 else
-                    news = await _uw.NewsRepository.GetPaginateNewsAsync(offset, limit, false, null, null, null, null, search, null);
+                    news =  _uw.NewsRepository.GetPaginateNews(offset, limit, item => "", item => item.First().Title, search, null);
             }
 
             else if (sort == "بازدید")
             {
                 if (order == "asc")
-                    news = await _uw.NewsRepository.GetPaginateNewsAsync(offset, limit, null, true, null, null, null, search, null);
+                    news = _uw.NewsRepository.GetPaginateNews(offset, limit, item => item.First().NumberOfVisit, item => "", search, null);
                 else
-                    news = await _uw.NewsRepository.GetPaginateNewsAsync(offset, limit, null, false, null, null, null, search, null);
+                    news = _uw.NewsRepository.GetPaginateNews(offset, limit, item => "", item => item.First().NumberOfVisit, search, null);
             }
 
             else if (sort == "لایک")
             {
                 if (order == "asc")
-                    news = await _uw.NewsRepository.GetPaginateNewsAsync(offset, limit, null, null, true, null, null, search, null);
+                    news = _uw.NewsRepository.GetPaginateNews(offset, limit, item => item.First().NumberOfLike, item => "", search, null);
                 else
-                    news = await _uw.NewsRepository.GetPaginateNewsAsync(offset, limit, null, null, false, null, null, search, null);
+                    news = _uw.NewsRepository.GetPaginateNews(offset, limit, item => "", item => item.First().NumberOfLike, search, null);
             }
 
             else if (sort == "دیس لایک")
             {
                 if (order == "asc")
-                    news = await _uw.NewsRepository.GetPaginateNewsAsync(offset, limit, null, null, null, true, null, search, null);
+                    news = _uw.NewsRepository.GetPaginateNews(offset, limit, item => item.First().NumberOfDisLike, item => "", search, null);
                 else
-                    news = await _uw.NewsRepository.GetPaginateNewsAsync(offset, limit, null, null, null, false, null, search, null);
+                    news = _uw.NewsRepository.GetPaginateNews(offset, limit, item => "", item => item.First().NumberOfDisLike, search, null);
             }
 
             else if (sort == "تاریخ انتشار")
             {
                 if (order == "asc")
-                    news = await _uw.NewsRepository.GetPaginateNewsAsync(offset, limit, null, null, null, null, true, search, null);
+                    news = _uw.NewsRepository.GetPaginateNews(offset, limit, item => item.First().PersianPublishDate, item => "", search, null);
                 else
-                    news = await _uw.NewsRepository.GetPaginateNewsAsync(offset, limit, null, null, null, null, false, search, null);
+                    news = _uw.NewsRepository.GetPaginateNews(offset, limit, item => "", item => item.First().PersianPublishDate, search, null);
             }
 
             else
-                news = await _uw.NewsRepository.GetPaginateNewsAsync(offset, limit, null, null, null, null, false, search, null);
-
+                news = _uw.NewsRepository.GetPaginateNews(offset, limit, item => "", item => item.First().PersianPublishDate, search, null);
             if (search != "")
                 total = news.Count();
 

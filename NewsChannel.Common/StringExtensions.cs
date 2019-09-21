@@ -120,5 +120,10 @@ namespace NewsChannel.Common
             }
             return newString;
         }
+        public static int GetNumOfWeek(this string week)
+        {
+            string[] weekArray = { "شنبه", "یکشنبه", "دوشنبه", "سه شنبه", "چهار شنبه", "پنج شنبه", "جمعه" };
+            return Array.IndexOf(weekArray,week);
+        }
     }
 }

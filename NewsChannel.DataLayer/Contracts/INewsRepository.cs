@@ -1,15 +1,17 @@
 ﻿using NewsChannel.ViewModel.News;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
-using NewsChannel.ViewModel.News;
 
 namespace NewsChannel.DataLayer.Contracts
 {
     public interface INewsRepository
     {
         string CheckNewsFileName(string fileName);
-        Task<List<NewsViewModel>> GetPaginateNewsAsync(int offset, int limit, bool? titleSortAsc, bool? visitSortAsc, bool? likeSortAsc, bool? dislikeSortAsc, bool? publishDateTimeSortAsc, string searchText, bool? isPublish);
+        List<NewsViewModel> GetPaginateNews(int offset, int limit, Func<IGrouping<int?, NewsViewModel>, object> orderByAscFunc, Func<IGrouping<int?, NewsViewModel>, object> orderByDescFunc, string searchText, bool? isPublish);
+        Task<List<NewsViewModel>> MostViewedNews(int offset, int limit, string duration);
+        Task<List<NewsViewModel>> MostTalkNews(int offset, int limit, string duration);
+        Task<List<NewsViewModel>> MostPopularNews(int offset, int limit);
     }
 }

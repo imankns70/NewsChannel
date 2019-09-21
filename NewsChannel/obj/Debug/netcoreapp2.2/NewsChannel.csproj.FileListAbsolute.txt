@@ -144,3 +144,8 @@ E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Home\Inde
 E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.g.cshtml.cs
 E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Components\CategoryList\Default.g.cshtml.cs
 E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Components\LatestNewsTitleList\Default.g.cshtml.cs
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Components\CategoryList\Default.g.cshtml.cs
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Components\LatestNewsTitleList\Default.g.cshtml.cs
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Home\_MostViewedNews.g.cshtml.cs
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_MostPopularNews.g.cshtml.cs
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_MostTalkNews.g.cshtml.cs
