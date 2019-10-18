@@ -25,11 +25,13 @@ namespace NewsChannel.Controllers
 
             if (isAjax && TypeOfNews == "MostTalkNews")
                 return PartialView("_MostTalkNews", await _uw.NewsRepository.MostTalkNews(0, 5, duration));
-            List<NewsViewModel> news = _uw.NewsRepository.GetPaginateNews(0, 10, item => "", item => item.First().PersianPublishDate, "", true);
+            List<NewsViewModel> news = _uw.NewsRepository.GetPaginateNews(0, 10, item => "", item => item.First().PersianPublishDate, "", true,null);
             List<NewsViewModel> mostViewedNews = await _uw.NewsRepository.MostViewedNews(0, 3, "day");
-            var mostTalkNews = await _uw.NewsRepository.MostTalkNews(0, 5, "day");
-            var mostPopulerNews = await _uw.NewsRepository.MostPopularNews(0, 5);
-            var homePageViewModel = new HomePageViewModel(news, mostViewedNews, mostTalkNews, mostPopulerNews);
+            List<NewsViewModel> mostTalkNews = await _uw.NewsRepository.MostTalkNews(0, 5, "day");
+            List<NewsViewModel> mostPopulerNews = await _uw.NewsRepository.MostPopularNews(0, 5);
+            List<NewsViewModel> internalNews =  _uw.NewsRepository.GetPaginateNews(0, 10, item => "", item => item.First().PersianPublishDate,"",true,true);
+            List<NewsViewModel> foreignNews =  _uw.NewsRepository.GetPaginateNews(0, 10, item => "", item => item.First().PersianPublishDate,"",true,false);
+            var homePageViewModel = new HomePageViewModel(news, mostViewedNews, mostTalkNews, mostPopulerNews,internalNews,foreignNews);
             return View(homePageViewModel);
 
 

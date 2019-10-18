@@ -149,3 +149,6 @@ D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Shared\C
 D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Home\_MostViewedNews.g.cshtml.cs
 D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_MostPopularNews.g.cshtml.cs
 D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_MostTalkNews.g.cshtml.cs
+E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Home\_MostViewedNews.g.cshtml.cs
+E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_MostPopularNews.g.cshtml.cs
+E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_MostTalkNews.g.cshtml.cs
