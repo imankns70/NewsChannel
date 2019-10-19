@@ -9,7 +9,7 @@ namespace NewsChannel.DataLayer.Contracts
         ITagRepository TagRepository { get; }
         IVideoRepository VideoRepository { get; }
         INewsRepository NewsRepository { get; }
-
+        INewsletterRepository NewsletterRepository { get; }
         NewsDbContext _Context { get; }
         Task Commit();
     }

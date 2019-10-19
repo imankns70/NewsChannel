@@ -21,6 +21,7 @@ namespace NewsChannel.DataLayer.Repositories
 
         }
 
+        public int CountNewsPublished() => _context.News.Count(n => n.IsPublish == true && n.PublishDateTime <= DateTime.Now);
 
         public List<NewsViewModel> GetPaginateNews(int offset, int limit, Func<IGrouping<int?, NewsViewModel>, object> orderByAscFunc, Func<IGrouping<int?, NewsViewModel>, object> orderByDescFunc, string searchText, bool? isPublish, bool? isInternal)
         {

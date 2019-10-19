@@ -12,6 +12,7 @@ namespace NewsChannel.DataLayer.UnitOfWork
         private ITagRepository _tagRepository;
         private IVideoRepository _videoRepository;
         private INewsRepository _newsRepository;
+        private INewsletterRepository _newsletterRepository;
 
         public UnitOfWork(NewsDbContext context )
         {
@@ -69,7 +70,16 @@ namespace NewsChannel.DataLayer.UnitOfWork
                 return _newsRepository;
             }
         }
+        public INewsletterRepository NewsletterRepository
+        {
+            get
+            {
+                if (_newsletterRepository == null)
+                    _newsletterRepository = new NewsletterRepository(_Context);
 
+                return _newsletterRepository;
+            }
+        }
 
         public async Task Commit()
         {

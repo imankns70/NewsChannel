@@ -1,5 +1,6 @@
 ﻿@model NewsChannel.ViewModel.Home.HomePageViewModel
 @using NewsChannel.Common
+@using NewsChannel.ViewModel.Newsletter
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -91,54 +92,38 @@
         <div class="row">
             <div class="col-12 col-md-7 col-lg-8">
                 <div class="all-posts-area">
-                    <!-- Section Heading -->
-                    <div class="section-heading style-2">
-                        <h4> جدیدترین ویدیوها </h4>
-                        <div class="line"></div>
-                    </div>
+                    @if (Model.Videos.Count != 0)
+                    {
+                        <!-- Section Heading -->
+                        <div class="section-heading style-2">
+                            <h4> جدیدترین ویدیوها </h4>
+                            <div class="line"></div>
+                        </div>
+                        <div class="featured-post-slides owl-carousel mb-30 direction-ltr">
 
-                    <!-- Featured Post Slides -->
-                    <div class="featured-post-slides owl-carousel mb-30 direction-ltr">
-                        <!-- Single Feature Post -->
-                        <div class="single-feature-post video-post bg-img" style="background-image: url(/assets/img/bg-img/11.jpeg);">
-                            <!-- Play Button -->
-                            <a href="video-post.html" class="btn play-btn"><i class="fa fa-play" aria-hidden="true"></i></a>
+                            @foreach (var item in Model.Videos)
+                            {
+                                <div class="single-feature-post video-post bg-img" style="background-image: url(/posters/@item.Poster);">
+                                    <a href="videos/@item.VideoId" class="btn play-btn"><i class="fa fa-play" aria-hidden="true"></i></a>
 
-                            <!-- Post Content -->
-                            <div class="post-content">
-                                <a href="#" class="post-cata">ورزشی</a>
-                                <a href="single-post.html" class="post-title">شوک دوم به پرسپولیس/ بیرانوند در آستانه جدایی از سرخپوشان</a>
-                                <div class="post-meta d-flex">
-                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 25</a>
-                                    <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 25</a>
-                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 25</a>
+                                    <div class="post-content">
+                                        <a href="videos/@item.VideoId" class="post-title">@item.Title</a>
+
+                                    </div>
+
+                                    <span class="video-duration direction-rtl">@item.PublishDateTime.ConvertMiladiToShamsi("dd MMMM yyyy")</span>
                                 </div>
-                            </div>
 
-                            <!-- Video Duration -->
-                            <span class="video-duration">05.03</span>
+
+
+
+                            }
                         </div>
 
-                        <!-- Single Feature Post -->
-                        <div class="single-feature-post video-post bg-img" style="background-image: url(/assets/img/bg-img/11.jpeg);">
-                            <!-- Play Button -->
-                            <a href="video-post.html" class="btn play-btn"><i class="fa fa-play" aria-hidden="true"></i></a>
+                    }
 
-                            <!-- Post Content -->
-                            <div class="post-content">
-                                <a href="#" class="post-cata">ورزشی</a>
-                                <a href="single-post.html" class="post-title">شوک دوم به پرسپولیس/ بیرانوند در آستانه جدایی از سرخپوشان</a>
-                                <div class="post-meta d-flex">
-                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 25</a>
-                                    <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 25</a>
-                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 25</a>
-                                </div>
-                            </div>
 
-                            <!-- Video Duration -->
-                            <span class="video-duration">05.03</span>
-                        </div>
-                    </div>
+
 
                     <div class="row mt-5">
                         @if (Model.InternalNews.Count != 0)
@@ -155,30 +140,30 @@
                                     <!-- Single Blog Post -->
                                     @foreach (var item in Model.InternalNews)
                                     {
-                                    <div class="single-post-area">
-                                        <!-- Post Thumbnail -->
-                                        <div class="post-thumbnail">
-                                            <img src="~/newsImage/@item.ImageName" alt="@item.ImageName">
+                                        <div class="single-post-area">
+                                            <!-- Post Thumbnail -->
+                                            <div class="post-thumbnail">
+                                                <img src="~/newsImage/@item.ImageName" alt="@item.ImageName">
 
-                                            <!-- Video Duration -->
-                                            <span class="video-duration">@item.PublishDateTime.ConvertMiladiToShamsi("dd MMMM yyyy")</span>
-                                        </div>
+                                                <!-- Video Duration -->
+                                                <span class="video-duration direction-rtl">@item.PublishDateTime.ConvertMiladiToShamsi("dd MMMM yyyy")</span>
+                                            </div>
 
-                                        <!-- Post Content -->
-                                        <div class="post-content">
-                                            <a href="#" class="post-cata cata-sm cata-primary">@item.NameOfCategories</a>
-                                            <a href="/@item.NewsId/@item.Url" class="post-title">@item.Title </a>
-                                            <div class="post-meta d-flex">
-                                                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> @item.NumberOfComment</a>
-                                                <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> @item.NumberOfVisit</a>
-                                                <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> @item.NumberOfLike</a>
-                                                <a href="#"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> @item.NumberOfDisLike</a>
+                                            <!-- Post Content -->
+                                            <div class="post-content">
+                                                <a href="#" class="post-cata cata-sm cata-primary">@item.NameOfCategories</a>
+                                                <a href="/@item.NewsId/@item.Url" class="post-title">@item.Title </a>
+                                                <div class="post-meta d-flex">
+                                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> @item.NumberOfComment</a>
+                                                    <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> @item.NumberOfVisit</a>
+                                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> @item.NumberOfLike</a>
+                                                    <a href="#"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> @item.NumberOfDisLike</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                     }
-                                    
-                                     
+
+
                                 </div>
                             </div>
 
@@ -204,7 +189,7 @@
                                                 <img src="~/newsImage/@item.ImageName" alt="@item.ImageName">
 
                                                 <!-- Video Duration -->
-                                                <span class="video-duration">@item.PublishDateTime.ConvertMiladiToShamsi("dd MMMM yyyy")</span>
+                                                <span class="video-duration direction-rtl">@item.PublishDateTime.ConvertMiladiToShamsi("dd MMMM yyyy")</span>
                                             </div>
 
                                             <!-- Post Content -->
@@ -292,7 +277,7 @@
             <div class="col-12 col-md-5 col-lg-4">
                 <div class="sidebar-area">
 
-            
+
                     <!-- ***** MostPopularNews***** -->
                     @if (Model.MostPopularNews.Count() != 0)
                     {
@@ -300,29 +285,15 @@
 
                         @await Html.PartialAsync("_MostPopularNews", Model.MostPopularNews)
                     }
+                    <!-- ***** Newsletter ***** -->
+                    @await Html.PartialAsync("_RegisterInNewsletter", new NewsletterViewModel())
 
+                    
                     <!-- ***** Single Widget ***** -->
-                    <div class="single-widget newsletter-widget mb-4 border">
-                        <!-- Section Heading -->
-                        <div class="section-heading style-2 mb-30">
-                            <h4>عضویت در خبرنامه</h4>
-                            <div class="line"></div>
-                        </div>
-                        <p>جهت دریافت جدیدترین اخبار ایمیل خود را وارد کنید.</p>
-                        <!-- Newsletter Form -->
-                        <div class="newsletter-form">
-                            <form action="#" method="post">
-                                <input type="email" name="nl-email" class="form-control mb-15" id="emailnl" placeholder="ایمیل خود را وارد کنید">
-                                <button type="submit" class="btn vizew-btn w-100">عضویت</button>
-                            </form>
-                        </div>
-                    </div>
+                    <div id="MostNewsDiv">
 
-                    <!-- ***** Single Widget ***** -->
-                    <div id="MostNewsDiv" class="container">
-                       
-                            @await Html.PartialAsync("_MostTalkNews", Model.MostTalkNews)
-                     
+                        @await Html.PartialAsync("_MostTalkNews", Model.MostTalkNews)
+
                     </div>
                 </div>
 

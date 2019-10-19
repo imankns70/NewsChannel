@@ -918,7 +918,7 @@ input:focus {
   .single-feature-post.video-post .video-duration {
     display: inline-block;
     position: absolute;
-    right: 30px;
+    left: 30px;
     bottom: 30px;
     background-color: #0f1112;
     padding: 6px 12px;
@@ -1953,8 +1953,13 @@ textarea.form-control {
 
 /*# custom Styles*/
 .direction-ltr{
-  direction: ltr !important;
+  direction: ltr ;
 }
+
+.direction-rtl {
+    direction: rtl !important;
+}
+
 
 .nav-tabs {
   background-color: #e7e7e7;

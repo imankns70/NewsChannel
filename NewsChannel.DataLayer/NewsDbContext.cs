@@ -20,12 +20,11 @@ namespace NewsChannel.DataLayer {
             builder.AddCustomNewsChannelMappings();
             //builder.Entity<News>().Property(x=>x.PublishDateTime)
             //.HasDefaultValueSql("CONVERT(datetime,GetDate())");
-            builder.Entity<Video>().Property(x=>x.PublishDateTime)
-            .HasDefaultValueSql("CONVERT(datetime,GetDate())");
-            builder.Entity<User>().Property(x => x.RegisterDateTime)
-                .HasDefaultValueSql("CONVERT(datetime,GetDate())");
-            builder.Entity<User>().Property(x => x.IsActive)
-                .HasDefaultValueSql("1");
+            builder.Entity<Video>().Property(x=>x.PublishDateTime).HasDefaultValueSql("CONVERT(datetime,GetDate())");
+            builder.Entity<User>().Property(x => x.RegisterDateTime).HasDefaultValueSql("CONVERT(datetime,GetDate())");
+            builder.Entity<User>().Property(x => x.IsActive).HasDefaultValueSql("1");
+            builder.Entity<NewsLetter>().Property(x => x.IsActive).HasDefaultValueSql("1");
+            builder.Entity<NewsLetter>().Property(x => x.RegisterDateTime).HasDefaultValueSql("CONVERT(datetime,GetDate())");
         }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<News> News { get; set; }

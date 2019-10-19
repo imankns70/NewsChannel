@@ -202,9 +202,13 @@ namespace NewsChannel.DataLayer.Migrations
 
                     b.Property<string>("Email");
 
-                    b.Property<bool>("IsActive");
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("1");
 
-                    b.Property<DateTime?>("RegisterDateTime");
+                    b.Property<DateTime?>("RegisterDateTime")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("CONVERT(datetime,GetDate())");
 
                     b.HasKey("Id");
 

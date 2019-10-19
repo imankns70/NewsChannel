@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using NewsChannel.DataLayer.Contracts;
 using NewsChannel.ViewModel.Home;
 using NewsChannel.ViewModel.News;
+using NewsChannel.ViewModel.Video;
 
 namespace NewsChannel.Controllers
 {
@@ -31,7 +32,9 @@ namespace NewsChannel.Controllers
             List<NewsViewModel> mostPopulerNews = await _uw.NewsRepository.MostPopularNews(0, 5);
             List<NewsViewModel> internalNews =  _uw.NewsRepository.GetPaginateNews(0, 10, item => "", item => item.First().PersianPublishDate,"",true,true);
             List<NewsViewModel> foreignNews =  _uw.NewsRepository.GetPaginateNews(0, 10, item => "", item => item.First().PersianPublishDate,"",true,false);
-            var homePageViewModel = new HomePageViewModel(news, mostViewedNews, mostTalkNews, mostPopulerNews,internalNews,foreignNews);
+            List<VideoViewModel> videos =await _uw.VideoRepository.GetPaginateVideosAsync(0, 10, null, false, "");
+            var homePageViewModel = new HomePageViewModel(news, mostViewedNews, mostTalkNews,
+                mostPopulerNews,internalNews,foreignNews, videos);
             return View(homePageViewModel);
 
 
