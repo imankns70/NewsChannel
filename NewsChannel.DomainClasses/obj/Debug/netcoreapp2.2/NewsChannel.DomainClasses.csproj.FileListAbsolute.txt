@@ -15,3 +15,4 @@ E:\project\NewsChannel\NewsChannel.DomainClasses\obj\Debug\netcoreapp2.2\NewsCha
 E:\project\NewsChannel\NewsChannel.DomainClasses\obj\Debug\netcoreapp2.2\NewsChannel.DomainClasses.AssemblyInfo.cs
 E:\project\NewsChannel\NewsChannel.DomainClasses\obj\Debug\netcoreapp2.2\NewsChannel.DomainClasses.dll
 E:\project\NewsChannel\NewsChannel.DomainClasses\obj\Debug\netcoreapp2.2\NewsChannel.DomainClasses.pdb
+D:\projects\NewsChannel\NewsChannel.DomainClasses\obj\Debug\netcoreapp2.2\NewsChannel.DomainClasses.csprojAssemblyReference.cache

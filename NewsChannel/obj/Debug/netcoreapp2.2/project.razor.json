@@ -3279,6 +3279,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Areas\\Admin\\Views\\SiteSetting\\Index.cshtml",
+      "TargetPath": "Areas\\Admin\\Views\\SiteSetting\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Areas\\Admin\\Views\\Category\\_CategoryTable.cshtml",
       "TargetPath": "Areas\\Admin\\Views\\Category\\_CategoryTable.cshtml",
       "FileKind": "mvc"

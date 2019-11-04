@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\projects\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj": {}
+    "D:\\projects\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj": {}
   },
   "projects": {
-    "d:\\projects\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj": {
+    "D:\\projects\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\projects\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj",
+        "projectUniqueName": "D:\\projects\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj",
         "projectName": "NewsChannel.Common",
-        "projectPath": "d:\\projects\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj",
+        "projectPath": "D:\\projects\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj",
         "packagesPath": "C:\\Users\\i.solouki\\.nuget\\packages\\",
-        "outputPath": "d:\\projects\\NewsChannel\\NewsChannel.Common\\obj\\",
+        "outputPath": "D:\\projects\\NewsChannel\\NewsChannel.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
