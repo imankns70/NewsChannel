@@ -67,6 +67,8 @@ namespace NewsChannel.ViewModel.UserManager
         [Display(Name = "تاریخ عضویت"),JsonProperty("تاریخ عضویت")]
         public string PersianRegisterDateTime { get; set; }
 
+        [Display(Name = "معرفی"),JsonProperty("معرفی")]
+        public string Bio { get; set; }
         [Display(Name = "فعال / غیرفعال"),JsonProperty("IsActive")]
         public bool IsActive { get; set; }
 

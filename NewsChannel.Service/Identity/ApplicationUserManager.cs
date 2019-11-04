@@ -125,6 +125,7 @@ namespace NewsChannel.Service.Identity
                         PhoneNumber = user.PhoneNumber,
                         FirstName = user.FirstName,
                         LastName = user.LastName,
+                        Bio = user.Bio,
                         IsActive = user.IsActive,
                         Image = user.Image,
                         PersianBirthDate = user.BirthDate.ConvertMiladiToShamsi("yyyy/MM/dd"),

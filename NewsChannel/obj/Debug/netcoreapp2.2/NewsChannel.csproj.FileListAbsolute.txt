@@ -158,5 +158,15 @@ E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\NewsChannel.Views.pdb
 E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\NewsChannel.csproj.CopyComplete
 E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\NewsChannel.dll
 E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\NewsChannel.pdb
+<<<<<<< HEAD
 E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Home\NewsDetails.g.cshtml.cs
 E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Home\_SubComments.g.cshtml.cs
+=======
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Newsletter\Index.g.cshtml.cs
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Newsletter\_DeleteConfirmation.g.cshtml.cs
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Newsletter\_NewsletterTable.g.cshtml.cs
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\SiteSetting\Index.g.cshtml.cs
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Components\RandomNewsList\Default.g.cshtml.cs
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Components\RandomVideosList\Default.g.cshtml.cs
+D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_RegisterInNewsletter.g.cshtml.cs
+>>>>>>> f5adda15f76ffbda836146420155e4de73ea0159

@@ -199,11 +199,21 @@
                                 <span asp-validation-for="PersianBirthDate" class="text-danger"></span>
                             </div>
                             <script>
-    $("#BirthDate").MdPersianDateTimePicker({
-         targetTextSelector:"#InputBirthDate",
-         placement:'top',
-    });
+                                $("#BirthDate").MdPersianDateTimePicker({
+                                    targetTextSelector:"#InputBirthDate",
+                                    placement:'top',
+                                });
                             </script>
+                            <div class="form-group row">
+                                <div class="col-md-3">
+                                    <label asp-for="Bio" class="control-label"></label>
+                                </div>
+                                <div class="col-md-9">
+                                    <textarea asp-for="PhoneNumber" class="form-control"></textarea>
+                           
+                                    <span asp-validation-for="Bio" class="text-danger"></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </form>

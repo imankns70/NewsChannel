@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -11,6 +11,10 @@
   <ItemGroup>
     <ProjectReference Include="..\NewsChannel.Common\NewsChannel.Common.csproj" />
     <ProjectReference Include="..\NewsChannel.DomainClasses\NewsChannel.DomainClasses.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="SiteSetting\" />
   </ItemGroup>
 
 </Project>

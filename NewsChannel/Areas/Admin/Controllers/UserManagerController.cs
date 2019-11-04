@@ -171,6 +171,7 @@ namespace NewsChannel.Areas.Admin.Controllers
                         user.FirstName = viewModel.FirstName;
                         user.LastName = viewModel.LastName;
                         user.BirthDate = viewModel.BirthDate;
+                        user.Bio = viewModel.Bio;
                         user.Email = viewModel.Email;
                         user.PhoneNumber = viewModel.PhoneNumber;
 
@@ -202,6 +203,7 @@ namespace NewsChannel.Areas.Admin.Controllers
                     user.Email = viewModel.Email;
                     user.BirthDate = viewModel.BirthDate;
                     user.PhoneNumber = viewModel.PhoneNumber;
+                    user.Bio = viewModel.Bio;
                     user.Image = viewModel.Image;
                     if (viewModel.Gender != null) user.Gender = viewModel.Gender.Value;
 
