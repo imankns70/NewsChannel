@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\projects\\NewsChannel\\NewsChannel.IocConfig\\NewsChannel.IocConfig.csproj": {}
+    "E:\\project\\NewsChannel\\NewsChannel.IocConfig\\NewsChannel.IocConfig.csproj": {}
   },
   "projects": {
-    "D:\\projects\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj": {
+    "E:\\project\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projects\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj",
+        "projectUniqueName": "E:\\project\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj",
         "projectName": "NewsChannel.Common",
-        "projectPath": "D:\\projects\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj",
-        "packagesPath": "C:\\Users\\i.solouki\\.nuget\\packages\\",
-        "outputPath": "D:\\projects\\NewsChannel\\NewsChannel.Common\\obj\\",
+        "projectPath": "E:\\project\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj",
+        "packagesPath": "C:\\Users\\iman\\.nuget\\packages\\",
+        "outputPath": "E:\\project\\NewsChannel\\NewsChannel.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\i.solouki\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\iman\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -68,20 +68,20 @@
         }
       }
     },
-    "D:\\projects\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj": {
+    "E:\\project\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projects\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj",
+        "projectUniqueName": "E:\\project\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj",
         "projectName": "NewsChannel.DataLayer",
-        "projectPath": "D:\\projects\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj",
-        "packagesPath": "C:\\Users\\i.solouki\\.nuget\\packages\\",
-        "outputPath": "D:\\projects\\NewsChannel\\NewsChannel.DataLayer\\obj\\",
+        "projectPath": "E:\\project\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj",
+        "packagesPath": "C:\\Users\\iman\\.nuget\\packages\\",
+        "outputPath": "E:\\project\\NewsChannel\\NewsChannel.DataLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\i.solouki\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\iman\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -94,11 +94,11 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "D:\\projects\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj": {
-                "projectPath": "D:\\projects\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj"
+              "E:\\project\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj": {
+                "projectPath": "E:\\project\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj"
               },
-              "D:\\projects\\NewsChannel\\NewsChannel.ViewModel\\NewsChannel.ViewModel.csproj": {
-                "projectPath": "D:\\projects\\NewsChannel\\NewsChannel.ViewModel\\NewsChannel.ViewModel.csproj"
+              "E:\\project\\NewsChannel\\NewsChannel.ViewModel\\NewsChannel.ViewModel.csproj": {
+                "projectPath": "E:\\project\\NewsChannel\\NewsChannel.ViewModel\\NewsChannel.ViewModel.csproj"
               }
             }
           }
@@ -145,20 +145,20 @@
         }
       }
     },
-    "D:\\projects\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj": {
+    "E:\\project\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projects\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj",
+        "projectUniqueName": "E:\\project\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj",
         "projectName": "NewsChannel.DomainClasses",
-        "projectPath": "D:\\projects\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj",
-        "packagesPath": "C:\\Users\\i.solouki\\.nuget\\packages\\",
-        "outputPath": "D:\\projects\\NewsChannel\\NewsChannel.DomainClasses\\obj\\",
+        "projectPath": "E:\\project\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj",
+        "packagesPath": "C:\\Users\\iman\\.nuget\\packages\\",
+        "outputPath": "E:\\project\\NewsChannel\\NewsChannel.DomainClasses\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\i.solouki\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\iman\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -201,20 +201,20 @@
         }
       }
     },
-    "D:\\projects\\NewsChannel\\NewsChannel.IocConfig\\NewsChannel.IocConfig.csproj": {
+    "E:\\project\\NewsChannel\\NewsChannel.IocConfig\\NewsChannel.IocConfig.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projects\\NewsChannel\\NewsChannel.IocConfig\\NewsChannel.IocConfig.csproj",
+        "projectUniqueName": "E:\\project\\NewsChannel\\NewsChannel.IocConfig\\NewsChannel.IocConfig.csproj",
         "projectName": "NewsChannel.IocConfig",
-        "projectPath": "D:\\projects\\NewsChannel\\NewsChannel.IocConfig\\NewsChannel.IocConfig.csproj",
-        "packagesPath": "C:\\Users\\i.solouki\\.nuget\\packages\\",
-        "outputPath": "D:\\projects\\NewsChannel\\NewsChannel.IocConfig\\obj\\",
+        "projectPath": "E:\\project\\NewsChannel\\NewsChannel.IocConfig\\NewsChannel.IocConfig.csproj",
+        "packagesPath": "C:\\Users\\iman\\.nuget\\packages\\",
+        "outputPath": "E:\\project\\NewsChannel\\NewsChannel.IocConfig\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\i.solouki\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\iman\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -227,11 +227,11 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "D:\\projects\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj": {
-                "projectPath": "D:\\projects\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj"
+              "E:\\project\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj": {
+                "projectPath": "E:\\project\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj"
               },
-              "D:\\projects\\NewsChannel\\NewsChannel.Service\\NewsChannel.Service.csproj": {
-                "projectPath": "D:\\projects\\NewsChannel\\NewsChannel.Service\\NewsChannel.Service.csproj"
+              "E:\\project\\NewsChannel\\NewsChannel.Service\\NewsChannel.Service.csproj": {
+                "projectPath": "E:\\project\\NewsChannel\\NewsChannel.Service\\NewsChannel.Service.csproj"
               }
             }
           }
@@ -264,20 +264,20 @@
         }
       }
     },
-    "D:\\projects\\NewsChannel\\NewsChannel.Service\\NewsChannel.Service.csproj": {
+    "E:\\project\\NewsChannel\\NewsChannel.Service\\NewsChannel.Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projects\\NewsChannel\\NewsChannel.Service\\NewsChannel.Service.csproj",
+        "projectUniqueName": "E:\\project\\NewsChannel\\NewsChannel.Service\\NewsChannel.Service.csproj",
         "projectName": "NewsChannel.Service",
-        "projectPath": "D:\\projects\\NewsChannel\\NewsChannel.Service\\NewsChannel.Service.csproj",
-        "packagesPath": "C:\\Users\\i.solouki\\.nuget\\packages\\",
-        "outputPath": "D:\\projects\\NewsChannel\\NewsChannel.Service\\obj\\",
+        "projectPath": "E:\\project\\NewsChannel\\NewsChannel.Service\\NewsChannel.Service.csproj",
+        "packagesPath": "C:\\Users\\iman\\.nuget\\packages\\",
+        "outputPath": "E:\\project\\NewsChannel\\NewsChannel.Service\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\i.solouki\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\iman\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -290,8 +290,8 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "D:\\projects\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj": {
-                "projectPath": "D:\\projects\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj"
+              "E:\\project\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj": {
+                "projectPath": "E:\\project\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj"
               }
             }
           }
@@ -320,20 +320,20 @@
         }
       }
     },
-    "D:\\projects\\NewsChannel\\NewsChannel.ViewModel\\NewsChannel.ViewModel.csproj": {
+    "E:\\project\\NewsChannel\\NewsChannel.ViewModel\\NewsChannel.ViewModel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projects\\NewsChannel\\NewsChannel.ViewModel\\NewsChannel.ViewModel.csproj",
+        "projectUniqueName": "E:\\project\\NewsChannel\\NewsChannel.ViewModel\\NewsChannel.ViewModel.csproj",
         "projectName": "NewsChannel.ViewModel",
-        "projectPath": "D:\\projects\\NewsChannel\\NewsChannel.ViewModel\\NewsChannel.ViewModel.csproj",
-        "packagesPath": "C:\\Users\\i.solouki\\.nuget\\packages\\",
-        "outputPath": "D:\\projects\\NewsChannel\\NewsChannel.ViewModel\\obj\\",
+        "projectPath": "E:\\project\\NewsChannel\\NewsChannel.ViewModel\\NewsChannel.ViewModel.csproj",
+        "packagesPath": "C:\\Users\\iman\\.nuget\\packages\\",
+        "outputPath": "E:\\project\\NewsChannel\\NewsChannel.ViewModel\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\i.solouki\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\iman\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -346,11 +346,11 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "D:\\projects\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj": {
-                "projectPath": "D:\\projects\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj"
+              "E:\\project\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj": {
+                "projectPath": "E:\\project\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj"
               },
-              "D:\\projects\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj": {
-                "projectPath": "D:\\projects\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj"
+              "E:\\project\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj": {
+                "projectPath": "E:\\project\\NewsChannel\\NewsChannel.DomainClasses\\NewsChannel.DomainClasses.csproj"
               }
             }
           }

@@ -337,6 +337,8 @@ namespace NewsChannel.DataLayer.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
+                    b.Property<string>("Bio");
+
                     b.Property<DateTime?>("BirthDate");
 
                     b.Property<string>("ConcurrencyStamp")
