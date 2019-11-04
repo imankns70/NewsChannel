@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "e:\\project\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj": {}
+    "d:\\projects\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj": {}
   },
   "projects": {
-    "e:\\project\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj": {
+    "d:\\projects\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\project\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj",
+        "projectUniqueName": "d:\\projects\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj",
         "projectName": "NewsChannel.Common",
-        "projectPath": "e:\\project\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj",
-        "packagesPath": "C:\\Users\\iman\\.nuget\\packages\\",
-        "outputPath": "e:\\project\\NewsChannel\\NewsChannel.Common\\obj\\",
+        "projectPath": "d:\\projects\\NewsChannel\\NewsChannel.Common\\NewsChannel.Common.csproj",
+        "packagesPath": "C:\\Users\\i.solouki\\.nuget\\packages\\",
+        "outputPath": "d:\\projects\\NewsChannel\\NewsChannel.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\iman\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\i.solouki\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -41,6 +41,10 @@
       "frameworks": {
         "netcoreapp2.2": {
           "dependencies": {
+            "MD.PersianDateTime.Core": {
+              "target": "Package",
+              "version": "[2.3.5, )"
+            },
             "Microsoft.AspNetCore.Identity": {
               "target": "Package",
               "version": "[2.2.0, )"
