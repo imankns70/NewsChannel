@@ -23,7 +23,7 @@ namespace NewsChannel.Areas.Admin.Controllers
 
         [HttpGet]
         public IActionResult Index()
-        {
+        { 
             var settings = new SettingsViewModel()
             {
                 Title = _writableLocations.Value.SiteInfo.Title,
