@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using NewsChannel.Common.Attributes;
 using NewsChannel.DomainClasses.Business;
+using NewsChannel.DomainClasses.Identity;
 using Newtonsoft.Json;
 
 namespace NewsChannel.ViewModel.News
@@ -25,6 +27,8 @@ namespace NewsChannel.ViewModel.News
         public bool FuturePublish { get; set; }
 
         [JsonIgnore]
+        public User AuthorInfo { get; set; }
+        [JsonIgnore]
         [Required(ErrorMessage = "وارد نمودن {0} الزامی است."),Display(Name = "چکیده")] 
         public string Abstract { get; set; }
 
@@ -42,6 +46,9 @@ namespace NewsChannel.ViewModel.News
         [JsonIgnore]
         public int UserId { get; set; }
 
+
+        [JsonIgnore]
+        public int? TagId { get; set; }
         [JsonProperty("نویسنده")]
         public string AuthorName { get; set; }
 
@@ -61,7 +68,7 @@ namespace NewsChannel.ViewModel.News
 
         [JsonProperty("تگ ها")]
         public string NameOfTags { get; set; }
-
+      
 
         [JsonProperty("نوع خبر")]
         public string NewsType { get; set; }
@@ -82,6 +89,7 @@ namespace NewsChannel.ViewModel.News
 
         [Required(ErrorMessage = "وارد نمودن {0} الزامی است.")]
         [Display(Name = "آدرس خبر"), JsonProperty("آدرس")]
+        [UrlValidate("/", @"\", " ")]
         public string Url { get; set; }
 
         [JsonProperty("Status")]
@@ -105,5 +113,8 @@ namespace NewsChannel.ViewModel.News
         public virtual ICollection<NewsTag> NewsTags { get; set; }
         [JsonIgnore]
         public virtual List<string> TagNames { get; set; }
+
+        [JsonIgnore]
+        public virtual List<int?> TagIds { get; set; }
     }
 }

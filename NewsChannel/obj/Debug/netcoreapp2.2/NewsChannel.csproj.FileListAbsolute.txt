@@ -158,3 +158,5 @@ E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\NewsChannel.Views.pdb
 E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\NewsChannel.csproj.CopyComplete
 E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\NewsChannel.dll
 E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\NewsChannel.pdb
+E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Home\NewsDetails.g.cshtml.cs
+E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Home\_SubComments.g.cshtml.cs

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using NewsChannel.Common;
 using NewsChannel.DataLayer.Contracts;
+using NewsChannel.DomainClasses.Business;
 using NewsChannel.ViewModel.News;
 
 namespace NewsChannel.DataLayer.Repositories
@@ -254,5 +255,166 @@ namespace NewsChannel.DataLayer.Repositories
                           })).OrderByDescending(o => o.NumberOfLike).Skip(offset).Take(limit).AsNoTracking().ToListAsync();
 
         }
+
+        public async Task<NewsViewModel> GetNewsById(int newsId)
+        {
+            string nameOfCategories = "";
+            var newsGroup = await (from n in _context.News.Include(v => v.Visits).Include(l => l.Likes).Include(u => u.User).Include(c => c.Comments)
+                                   join e in _context.NewsCategories on n.Id equals e.NewsId into bc
+                                   from bct in bc.DefaultIfEmpty()
+                                   join c in _context.Categories on bct.CategoryId equals c.Id into cg
+                                   from cog in cg.DefaultIfEmpty()
+                                   join a in _context.NewsTags on n.Id equals a.NewsId into ac
+                                   from act in ac.DefaultIfEmpty()
+                                   join t in _context.Tags on act.TagId equals t.Id into tg
+                                   from tog in tg.DefaultIfEmpty()
+                                   where (n.Id == newsId)
+                                   select (new NewsViewModel
+                                   {
+                                       NewsId = n.Id,
+                                       Title = n.Title,
+                                       Abstract = n.Abstract,
+                                       ShortTitle = n.Title.Length > 50 ? n.Title.Substring(0, 50) + "..." : n.Title,
+                                       Url = n.Url,
+                                       ImageName = n.ImageName,
+                                       Description = n.Description,
+                                       NumberOfVisit = n.Visits.Select(v => v.NumberOfVisit).Sum(),
+                                       NumberOfLike = n.Likes.Count(l => l.IsLike == true),
+                                       NumberOfDisLike = n.Likes.Count(l => l.IsLike == false),
+                                       NumberOfComment = n.Comments.Count(c => c.IsConfirm == true),
+                                       NameOfCategories = cog != null ? cog.CategoryName : "",
+                                       NameOfTags = tog != null ? tog.TagName : "",
+                                       TagId =  tog.Id,
+                                       AuthorInfo = n.User,
+                                       IsPublish = n.IsPublish,
+                                       NewsType = n.IsInternal == true ? "داخلی" : "خارجی",
+                                       PublishDateTime = n.PublishDateTime == null ? new DateTime(01, 01, 01) : n.PublishDateTime,
+                                       PersianPublishDate = n.PublishDateTime == null ? "-" : n.PublishDateTime.ConvertMiladiToShamsi("yyyy/MM/dd ساعت HH:mm:ss"),
+                                   })).GroupBy(b => b.NewsId).Select(g => new { NewsId = g.Key, NewsGroup = g }).AsNoTracking().ToListAsync();
+
+
+            foreach (var a in newsGroup.First().NewsGroup.Select(a => a.NameOfCategories).Distinct())
+            {
+                if (nameOfCategories == "")
+                    nameOfCategories = a;
+                else
+                    nameOfCategories = nameOfCategories + " - " + a;
+            }
+
+            var news = new NewsViewModel()
+            {
+                NewsId = newsGroup.First().NewsGroup.First().NewsId,
+                Title = newsGroup.First().NewsGroup.First().Title,
+                ShortTitle = newsGroup.First().NewsGroup.First().ShortTitle,
+                Abstract = newsGroup.First().NewsGroup.First().Abstract,
+                Url = newsGroup.First().NewsGroup.First().Url,
+                Description = newsGroup.First().NewsGroup.First().Description,
+                NumberOfVisit = newsGroup.First().NewsGroup.First().NumberOfVisit,
+                NumberOfDisLike = newsGroup.First().NewsGroup.First().NumberOfDisLike,
+                NumberOfLike = newsGroup.First().NewsGroup.First().NumberOfLike,
+                PersianPublishDate = newsGroup.First().NewsGroup.First().PersianPublishDate,
+                NewsType = newsGroup.First().NewsGroup.First().NewsType,
+                Status = newsGroup.First().NewsGroup.First().IsPublish == false ? "پیش نویس" : (newsGroup.First().NewsGroup.First().PublishDateTime > DateTime.Now ? "انتشار در آینده" : "منتشر شده"),
+                NameOfCategories = nameOfCategories,
+                TagNames = newsGroup.First().NewsGroup.Select(a => a.NameOfTags).Distinct().ToList(),
+                TagIds = newsGroup.First().NewsGroup.Select(a => a.TagId).Distinct().ToList(),
+                ImageName = newsGroup.First().NewsGroup.First().ImageName,
+                AuthorInfo = newsGroup.First().NewsGroup.First().AuthorInfo,
+                NumberOfComment = newsGroup.First().NewsGroup.First().NumberOfComment,
+                PublishDateTime = newsGroup.First().NewsGroup.First().PublishDateTime,
+            };
+
+            return news;
+        }
+        public async Task<List<NewsViewModel>> GetNextAndPreviousNews(DateTime? publishDateTime)
+        {
+            var newsList = new List<NewsViewModel>();
+            newsList.Add(await (from n in _context.News.Include(v => v.Visits).Include(l => l.Likes).Include(c => c.Comments)
+                                where (n.IsPublish == true && n.PublishDateTime <= DateTime.Now && n.PublishDateTime < publishDateTime)
+                                select (new NewsViewModel
+                                {
+                                    NewsId = n.Id,
+                                    ShortTitle = n.Title.Length > 50 ? n.Title.Substring(0, 50) + "..." : n.Title,
+                                    Url = n.Url,
+                                    Title = n.Title,
+                                    NumberOfVisit = n.Visits.Select(v => v.NumberOfVisit).Sum(),
+                                    NumberOfLike = n.Likes.Count(l => l.IsLike == true),
+                                    NumberOfDisLike = n.Likes.Count(l => l.IsLike == false),
+                                    NumberOfComment = n.Comments.Count(),
+                                    ImageName = n.ImageName,
+                                    PublishDateTime = n.PublishDateTime ?? new DateTime(01, 01, 01),
+                                })).OrderByDescending(o => o.PublishDateTime).AsNoTracking().FirstOrDefaultAsync());
+
+            newsList.Add(await (from n in _context.News.Include(v => v.Visits).Include(l => l.Likes).Include(c => c.Comments)
+                                where (n.IsPublish == true && n.PublishDateTime <= DateTime.Now && n.PublishDateTime > publishDateTime)
+                                select (new NewsViewModel
+                                {
+                                    NewsId = n.Id,
+                                    ShortTitle = n.Title.Length > 50 ? n.Title.Substring(0, 50) + "..." : n.Title,
+                                    Url = n.Url,
+                                    Title = n.Title,
+                                    NumberOfVisit = n.Visits.Select(v => v.NumberOfVisit).Sum(),
+                                    NumberOfLike = n.Likes.Count(l => l.IsLike == true),
+                                    NumberOfDisLike = n.Likes.Count(l => l.IsLike == false),
+                                    NumberOfComment = n.Comments.Count(),
+                                    ImageName = n.ImageName,
+                                    PublishDateTime = n.PublishDateTime ?? new DateTime(01, 01, 01),
+                                })).OrderBy(o => o.PublishDateTime).AsNoTracking().FirstOrDefaultAsync());
+
+            return newsList;
+        }
+
+        public async Task<List<Comment>> GetNewsCommentsAsync(int newsId)
+        {
+            var comments = await (from c in _context.Comments
+                                  where ( c.NewsId == newsId && c.IsConfirm == true)
+                                  select new Comment { Id = c.Id, Description = c.Description, Email = c.Email, PostageDateTime = c.PostageDateTime, Name = c.Name, IsConfirm = c.IsConfirm }).ToListAsync();
+            foreach (var item in comments)
+                await BindSubComments(item);
+
+            return comments;
+        }
+
+        public async Task BindSubComments(Comment comment)
+        {
+            var subComments = await (from c in _context.Comments
+                                     where (c.ParentCommentId == comment.Id && c.IsConfirm == true)
+                                     select new Comment { Id = c.Id, Description = c.Description, Email = c.Email, PostageDateTime = c.PostageDateTime, Name = c.Name, IsConfirm = c.IsConfirm }).ToListAsync();
+
+            foreach (var item in subComments)
+            {
+                await BindSubComments(item);
+                comment.Comments.Add(item);
+            }
+        }
+
+        public async Task<List<NewsViewModel>> GetRelatedNews(int number, List<int?> tagIdList, int newsId)
+        {
+            var newsList = new List<NewsViewModel>();
+            int newsCount = _context.News.Include(t => t.NewsTags).Count(n => n.IsPublish == true && n.PublishDateTime <= DateTime.Now && tagIdList.Any(y => n.NewsTags.Select(x => x.TagId).Contains(y.Value)) && n.Id != newsId);
+            for (int i = 0; i < number && i < newsCount; i++)
+            {
+                var randomRow = CustomMethods.RandomNumber(1, newsCount + 1);
+                var news = await _context.News.Include(t => t.NewsTags).Include(c => c.Comments).Include(l => l.Likes).Include(l => l.Visits).Where(n => n.IsPublish == true && n.PublishDateTime <= DateTime.Now && tagIdList.Any(y => n.NewsTags.Select(x => x.TagId).Contains(y.Value)) && n.Id != newsId)
+                    .Select(n => new NewsViewModel
+                    {
+                        Title = n.Title,
+                        Url = n.Url,
+                        NewsId = n.Id,
+                        ImageName = n.ImageName,
+                        PublishDateTime = n.PublishDateTime,
+                        NumberOfVisit = n.Visits.Select(v => v.NumberOfVisit).Sum(),
+                        NumberOfLike = n.Likes.Count(l => l.IsLike == true),
+                        NumberOfDisLike = n.Likes.Count(l => l.IsLike == false),
+                        NumberOfComment = n.Comments.Count(),
+                    })
+                    .Skip(randomRow - 1).Take(1).FirstOrDefaultAsync();
+
+                newsList.Add(news);
+            }
+
+            return newsList;
+        }
     }
+
 }

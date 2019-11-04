@@ -12,6 +12,7 @@ namespace NewsChannel.DomainClasses.Identity
      public string LastName { get; set; }   
      public DateTime? BirthDate { get; set; }   
      public string Image { get; set; }   
+     public string Bio { get; set; }   
      public DateTime? RegisterDateTime { get; set; }   
      public bool IsActive { get; set; }   
      public GenderType Gender { get; set; } 

@@ -1,0 +1,28 @@
+﻿@model List<NewsChannel.DomainClasses.Business.Comment>
+@using Microsoft.AspNetCore.Mvc.Rendering
+@using NewsChannel.Common
+<ol class="children mt-2" style="border-top:1px dotted #fff">
+    @foreach (var sub in Model)
+    {
+        <li class="single_comment_area">
+            <div class="comment-content d-flex">
+                <div class="comment-author">
+                    <img src="~/assets/img/UserPic.png" alt="author">
+                </div>
+                <div class="comment-meta">
+                    <a href="#" class="comment-date">@sub.PostageDateTime.ConvertMiladiToShamsi("dd MMMM yyyy ساعت HH:mm")</a>
+                    <h6>@sub.Name</h6>
+                    <p>@sub.Description</p>
+                    <div class="d-flex align-items-center">
+                        <a href="#" class="reply">پاسخ</a>
+                    </div>
+                </div>
+            </div>
+            @if (sub.Comments.Count() != 0)
+            {
+                @await Html.PartialAsync("_SubComments", sub.Comments.ToList())
+            }
+
+        </li>
+    }
+</ol>
