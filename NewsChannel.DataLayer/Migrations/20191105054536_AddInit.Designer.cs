@@ -10,8 +10,8 @@ using NewsChannel.DataLayer;
 namespace NewsChannel.DataLayer.Migrations
 {
     [DbContext(typeof(NewsDbContext))]
-    [Migration("20190907105953_GenerateDb2")]
-    partial class GenerateDb2
+    [Migration("20191105054536_AddInit")]
+    partial class AddInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -141,6 +141,8 @@ namespace NewsChannel.DataLayer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Abstract");
+
                     b.Property<string>("Description");
 
                     b.Property<string>("ImageName");
@@ -149,9 +151,7 @@ namespace NewsChannel.DataLayer.Migrations
 
                     b.Property<bool>("IsPublish");
 
-                    b.Property<DateTime?>("PublishDateTime")
-                        .ValueGeneratedOnAdd()
-                        .HasDefaultValueSql("CONVERT(datetime,GetDate())");
+                    b.Property<DateTime?>("PublishDateTime");
 
                     b.Property<string>("Title");
 
@@ -204,9 +204,13 @@ namespace NewsChannel.DataLayer.Migrations
 
                     b.Property<string>("Email");
 
-                    b.Property<bool>("IsActive");
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("1");
 
-                    b.Property<DateTime?>("RegisterDateTime");
+                    b.Property<DateTime?>("RegisterDateTime")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("CONVERT(datetime,GetDate())");
 
                     b.HasKey("Id");
 
@@ -334,6 +338,8 @@ namespace NewsChannel.DataLayer.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("AccessFailedCount");
+
+                    b.Property<string>("Bio");
 
                     b.Property<DateTime?>("BirthDate");
 

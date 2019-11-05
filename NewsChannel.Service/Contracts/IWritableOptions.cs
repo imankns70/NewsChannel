@@ -5,7 +5,7 @@ namespace NewsChannel.Service.Contracts
 {
     public interface IWritableOptions<out T> : IOptions<T> where T : class, new()
     {
-        T Value { get;}
+        new T Value { get;}
         void Update(Action<T> applyChanges);
     }
 }

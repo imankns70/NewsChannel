@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace NewsChannel.DataLayer.Migrations
 {
-    public partial class Initialize : Migration
+    public partial class AddInit : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -48,8 +48,9 @@ namespace NewsChannel.DataLayer.Migrations
                     LastName = table.Column<string>(nullable: true),
                     BirthDate = table.Column<DateTime>(nullable: true),
                     Image = table.Column<string>(nullable: true),
-                    RegisterDateTime = table.Column<DateTime>(nullable: true),
-                    IsActive = table.Column<bool>(nullable: false),
+                    Bio = table.Column<string>(nullable: true),
+                    RegisterDateTime = table.Column<DateTime>(nullable: true, defaultValueSql: "CONVERT(datetime,GetDate())"),
+                    IsActive = table.Column<bool>(nullable: false, defaultValueSql: "1"),
                     Gender = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -85,8 +86,8 @@ namespace NewsChannel.DataLayer.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Email = table.Column<string>(nullable: true),
-                    RegisterDateTime = table.Column<DateTime>(nullable: true),
-                    IsActive = table.Column<bool>(nullable: false)
+                    RegisterDateTime = table.Column<DateTime>(nullable: true, defaultValueSql: "CONVERT(datetime,GetDate())"),
+                    IsActive = table.Column<bool>(nullable: false, defaultValueSql: "1")
                 },
                 constraints: table =>
                 {
@@ -236,12 +237,13 @@ namespace NewsChannel.DataLayer.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Title = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    PublishDateTime = table.Column<DateTime>(nullable: true, defaultValueSql: "CONVERT(datetime,GetDate())"),
+                    PublishDateTime = table.Column<DateTime>(nullable: true),
                     UserId = table.Column<int>(nullable: false),
                     Url = table.Column<string>(nullable: true),
                     ImageName = table.Column<string>(nullable: true),
                     IsPublish = table.Column<bool>(nullable: false),
-                    IsInternal = table.Column<bool>(nullable: false)
+                    IsInternal = table.Column<bool>(nullable: false),
+                    Abstract = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

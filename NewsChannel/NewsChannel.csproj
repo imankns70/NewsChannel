@@ -20,7 +20,7 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\SiteSetting\" />
-    <Folder Include="Controllers\" />
+    <Folder Include="Views\Account\" />
     <Folder Include="wwwroot\avatars\" />
     <Folder Include="wwwroot\newsImage\" />
     <Folder Include="wwwroot\posters\" />

@@ -19,8 +19,7 @@ namespace NewsChannel.Areas.Admin.Controllers
         private readonly IMapper _mapper;
         private readonly IHostingEnvironment _env;
         private const string VideoNotFound = "ویدیو درخواستی یافت نشد.";
-        public const string InvalidImage = "عکس نامعتبر است.";
-
+ 
 
         public VideoController(IUnitOfWork uw, IMapper mapper, IHostingEnvironment env)
         {

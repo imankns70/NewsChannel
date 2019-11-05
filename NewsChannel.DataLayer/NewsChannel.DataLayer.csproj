@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -16,6 +16,10 @@
   <ItemGroup>
     <ProjectReference Include="..\NewsChannel.DomainClasses\NewsChannel.DomainClasses.csproj" />
     <ProjectReference Include="..\NewsChannel.ViewModel\NewsChannel.ViewModel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
    
