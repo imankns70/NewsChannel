@@ -36,13 +36,13 @@
                 placeholder.find(".modal-body").replaceWith(newBody);
                 placeholder.find(".modal-footer").replaceWith(newFooter);
 
-            var IsValid = newBody.find("input[name='IsValid']").val() === "True";
-            if (IsValid) {
+            var isValid = newBody.find("input[name='IsValid']").val() === "True";
+            if (isValid) {
                 $.ajax({ url: '/Admin/Base/Notification', error: function () { ShowSweetErrorAlert(); } }).done(function (notification) {
-                    ShowSweetSuccessAlert(notification)
+                    ShowSweetSuccessAlert(notification);
                 });
 
-                $table.bootstrapTable('refresh')
+                $table.bootstrapTable('refresh');
                 placeholder.find(".modal").modal('hide');
             }
         });

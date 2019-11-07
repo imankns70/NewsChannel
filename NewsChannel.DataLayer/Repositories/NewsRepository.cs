@@ -415,6 +415,20 @@ namespace NewsChannel.DataLayer.Repositories
 
             return newsList;
         }
+        public async Task<List<NewsViewModel>> GetUserBookmarksAsync(int userId)
+        {
+
+            return await _context.BookMarks.Include(s => s.News).Where(x => x.UserId == userId)
+                .Select(n => new NewsViewModel
+                {
+                    NewsId = n.NewsId,
+                    Title = n.News.Title,
+                    PersianPublishDate = n.News.PublishDateTime.ConvertMiladiToShamsi("dd MMMM yyyy ساعت HH:mm"),
+                    Url = n.News.Url
+                }).ToListAsync();
+            
+
+        }
     }
 
 }

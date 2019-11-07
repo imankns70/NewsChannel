@@ -54,8 +54,9 @@
                             </div>
                             <div class="col-md-6 pl-0">
                                 <input asp-for="Url" class="form-control"/>
-                             </div>
-                            <div class="col-md-6 text-left pr-0">@string.Format("/{0}:://{1}", Context.Request.Scheme, Context.Request.Host)</div>
+                            </div>
+                            @*show the server address like https://localhost/754852 *@
+                            <div class="col-md-6 text-left pr-0">@($"/{Context.Request.Scheme}:://{Context.Request.Host}")</div>
                             <span asp-validation-for="Url" class="text-danger mt-2"></span>
 
                         </div>

@@ -14,7 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Account\" />
     <Folder Include="SiteSetting\" />
   </ItemGroup>
 

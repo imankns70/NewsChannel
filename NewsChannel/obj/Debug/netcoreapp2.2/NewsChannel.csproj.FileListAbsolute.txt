@@ -174,3 +174,10 @@ D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Account\
 D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Account\Profile.g.cshtml.cs
 D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Account\_Register.g.cshtml.cs
 D:\projects\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Account\_SignIn.g.cshtml.cs
+E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Account\ConfirmEmail.g.cshtml.cs
+E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Account\Profile.g.cshtml.cs
+E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Account\_Register.g.cshtml.cs
+E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Account\_SignIn.g.cshtml.cs
+E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_UserLogin.g.cshtml.cs
+E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Account\_Bookmarks.g.cshtml.cs
+E:\project\NewsChannel\NewsChannel\obj\Debug\netcoreapp2.2\Razor\Views\Account\_DeleteConfirmation.g.cshtml.cs

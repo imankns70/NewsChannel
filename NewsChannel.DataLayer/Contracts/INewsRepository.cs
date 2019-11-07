@@ -20,5 +20,6 @@ namespace NewsChannel.DataLayer.Contracts
         Task<List<NewsViewModel>> GetNextAndPreviousNews(DateTime? publishDateTime);
         Task<List<NewsViewModel>> GetRelatedNews(int number, List<int?> tagIdList, int newsId);
         Task<List<Comment>> GetNewsCommentsAsync(int newsId);
+        Task<List<NewsViewModel>> GetUserBookmarksAsync(int userId);
     }
 }

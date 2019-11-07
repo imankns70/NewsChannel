@@ -20,13 +20,13 @@ namespace NewsChannel.Service
         {
             using (var Client = new SmtpClient())
             {
-                var Credential = new NetworkCredential
+                var credential = new NetworkCredential
                 {
                     UserName = _writableLocations.Value.EmailSetting.Username,
                     Password = _writableLocations.Value.EmailSetting.Password,
                 };
 
-                Client.Credentials = Credential;
+                Client.Credentials = credential;
                 Client.Host = _writableLocations.Value.EmailSetting.Host;
                 Client.Port = _writableLocations.Value.EmailSetting.Port;
                 Client.EnableSsl = true;

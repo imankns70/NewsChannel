@@ -547,7 +547,7 @@ input:focus {
 
     .top-header-area .top-social-info a {
         display: inline-block;
-        padding: 0 15px;
+        padding: 0 12px;
     }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -603,7 +603,7 @@ input:focus {
     -webkit-transition-duration: 500ms;
     -o-transition-duration: 500ms;
     transition-duration: 500ms;
-    width: 250px;
+    width: 200px;
     height: 50px;
     border: none;
     color: #a6a6a6;
@@ -1998,20 +1998,6 @@ line-height: 1.5;
     .comment-meta .d-flex {
         float: left !important;
     }
-
-.children li {
-    background-color: #db4437;
-    color: #fff !important;
-    border: none !important;
-}
-
-.children .comment-date {
-    color: #fff !important;
-}
-
-.children p {
-    color: #fff;
-}
 
 .comment_area {
     position: relative;
