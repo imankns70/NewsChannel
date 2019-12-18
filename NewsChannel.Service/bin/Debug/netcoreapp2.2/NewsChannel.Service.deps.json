@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v2.2": {
       "NewsChannel.Service/1.0.0": {
         "dependencies": {
-          "NewsChannel.DataLayer": "1.0.0"
+          "NewsChannel.DataLayer": "1.0.0",
+          "NewsChannel.ViewModel": "1.0.0"
         },
         "runtime": {
           "NewsChannel.Service.dll": {}

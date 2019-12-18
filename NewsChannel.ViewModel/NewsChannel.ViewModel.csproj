@@ -9,12 +9,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="SiteSetting\" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\NewsChannel.Common\NewsChannel.Common.csproj" />
     <ProjectReference Include="..\NewsChannel.DomainClasses\NewsChannel.DomainClasses.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="SiteSetting\" />
+    <Reference Include="Microsoft.AspNetCore.Http.Features">
+      <HintPath>C:\Users\iman\.nuget\packages\microsoft.aspnetcore.http.features\2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Http.Features.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

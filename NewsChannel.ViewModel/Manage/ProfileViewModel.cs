@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http;
 using NewsChannel.DomainClasses.Identity;
 
+
 namespace NewsChannel.ViewModel.Manage
 {
     public class ProfileViewModel

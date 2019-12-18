@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NewsChannel.Common;
 using NewsChannel.Common.Attributes;
 using NewsChannel.DataLayer.Contracts;
 using NewsChannel.DomainClasses.Business;
 using NewsChannel.ViewModel.Category;
+using NewsChannel.ViewModel.DynamicAccess;
 
 namespace NewsChannel.Areas.Admin.Controllers
 {
+    [DisplayName("دسته بندی خبر")]
     public class CategoryController : BaseController
     {
 
@@ -26,7 +30,8 @@ namespace NewsChannel.Areas.Admin.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet]
+        [HttpGet, DisplayName("نمایش دسته بندی")]
+        [Authorize(Policy = ConstantPolicies.DynamicPermission, Roles = "Admin")]
         public IActionResult Index()
         {
             return View();

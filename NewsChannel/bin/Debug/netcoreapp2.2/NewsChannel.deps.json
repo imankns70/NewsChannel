@@ -635,7 +635,6 @@
       "NewsChannel.IocConfig/1.0.0": {
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "6.0.0",
-          "NewsChannel.DataLayer": "1.0.0",
           "NewsChannel.Service": "1.0.0"
         },
         "runtime": {
@@ -647,7 +646,8 @@
       },
       "NewsChannel.Service/1.0.0": {
         "dependencies": {
-          "NewsChannel.DataLayer": "1.0.0"
+          "NewsChannel.DataLayer": "1.0.0",
+          "NewsChannel.ViewModel": "1.0.0"
         },
         "runtime": {
           "NewsChannel.Service.dll": {}

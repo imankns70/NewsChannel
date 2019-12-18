@@ -8143,7 +8143,8 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
       "Microsoft.NETCore.App >= 2.2.0",
-      "NewsChannel.DataLayer >= 1.0.0"
+      "NewsChannel.DataLayer >= 1.0.0",
+      "NewsChannel.ViewModel >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -8178,6 +8179,9 @@
           "projectReferences": {
             "E:\\project\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj": {
               "projectPath": "E:\\project\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj"
+            },
+            "E:\\project\\NewsChannel\\NewsChannel.ViewModel\\NewsChannel.ViewModel.csproj": {
+              "projectPath": "E:\\project\\NewsChannel\\NewsChannel.ViewModel\\NewsChannel.ViewModel.csproj"
             }
           }
         }

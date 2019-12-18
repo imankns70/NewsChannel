@@ -125,5 +125,11 @@ namespace NewsChannel.Common
             string[] weekArray = { "شنبه", "یکشنبه", "دوشنبه", "سه شنبه", "چهار شنبه", "پنج شنبه", "جمعه" };
             return Array.IndexOf(weekArray,week);
         }
+
+        public static string[] GetMonth()
+        {
+            string[] month = { "فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند" };
+            return month;
+        }
     }
 }

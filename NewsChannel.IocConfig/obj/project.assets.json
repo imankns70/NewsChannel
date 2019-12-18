@@ -2689,7 +2689,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
         "dependencies": {
-          "NewsChannel.DataLayer": "1.0.0"
+          "NewsChannel.DataLayer": "1.0.0",
+          "NewsChannel.ViewModel": "1.0.0"
         },
         "compile": {
           "bin/placeholder/NewsChannel.Service.dll": {}
@@ -8218,7 +8219,6 @@
     ".NETCoreApp,Version=v2.2": [
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 6.0.0",
       "Microsoft.NETCore.App >= 2.2.0",
-      "NewsChannel.DataLayer >= 1.0.0",
       "NewsChannel.Service >= 1.0.0"
     ]
   },
@@ -8252,9 +8252,6 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "E:\\project\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj": {
-              "projectPath": "E:\\project\\NewsChannel\\NewsChannel.DataLayer\\NewsChannel.DataLayer.csproj"
-            },
             "E:\\project\\NewsChannel\\NewsChannel.Service\\NewsChannel.Service.csproj": {
               "projectPath": "E:\\project\\NewsChannel\\NewsChannel.Service\\NewsChannel.Service.csproj"
             }

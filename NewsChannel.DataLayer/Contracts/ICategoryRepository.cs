@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using NewsChannel.DomainClasses.Business;
 using NewsChannel.ViewModel.Category;
 
+
 namespace NewsChannel.DataLayer.Contracts
 {
     public interface ICategoryRepository

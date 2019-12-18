@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
@@ -12,10 +14,12 @@ using NewsChannel.Common;
 using NewsChannel.Common.Attributes;
 using NewsChannel.DataLayer.Contracts;
 using NewsChannel.DomainClasses.Business;
+using NewsChannel.ViewModel.DynamicAccess;
 using NewsChannel.ViewModel.News;
 
 namespace NewsChannel.Areas.Admin.Controllers
 {
+    [DisplayName("صفحه اخبار")]
     public class NewsController : BaseController
     {
         private readonly IUnitOfWork _uw;
@@ -35,7 +39,8 @@ namespace NewsChannel.Areas.Admin.Controllers
             _mapper.CheckArgumentIsNull(nameof(_mapper));
         }
 
-        [HttpGet]
+        [HttpGet, DisplayName("نمایش اخبار")]
+        [Authorize(Policy = ConstantPolicies.DynamicPermission,Roles = "Admin")]
         public IActionResult Index()
         {
             return View();
@@ -56,9 +61,9 @@ namespace NewsChannel.Areas.Admin.Controllers
             if (sort == "ShortTitle")
             {
                 if (order == "asc")
-                    news =  _uw.NewsRepository.GetPaginateNews(offset, limit, item=>item.First().Title, item=>"", search, null,null);
+                    news = _uw.NewsRepository.GetPaginateNews(offset, limit, item => item.First().Title, item => "", search, null, null);
                 else
-                    news =  _uw.NewsRepository.GetPaginateNews(offset, limit, item => "", item => item.First().Title, search, null, null);
+                    news = _uw.NewsRepository.GetPaginateNews(offset, limit, item => "", item => item.First().Title, search, null, null);
             }
 
             else if (sort == "بازدید")
@@ -101,7 +106,8 @@ namespace NewsChannel.Areas.Admin.Controllers
             return Json(new { total = total, rows = news });
         }
 
-        [HttpGet]
+        [HttpGet, DisplayName("درج و ویرایش")]
+        [Authorize(Policy = ConstantPolicies.DynamicPermission)]
         public async Task<IActionResult> CreateOrUpdate(int? newsId)
         {
             NewsViewModel newsViewModel = new NewsViewModel();
@@ -138,7 +144,7 @@ namespace NewsChannel.Areas.Admin.Controllers
                         if (newsViewModel != null)
                         {
                             newsViewModel.FuturePublish = true;
-                             
+
                             newsViewModel.PersianPublishDate = news.FirstOrDefault()?.PublishDateTime
                                 .ConvertMiladiToShamsi("yyyy/MM/dd");
                             var publishDateTime = news.FirstOrDefault()?.PublishDateTime;
@@ -186,7 +192,7 @@ namespace NewsChannel.Areas.Admin.Controllers
 
                 if (viewModel.NewsId != null)
                 {
-                     
+
                     news = _uw.BaseRepository<News>().FindByConditionAsync(n => n.Id == viewModel.NewsId, null, n => n.NewsCategories, n => n.NewsTags).Result.FirstOrDefault();
                     if (news == null)
                         ModelState.AddModelError(string.Empty, NewsNotFound);
@@ -222,7 +228,7 @@ namespace NewsChannel.Areas.Admin.Controllers
                         if (viewModel.CategoryIds != null)
 
                             news.NewsCategories = viewModel.CategoryIds.Select(c => new NewsCategory { CategoryId = c, NewsId = news.Id }).ToList();
-                        
+
                         news.Description = viewModel.Description;
                         news.ImageName = viewModel.ImageName;
                         news.Url = viewModel.Url;
@@ -233,7 +239,7 @@ namespace NewsChannel.Areas.Admin.Controllers
                         news.UserId = viewModel.UserId;
                         news.Abstract = viewModel.Abstract;
 
-                       
+
 
 
                         _uw.BaseRepository<News>().Update(news);
@@ -258,7 +264,7 @@ namespace NewsChannel.Areas.Admin.Controllers
                             viewModel.PublishDateTime = viewModel.PersianPublishDate.ConvertShamsiToMiladi().Date + new TimeSpan(int.Parse(persianTimeArray[0]), int.Parse(persianTimeArray[1]), 0);
                         }
                     }
-                     
+
                     news.Description = viewModel.Description;
                     news.ImageName = viewModel.ImageName;
                     news.Url = viewModel.Url;
@@ -270,11 +276,11 @@ namespace NewsChannel.Areas.Admin.Controllers
                     news.Abstract = viewModel.Abstract;
                     news.NewsTags = viewModel.NewsTags;
                     news.NewsCategories = viewModel.NewsCategories;
-                     
+
                     await _uw.BaseRepository<News>().CreateAsync(news);
 
                     if (viewModel.NameOfTags.HasValue())
-                        news.NewsTags = await _uw.TagRepository.InsertNewsTags(viewModel.NameOfTags.Split(","),null);
+                        news.NewsTags = await _uw.TagRepository.InsertNewsTags(viewModel.NameOfTags.Split(","), null);
                     if (viewModel.CategoryIds != null)
                         news.NewsCategories = viewModel.CategoryIds.Select(c => new NewsCategory { CategoryId = c }).ToList();
                     else
@@ -304,8 +310,8 @@ namespace NewsChannel.Areas.Admin.Controllers
             return PartialView("_DeleteConfirmation");
         }
 
-
-        [HttpPost, ActionName("Delete"), AjaxOnly]
+        [HttpPost, ActionName("Delete"), AjaxOnly, DisplayName("حذف")]
+        [Authorize(Policy = ConstantPolicies.DynamicPermission)]
         public async Task<IActionResult> DeleteConfirmed(int? id)
         {
             if (id == null)
@@ -326,8 +332,9 @@ namespace NewsChannel.Areas.Admin.Controllers
             return PartialView("_DeleteConfirmation");
         }
 
-
-        [HttpPost, ActionName("DeleteGroup"), AjaxOnly]
+      
+        [HttpPost, ActionName("DeleteGroup"), AjaxOnly, DisplayName("حذف گروهی")]
+        [Authorize(Policy = ConstantPolicies.DynamicPermission)]
         public async Task<IActionResult> DeleteGroupConfirmed(int[] btSelectItem)
         {
             if (btSelectItem.Any())

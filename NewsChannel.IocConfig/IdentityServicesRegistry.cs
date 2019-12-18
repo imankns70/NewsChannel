@@ -14,6 +14,7 @@ namespace NewsChannel.IocConfig
             services.AddScoped<IApplicationUserManager, ApplicationUserManager>();
             services.AddScoped<IIdentityDbInitializer, IdentityDbInitializer>();
             services.AddScoped<ApplicationIdentityErrorDescriber>();
+            services.AddDynamicPermission();
         }
 
         public static void UseCustomIdentityServices(this IApplicationBuilder app)

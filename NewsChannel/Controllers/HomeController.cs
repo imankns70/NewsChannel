@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NewsChannel.Common;
 using NewsChannel.DataLayer.Contracts;
 using NewsChannel.DomainClasses.Business;
 using NewsChannel.ViewModel.Home;
@@ -24,6 +25,7 @@ namespace NewsChannel.Controllers
         // GET
         public async Task<IActionResult> Index(string duration, string TypeOfNews)
         {
+            
             var isAjax = Request.Headers["X-Requested-With"] == "XMLHttpRequest";
             if (isAjax && TypeOfNews == "MostViewedNews")
                 return PartialView("_MostViewedNews", await _uw.NewsRepository.MostViewedNews(0, 3, duration));

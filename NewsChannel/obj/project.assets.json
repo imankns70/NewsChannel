@@ -4806,7 +4806,6 @@
         "framework": ".NETCoreApp,Version=v2.2",
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "6.0.0",
-          "NewsChannel.DataLayer": "1.0.0",
           "NewsChannel.Service": "1.0.0"
         },
         "compile": {
@@ -4820,7 +4819,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
         "dependencies": {
-          "NewsChannel.DataLayer": "1.0.0"
+          "NewsChannel.DataLayer": "1.0.0",
+          "NewsChannel.ViewModel": "1.0.0"
         },
         "compile": {
           "bin/placeholder/NewsChannel.Service.dll": {}
